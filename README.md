@@ -27,19 +27,14 @@ This outputs `.output/server/index.mjs`, which can be run with PM2 using `ecosys
 
 ## CI/CD
 
-Pushes to the `main` branch run `.github/workflows/deploy.yml` and deploy to the VPS:
+Pushes to the `main` branch run `.github/workflows/deploy.yml` on the VPS self-hosted runner:
 
-1. SSH into the VPS
-2. Pull `origin/main`
-3. Install dependencies with `npm ci`
-4. Build with `npm run build:server`
-5. Reload PM2 app `limelinklive`
+1. Pull `origin/main`
+2. Install dependencies with `npm ci`
+3. Build with `npm run build:server`
+4. Reload PM2 app `limelinklive`
 
-Configure these GitHub repository secrets before relying on automatic deploys:
-
-- `VPS_HOST`
-- `VPS_USER`
-- `VPS_SSH_KEY`
+The runner is installed on the VPS as a systemd service in `/home/ubuntu/actions-runner-limelinklive`.
 
 Configure runtime environment variables on the VPS or in the PM2 ecosystem file:
 
