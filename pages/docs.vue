@@ -25,7 +25,9 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <article v-for="vendor in vendors" :key="vendor.name" class="glass-card p-7 rounded-3xl flex flex-col min-h-[420px]">
         <div class="flex items-center justify-between gap-4 mb-6">
-          <div class="crystal-icon" :class="vendor.iconClass"><iconify-icon :icon="vendor.icon" /></div>
+          <div class="w-16 h-16 rounded-2xl bg-white p-3 flex items-center justify-center shadow-lg shadow-blue-500/10 shrink-0">
+            <img class="max-h-full max-w-full object-contain" :src="vendor.logo" :alt="`${vendor.name} logo`" />
+          </div>
           <span class="text-xs text-gray-500">{{ vendor.scope }}</span>
         </div>
         <h3 class="text-2xl font-bold mb-3">{{ vendor.name }}</h3>
@@ -95,6 +97,10 @@
 </template>
 
 <script setup lang="ts">
+import agoraLogo from '~/assets/images/Agora.png'
+import bytePlusLogo from '~/assets/images/BytePlus.png'
+import tencentLogo from '~/assets/images/tencent.png'
+
 definePageMeta({
   alias: ['/zh/docs']
 })
@@ -141,8 +147,7 @@ const vendors = computed(() => currentLang.value === 'zh'
       {
         name: '騰訊雲 CSS',
         scope: 'Live Streaming',
-        icon: 'heroicons:signal',
-        iconClass: 'crystal-blue',
+        logo: tencentLogo,
         summary: '雲直播文檔覆蓋直播接入、域名配置、推流播放、轉碼、錄製、鑒權與控制台運維。',
         links: [
           { title: '雲直播文檔中心', desc: '產品文檔總入口', href: 'https://cloud.tencent.com/document/product/267' },
@@ -154,8 +159,7 @@ const vendors = computed(() => currentLang.value === 'zh'
       {
         name: 'BytePlus MediaLive',
         scope: 'Media Live',
-        icon: 'heroicons:play-circle',
-        iconClass: 'crystal-purple',
+        logo: bytePlusLogo,
         summary: 'BytePlus MediaLive 文檔涵蓋端到端直播架構、Broadcast SDK、Player SDK、OpenAPI 與媒體處理能力。',
         links: [
           { title: 'MediaLive 產品概覽', desc: '架構與核心能力', href: 'https://docs.byteplus.com/api/docs/byteplus-media-live/docs-product-overview' },
@@ -167,8 +171,7 @@ const vendors = computed(() => currentLang.value === 'zh'
       {
         name: 'Agora RTC / 互動直播',
         scope: 'RTC + Live',
-        icon: 'heroicons:video-camera',
-        iconClass: 'crystal-cyan',
+        logo: agoraLogo,
         summary: 'Agora 文檔適合查找互動直播、即時音視頻、雲端錄製、媒體網關與低延遲互動能力。',
         links: [
           { title: 'Agora Broadcast Streaming', desc: '直播能力與文檔入口', href: 'https://www.agora.io/en/products/broadcast-streaming/' },
@@ -182,8 +185,7 @@ const vendors = computed(() => currentLang.value === 'zh'
       {
         name: 'Tencent Cloud CSS',
         scope: 'Live Streaming',
-        icon: 'heroicons:signal',
-        iconClass: 'crystal-blue',
+        logo: tencentLogo,
         summary: 'CSS docs cover live streaming setup, domain configuration, ingest, playback, transcoding, recording, authentication and console operations.',
         links: [
           { title: 'CSS Documentation', desc: 'Primary documentation hub', href: 'https://www.tencentcloud.com/document/product/267' },
@@ -195,8 +197,7 @@ const vendors = computed(() => currentLang.value === 'zh'
       {
         name: 'BytePlus MediaLive',
         scope: 'Media Live',
-        icon: 'heroicons:play-circle',
-        iconClass: 'crystal-purple',
+        logo: bytePlusLogo,
         summary: 'MediaLive docs cover end-to-end live architecture, Broadcast SDK, Player SDK, OpenAPI and media processing features.',
         links: [
           { title: 'MediaLive Overview', desc: 'Architecture and core capabilities', href: 'https://docs.byteplus.com/api/docs/byteplus-media-live/docs-product-overview' },
@@ -208,8 +209,7 @@ const vendors = computed(() => currentLang.value === 'zh'
       {
         name: 'Agora RTC / Live',
         scope: 'RTC + Live',
-        icon: 'heroicons:video-camera',
-        iconClass: 'crystal-cyan',
+        logo: agoraLogo,
         summary: 'Agora docs are useful for interactive live streaming, real-time video, cloud recording, media gateway and low-latency engagement.',
         links: [
           { title: 'Agora Broadcast Streaming', desc: 'Live capabilities and docs entry', href: 'https://www.agora.io/en/products/broadcast-streaming/' },
