@@ -61,17 +61,17 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 <div class="glass-card p-8 rounded-2xl fade-in-up">
-<div class="crystal-icon crystal-blue mb-6"><iconify-icon icon="heroicons:cpu-chip"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="integrationAdvantageIcon" alt="技術整合優勢 icon">
 <h3 class="text-xl font-bold mb-4" data-i18n="home_value_1_title">技術整合優勢</h3>
 <p class="text-gray-400 leading-relaxed" data-i18n="home_value_1_desc">一站式整合多平台 SDK，提供統一的 API 管理與架構諮詢，降低 40% 的開發複雜度。</p>
 </div>
 <div class="glass-card p-8 rounded-2xl fade-in-up" style="transition-delay: 0.1s;">
-<div class="crystal-icon crystal-cyan mb-6"><iconify-icon icon="heroicons:globe-asia-australia"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="globalNodesIcon" alt="全球節點覆蓋 icon">
 <h3 class="text-xl font-bold mb-4" data-i18n="home_value_2_title">全球節點覆蓋</h3>
 <p class="text-gray-400 leading-relaxed" data-i18n="home_value_2_desc">覆蓋全球 200+ 國家與地區，2800+ 節點支撐，確保極致的低延遲與高可用性。</p>
 </div>
 <div class="glass-card p-8 rounded-2xl fade-in-up" style="transition-delay: 0.2s;">
-<div class="crystal-icon crystal-purple mb-6"><iconify-icon icon="heroicons:lifebuoy"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="support247Icon" alt="7×24 技術支援 icon">
 <h3 class="text-xl font-bold mb-4" data-i18n="home_value_3_title">7×24 技術支援</h3>
 <p class="text-gray-400 leading-relaxed" data-i18n="home_value_3_desc">專業架構師團隊 24 小時在線，提供故障排查與性能優化，響應時間低於 15 分鐘。</p>
 </div>
@@ -179,32 +179,32 @@
 </div>
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 <a class="glass-card p-8 rounded-2xl group" href="/solutions">
-<div class="crystal-icon crystal-blue mb-6"><iconify-icon icon="heroicons:shopping-cart"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="commerceIcon" alt="電商直播 icon">
 <h4 class="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors" data-i18n="home_solution_1_title">電商直播</h4>
 <p class="text-sm text-gray-400" data-i18n="home_solution_1_desc">低延遲秒殺、互動抽獎、多主播連麥，提升轉化率。</p>
 </a>
 <a class="glass-card p-8 rounded-2xl group" href="/solutions">
-<div class="crystal-icon crystal-cyan mb-6"><iconify-icon icon="heroicons:academic-cap"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="educationIcon" alt="在線教育 icon">
 <h4 class="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors" data-i18n="home_solution_2_title">在線教育</h4>
 <p class="text-sm text-gray-400" data-i18n="home_solution_2_desc">互動白板、分組課堂、錄製回放，還原真實教學場景。</p>
 </a>
 <a class="glass-card p-8 rounded-2xl group" href="/solutions">
-<div class="crystal-icon crystal-purple mb-6"><iconify-icon icon="heroicons:rocket-launch"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="crossBorderIcon" alt="跨境出海 icon">
 <h4 class="text-xl font-bold mb-3 group-hover:text-purple-400 transition-colors" data-i18n="home_solution_3_title">跨境出海</h4>
 <p class="text-sm text-gray-400" data-i18n="home_solution_3_desc">全球加速網絡，跨國穩定串流，助企業拓展全球版圖。</p>
 </a>
 <a class="glass-card p-8 rounded-2xl group" href="/solutions">
-<div class="crystal-icon crystal-amber mb-6"><iconify-icon icon="heroicons:star"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="socialIcon" alt="社交娛樂 icon">
 <h4 class="text-xl font-bold mb-3 group-hover:text-yellow-400 transition-colors" data-i18n="home_solution_4_title">社交娛樂</h4>
 <p class="text-sm text-gray-400" data-i18n="home_solution_4_desc">語音電台、派對直播、AR 濾鏡，打造極致社交體驗。</p>
 </a>
 <a class="glass-card p-8 rounded-2xl group" href="/solutions">
-<div class="crystal-icon crystal-emerald mb-6"><iconify-icon icon="heroicons:video-camera"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="remoteMeetingIcon" alt="遠程會議 icon">
 <h4 class="text-xl font-bold mb-3 group-hover:text-green-400 transition-colors" data-i18n="home_solution_5_title">遠程會議</h4>
 <p class="text-sm text-gray-400" data-i18n="home_solution_5_desc">高清流暢、屏幕共享、智能降噪，提升協作效率。</p>
 </a>
 <a class="glass-card p-8 rounded-2xl group" href="/solutions">
-<div class="crystal-icon crystal-rose mb-6"><iconify-icon icon="heroicons:puzzle-piece"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="gamingIcon" alt="遊戲雲端 icon">
 <h4 class="text-xl font-bold mb-3 group-hover:text-red-400 transition-colors" data-i18n="home_solution_6_title">遊戲雲端</h4>
 <p class="text-sm text-gray-400" data-i18n="home_solution_6_desc">遊戲語音、雲端渲染、實時觀戰，強化玩家互動。</p>
 </a>
@@ -333,6 +333,15 @@
 <script setup lang="ts">
 import webHero from '~/assets/images/webhero.png'
 import mobileHero from '~/assets/images/mobilehero.png'
+import support247Icon from '~/assets/images/724.png'
+import commerceIcon from '~/assets/images/dianshang.png'
+import educationIcon from '~/assets/images/jiaoyu.png'
+import integrationAdvantageIcon from '~/assets/images/jishuzhenghe.png'
+import crossBorderIcon from '~/assets/images/kuajing.png'
+import globalNodesIcon from '~/assets/images/quanqiujiedian.png'
+import socialIcon from '~/assets/images/shejiao.png'
+import gamingIcon from '~/assets/images/youxi.png'
+import remoteMeetingIcon from '~/assets/images/yuancheng.png'
 
 definePageMeta({
   alias: ['/zh']

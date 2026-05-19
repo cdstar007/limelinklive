@@ -12,22 +12,22 @@
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-24">
 <!-- Contact Info Cards -->
 <div class="glass-card p-10 rounded-3xl flex flex-col items-center text-center">
-<a class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 transition-all hover:scale-105 hover:bg-white/10" href="https://t.me/cdstar" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
-<iconify-icon class="text-5xl" icon="logos:telegram"></iconify-icon>
+<a class="mb-6 inline-flex transition-transform hover:scale-105" href="https://t.me/cdstar" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+<img class="w-[90px] h-[90px] object-contain" :src="telegramIcon" alt="Telegram icon">
 </a>
 <h4 class="text-xl font-bold mb-2" data-i18n="contact_phone_title">Telegram</h4>
 <p class="text-sm text-gray-400 mb-4" data-i18n="contact_phone_hours">點擊後開啟 Telegram</p>
 <a class="text-blue-500 font-bold hover:underline" data-i18n="contact_phone_cta" href="https://t.me/cdstar" target="_blank" rel="noopener noreferrer">點擊聯絡</a>
 </div>
 <div class="glass-card p-10 rounded-3xl flex flex-col items-center text-center">
-<div class="crystal-icon crystal-cyan mb-6"><iconify-icon icon="heroicons:envelope"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="emailIcon" alt="郵件聯繫 icon">
 <h4 class="text-xl font-bold mb-2" data-i18n="contact_email_title">郵件聯繫</h4>
 <p class="text-sm text-gray-400 mb-4" data-i18n="contact_email_hours">我們將在 24 小時內回覆</p>
 <div class="text-cyan-500 font-bold">support@limelink.live</div>
 </div>
 <div class="glass-card p-10 rounded-3xl flex flex-col items-center text-center">
-<a class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 transition-all hover:scale-105 hover:bg-white/10" href="https://wa.me/886919875294" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-<iconify-icon class="text-5xl" icon="logos:whatsapp-icon"></iconify-icon>
+<a class="mb-6 inline-flex transition-transform hover:scale-105" href="https://wa.me/886919875294" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+<img class="w-[90px] h-[90px] object-contain" :src="whatsAppIcon" alt="WhatsApp icon">
 </a>
 <h4 class="text-xl font-bold mb-2" data-i18n="contact_chat_title">WhatsApp</h4>
 <p class="text-sm text-gray-400 mb-4" data-i18n="contact_chat_hours">點擊後開啟 WhatsApp</p>
@@ -81,6 +81,10 @@
 </template>
 
 <script setup lang="ts">
+import emailIcon from '~/assets/images/email.png'
+import telegramIcon from '~/assets/images/Telegram.png'
+import whatsAppIcon from '~/assets/images/WhatsApp.png'
+
 definePageMeta({
   alias: ['/zh/contact']
 })

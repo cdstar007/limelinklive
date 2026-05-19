@@ -249,22 +249,22 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 <div class="glass-card p-8 rounded-2xl">
-<div class="crystal-icon crystal-blue mb-6"><iconify-icon icon="heroicons:currency-dollar"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="priceIcon" alt="更具競爭力的價格 icon">
 <h5 class="text-lg font-bold mb-3" data-i18n="services_why_1_title">更具競爭力的價格</h5>
 <p class="text-sm text-gray-400" data-i18n="services_why_1_desc">作為核心代理商，我們擁有比官網更優的折扣權限，助您節省 15%-30% 的預算。</p>
 </div>
 <div class="glass-card p-8 rounded-2xl">
-<div class="crystal-icon crystal-cyan mb-6"><iconify-icon icon="heroicons:wrench-screwdriver"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="integrationIcon" alt="專業技術集成 icon">
 <h5 class="text-lg font-bold mb-3" data-i18n="services_why_2_title">專業技術集成</h5>
 <p class="text-sm text-gray-400" data-i18n="services_why_2_desc">提供多平台 SDK 整合方案，解決不同服務商之間的兼容性問題。</p>
 </div>
 <div class="glass-card p-8 rounded-2xl">
-<div class="crystal-icon crystal-purple mb-6"><iconify-icon icon="heroicons:lifebuoy"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="supportIcon" alt="本地化技術支援 icon">
 <h5 class="text-lg font-bold mb-3" data-i18n="services_why_3_title">本地化技術支援</h5>
 <p class="text-sm text-gray-400" data-i18n="services_why_3_desc">跨越時區與語言障礙，提供 7×24 小時的本地化專家支援與應急響應。</p>
 </div>
 <div class="glass-card p-8 rounded-2xl">
-<div class="crystal-icon crystal-amber mb-6"><iconify-icon icon="heroicons:document-text"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="managementIcon" alt="統一賬單與管理 icon">
 <h5 class="text-lg font-bold mb-3" data-i18n="services_why_4_title">統一賬單與管理</h5>
 <p class="text-sm text-gray-400" data-i18n="services_why_4_desc">多個雲服務商統一結算，簡化財務流程與資源管理成本。</p>
 </div>
@@ -275,6 +275,11 @@
 </template>
 
 <script setup lang="ts">
+import managementIcon from '~/assets/images/guanli.png'
+import integrationIcon from '~/assets/images/jicheng.png'
+import priceIcon from '~/assets/images/jiage.png'
+import supportIcon from '~/assets/images/zhiyuan.png'
+
 definePageMeta({
   alias: ['/zh/services']
 })

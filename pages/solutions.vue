@@ -12,7 +12,7 @@
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
 <!-- Solution 1 -->
 <div class="glass-card p-10 rounded-[40px] flex flex-col h-full">
-<div class="crystal-icon crystal-blue mb-8"><iconify-icon icon="heroicons:shopping-bag"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-8" :src="commerceIcon" alt="電商直播 icon">
 <h3 class="text-2xl font-bold mb-4" data-i18n="solutions_ec_title">電商直播方案</h3>
 <p class="text-gray-400 text-sm mb-6 leading-relaxed" data-i18n="solutions_ec_desc">
                         針對大促期間的爆發性流量，提供低延遲、高畫質的直播能力，整合互動抽獎、秒殺看板與主播連麥功能。
@@ -32,7 +32,7 @@
 </div>
 <!-- Solution 2 -->
 <div class="glass-card p-10 rounded-[40px] flex flex-col h-full">
-<div class="crystal-icon crystal-cyan mb-8"><iconify-icon icon="heroicons:academic-cap"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-8" :src="educationIcon" alt="在線教育 icon">
 <h3 class="text-2xl font-bold mb-4" data-i18n="solutions_edu_title">在線教育方案</h3>
 <p class="text-gray-400 text-sm mb-6 leading-relaxed" data-i18n="solutions_edu_desc">
                         支持 1 對 1 私教、大班課、互動小班課。集成互動白板、文檔共享、分組討論與自動錄製功能。
@@ -52,7 +52,7 @@
 </div>
 <!-- Solution 3 -->
 <div class="glass-card p-10 rounded-[40px] flex flex-col h-full">
-<div class="crystal-icon crystal-purple mb-8"><iconify-icon icon="heroicons:rocket-launch"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-8" :src="crossBorderIcon" alt="跨境出海 icon">
 <h3 class="text-2xl font-bold mb-4" data-i18n="solutions_global_title">跨境出海方案</h3>
 <p class="text-gray-400 text-sm mb-6 leading-relaxed" data-i18n="solutions_global_desc">
                         解決跨國網絡波動，覆蓋東南亞、拉美、中東等新興市場，提供合規的全球加速分發與多語言支持。
@@ -72,7 +72,7 @@
 </div>
 <!-- Solution 4 -->
 <div class="glass-card p-10 rounded-[40px] flex flex-col h-full">
-<div class="crystal-icon crystal-amber mb-8"><iconify-icon icon="heroicons:star"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-8" :src="socialIcon" alt="社交娛樂 icon">
 <h3 class="text-2xl font-bold mb-4" data-i18n="solutions_social_title">社交娛樂方案</h3>
 <p class="text-gray-400 text-sm mb-6 leading-relaxed" data-i18n="solutions_social_desc">
                         打造極致社交體驗。支持 AR 濾鏡、變聲器、派對直播、3D 空間音效，提升用戶粘性。
@@ -92,7 +92,7 @@
 </div>
 <!-- Solution 5 -->
 <div class="glass-card p-10 rounded-[40px] flex flex-col h-full">
-<div class="crystal-icon crystal-emerald mb-8"><iconify-icon icon="heroicons:video-camera"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-8" :src="remoteMeetingIcon" alt="遠程會議 icon">
 <h3 class="text-2xl font-bold mb-4" data-i18n="solutions_meeting_title">遠程會議方案</h3>
 <p class="text-gray-400 text-sm mb-6 leading-relaxed" data-i18n="solutions_meeting_desc">
                         企業級高清音視頻會議。支持 1080P/4K 畫質、智能降噪、實時翻譯與會議錄製。
@@ -112,7 +112,7 @@
 </div>
 <!-- Solution 6 -->
 <div class="glass-card p-10 rounded-[40px] flex flex-col h-full">
-<div class="crystal-icon crystal-rose mb-8"><iconify-icon icon="heroicons:puzzle-piece"></iconify-icon></div>
+<img class="w-[90px] h-[90px] object-contain mb-8" :src="gamingIcon" alt="遊戲雲端 icon">
 <h3 class="text-2xl font-bold mb-4" data-i18n="solutions_game_title">遊戲雲端方案</h3>
 <p class="text-gray-400 text-sm mb-6 leading-relaxed" data-i18n="solutions_game_desc">
                         遊戲內語音通話、雲端遊戲渲染、實時觀戰功能，專為低延遲、高性能遊戲場景優化。
@@ -172,6 +172,13 @@
 </template>
 
 <script setup lang="ts">
+import commerceIcon from '~/assets/images/dianshang.png'
+import educationIcon from '~/assets/images/jiaoyu.png'
+import crossBorderIcon from '~/assets/images/kuajing.png'
+import socialIcon from '~/assets/images/shejiao.png'
+import gamingIcon from '~/assets/images/youxi.png'
+import remoteMeetingIcon from '~/assets/images/yuancheng.png'
+
 definePageMeta({
   alias: ['/zh/solutions']
 })

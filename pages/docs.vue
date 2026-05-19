@@ -65,9 +65,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <article v-for="doc in internalDocs" :key="doc.title" class="glass-card p-7 rounded-3xl">
         <div class="flex items-start gap-4">
-          <div class="w-11 h-11 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-300 shrink-0">
-            <iconify-icon :icon="doc.icon" />
-          </div>
+          <img class="w-[90px] h-[90px] object-contain shrink-0" :src="doc.image" :alt="`${doc.title} icon`" />
           <div>
             <h3 class="text-xl font-bold mb-2">{{ doc.title }}</h3>
             <p class="text-sm text-gray-400 leading-relaxed mb-4">{{ doc.desc }}</p>
@@ -99,6 +97,10 @@
 <script setup lang="ts">
 import agoraLogo from '~/assets/images/Agora.png'
 import bytePlusLogo from '~/assets/images/BytePlus.png'
+import checklistIcon from '~/assets/images/qingdan.png'
+import handbookIcon from '~/assets/images/shouce.png'
+import practiceIcon from '~/assets/images/shijian.png'
+import sopIcon from '~/assets/images/sop.png'
 import tencentLogo from '~/assets/images/tencent.png'
 
 definePageMeta({
@@ -222,15 +224,15 @@ const vendors = computed(() => currentLang.value === 'zh'
 
 const internalDocs = computed(() => currentLang.value === 'zh'
   ? [
-      { title: '直播架構選型清單', desc: '根據直播型態、地區、延遲、併發與預算，快速選擇 CSS、BytePlus 或 Agora 的接入路線。', icon: 'heroicons:clipboard-document-check', tags: ['選型', '架構', '成本'] },
-      { title: '推流與播放排障手冊', desc: '整理 RTMP / WebRTC / HLS 常見問題，包括首幀慢、卡頓、斷流、音畫不同步與跨境弱網。', icon: 'heroicons:wrench-screwdriver', tags: ['推流', '播放', '排障'] },
-      { title: '安全與鑒權實踐', desc: '沉澱播放鑒權、防盜鏈、回調驗簽、管理後台權限與 webhook 安全配置。', icon: 'heroicons:shield-check', tags: ['安全', '鑒權', 'Webhook'] },
-      { title: '上線交付 SOP', desc: '從域名、證書、CNAME、測試流、監控告警到重大活動護航的交付檢查表。', icon: 'heroicons:rocket-launch', tags: ['交付', '監控', 'SLA'] }
+      { title: '直播架構選型清單', desc: '根據直播型態、地區、延遲、併發與預算，快速選擇 CSS、BytePlus 或 Agora 的接入路線。', image: checklistIcon, tags: ['選型', '架構', '成本'] },
+      { title: '推流與播放排障手冊', desc: '整理 RTMP / WebRTC / HLS 常見問題，包括首幀慢、卡頓、斷流、音畫不同步與跨境弱網。', image: handbookIcon, tags: ['推流', '播放', '排障'] },
+      { title: '安全與鑒權實踐', desc: '沉澱播放鑒權、防盜鏈、回調驗簽、管理後台權限與 webhook 安全配置。', image: practiceIcon, tags: ['安全', '鑒權', 'Webhook'] },
+      { title: '上線交付 SOP', desc: '從域名、證書、CNAME、測試流、監控告警到重大活動護航的交付檢查表。', image: sopIcon, tags: ['交付', '監控', 'SLA'] }
     ]
   : [
-      { title: 'Architecture Selection Checklist', desc: 'Choose CSS, BytePlus or Agora based on streaming type, target regions, latency, concurrency and budget.', icon: 'heroicons:clipboard-document-check', tags: ['Selection', 'Architecture', 'Cost'] },
-      { title: 'Ingest and Playback Troubleshooting', desc: 'Common RTMP, WebRTC and HLS issues including slow first frame, buffering, stream drops, AV sync and cross-border networks.', icon: 'heroicons:wrench-screwdriver', tags: ['Ingest', 'Playback', 'Troubleshooting'] },
-      { title: 'Security and Authentication Practices', desc: 'Playback authentication, anti-leeching, callback signing, admin permissions and webhook security configuration.', icon: 'heroicons:shield-check', tags: ['Security', 'Auth', 'Webhook'] },
-      { title: 'Launch Delivery SOP', desc: 'Delivery checklist for domains, certificates, CNAME, test streams, monitoring alerts and major event support.', icon: 'heroicons:rocket-launch', tags: ['Delivery', 'Monitoring', 'SLA'] }
+      { title: 'Architecture Selection Checklist', desc: 'Choose CSS, BytePlus or Agora based on streaming type, target regions, latency, concurrency and budget.', image: checklistIcon, tags: ['Selection', 'Architecture', 'Cost'] },
+      { title: 'Ingest and Playback Troubleshooting', desc: 'Common RTMP, WebRTC and HLS issues including slow first frame, buffering, stream drops, AV sync and cross-border networks.', image: handbookIcon, tags: ['Ingest', 'Playback', 'Troubleshooting'] },
+      { title: 'Security and Authentication Practices', desc: 'Playback authentication, anti-leeching, callback signing, admin permissions and webhook security configuration.', image: practiceIcon, tags: ['Security', 'Auth', 'Webhook'] },
+      { title: 'Launch Delivery SOP', desc: 'Delivery checklist for domains, certificates, CNAME, test streams, monitoring alerts and major event support.', image: sopIcon, tags: ['Delivery', 'Monitoring', 'SLA'] }
     ])
 </script>
