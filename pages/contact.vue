@@ -23,7 +23,7 @@
 <div class="crystal-icon crystal-cyan mb-6"><iconify-icon icon="heroicons:envelope"></iconify-icon></div>
 <h4 class="text-xl font-bold mb-2" data-i18n="contact_email_title">郵件聯繫</h4>
 <p class="text-sm text-gray-400 mb-4" data-i18n="contact_email_hours">我們將在 24 小時內回覆</p>
-<div class="text-cyan-500 font-bold">support@limelink.cc</div>
+<div class="text-cyan-500 font-bold">support@limelink.live</div>
 </div>
 <div class="glass-card p-10 rounded-3xl flex flex-col items-center text-center">
 <a class="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-white/5 transition-all hover:scale-105 hover:bg-white/10" href="https://wa.me/886919875294" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">

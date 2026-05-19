@@ -36,12 +36,12 @@ const organizationSchema = {
   name: siteName,
   url: siteUrl,
   logo: `${siteUrl}/favicon.svg`,
-  email: 'support@limelink.cc',
+  email: 'support@limelink.live',
   contactPoint: [
     {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      email: 'support@limelink.cc',
+      email: 'support@limelink.live',
       availableLanguage: ['zh-Hant', 'en']
     }
   ],

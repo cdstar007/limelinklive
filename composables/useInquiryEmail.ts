@@ -1,4 +1,4 @@
-const INQUIRY_EMAIL = 'support@limelink.cc'
+const INQUIRY_EMAIL = 'support@limelink.live'
 
 type InquiryStatus = 'idle' | 'submitting' | 'success' | 'error'
 

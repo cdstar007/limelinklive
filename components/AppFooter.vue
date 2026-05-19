@@ -52,7 +52,7 @@
                 <span>WhatsApp</span>
               </a>
             </li>
-            <li data-i18n="footer_email">support@limelink.cc</li>
+            <li data-i18n="footer_email">support@limelink.live</li>
           </ul>
         </div>
       </div>
