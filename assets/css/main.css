@@ -1,0 +1,353 @@
+/* about.html */
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0e1a; color: #f8fafc; }
+        .glass-nav { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .timeline-line { position: absolute; left: 50%; width: 2px; height: 100%; background: rgba(255, 255, 255, 0.1); transform: translateX(-50%); }
+        /* 3D 水晶圖標效果 */
+        .crystal-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.12) 100%); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .crystal-icon::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%); border-radius: 50%; pointer-events: none; }
+        .crystal-icon i, .crystal-icon iconify-icon { font-size: 1.5rem; color: #60a5fa; filter: drop-shadow(0 2px 8px rgba(59,130,246,0.4)); position: relative; z-index: 1; }
+        .crystal-icon:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.15); border-color: rgba(96, 165, 250, 0.4); }
+        .crystal-icon-lg { width: 72px; height: 72px; border-radius: 20px; }
+        .crystal-icon-lg i, .crystal-icon-lg iconify-icon { font-size: 2rem; }
+        .crystal-icon-sm { width: 40px; height: 40px; border-radius: 12px; }
+        .crystal-icon-sm i, .crystal-icon-sm iconify-icon { font-size: 1.1rem; }
+        @keyframes crystalShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .crystal-icon-shimmer { background-size: 200% 100%; animation: crystalShimmer 3s ease-in-out infinite; }
+        .crystal-blue i, .crystal-blue iconify-icon { color: #60a5fa; }
+        .crystal-blue { box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-purple i, .crystal-purple iconify-icon { color: #a78bfa; }
+        .crystal-purple { box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-cyan i, .crystal-cyan iconify-icon { color: #22d3ee; }
+        .crystal-cyan { box-shadow: 0 8px 32px rgba(34,211,238,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-emerald i, .crystal-emerald iconify-icon { color: #34d399; }
+        .crystal-emerald { box-shadow: 0 8px 32px rgba(52,211,153,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-amber i, .crystal-amber iconify-icon { color: #fbbf24; }
+        .crystal-amber { box-shadow: 0 8px 32px rgba(251,191,36,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-rose i, .crystal-rose iconify-icon { color: #fb7185; }
+        .crystal-rose { box-shadow: 0 8px 32px rgba(251,113,133,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+
+/* contact.html */
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0e1a; color: #f8fafc; }
+        .glass-nav { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .input-field { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 12px 16px; width: 100%; color: white; }
+        /* 3D 水晶圖標效果 */
+        .crystal-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.12) 100%); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .crystal-icon::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%); border-radius: 50%; pointer-events: none; }
+        .crystal-icon i, .crystal-icon iconify-icon { font-size: 1.5rem; color: #60a5fa; filter: drop-shadow(0 2px 8px rgba(59,130,246,0.4)); position: relative; z-index: 1; }
+        .crystal-icon:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.15); border-color: rgba(96, 165, 250, 0.4); }
+        .crystal-icon-lg { width: 72px; height: 72px; border-radius: 20px; }
+        .crystal-icon-lg i, .crystal-icon-lg iconify-icon { font-size: 2rem; }
+        .crystal-icon-sm { width: 40px; height: 40px; border-radius: 12px; }
+        .crystal-icon-sm i, .crystal-icon-sm iconify-icon { font-size: 1.1rem; }
+        @keyframes crystalShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .crystal-icon-shimmer { background-size: 200% 100%; animation: crystalShimmer 3s ease-in-out infinite; }
+        .crystal-blue i, .crystal-blue iconify-icon { color: #60a5fa; }
+        .crystal-blue { box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-purple i, .crystal-purple iconify-icon { color: #a78bfa; }
+        .crystal-purple { box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-cyan i, .crystal-cyan iconify-icon { color: #22d3ee; }
+        .crystal-cyan { box-shadow: 0 8px 32px rgba(34,211,238,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-emerald i, .crystal-emerald iconify-icon { color: #34d399; }
+        .crystal-emerald { box-shadow: 0 8px 32px rgba(52,211,153,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-amber i, .crystal-amber iconify-icon { color: #fbbf24; }
+        .crystal-amber { box-shadow: 0 8px 32px rgba(251,191,36,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-rose i, .crystal-rose iconify-icon { color: #fb7185; }
+        .crystal-rose { box-shadow: 0 8px 32px rgba(251,113,133,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+
+/* home.html */
+body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background-color: #0a0e1a;
+            color: #f8fafc;
+        }
+        .glass-nav {
+            background: rgba(10, 14, 26, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.3);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-tech {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+        }
+        .grid-pattern {
+            background-image: radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 3D 水晶圖標效果 */
+        .crystal-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.12) 100%); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .crystal-icon::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%); border-radius: 50%; pointer-events: none; }
+        .crystal-icon i, .crystal-icon iconify-icon { font-size: 1.5rem; color: #60a5fa; filter: drop-shadow(0 2px 8px rgba(59,130,246,0.4)); position: relative; z-index: 1; }
+        .crystal-icon:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.15); border-color: rgba(96, 165, 250, 0.4); }
+        .crystal-icon-lg { width: 72px; height: 72px; border-radius: 20px; }
+        .crystal-icon-lg i, .crystal-icon-lg iconify-icon { font-size: 2rem; }
+        .crystal-icon-sm { width: 40px; height: 40px; border-radius: 12px; }
+        .crystal-icon-sm i, .crystal-icon-sm iconify-icon { font-size: 1.1rem; }
+        @keyframes crystalShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .crystal-icon-shimmer { background-size: 200% 100%; animation: crystalShimmer 3s ease-in-out infinite; }
+        .crystal-blue i, .crystal-blue iconify-icon { color: #60a5fa; }
+        .crystal-blue { box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-purple i, .crystal-purple iconify-icon { color: #a78bfa; }
+        .crystal-purple { box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-cyan i, .crystal-cyan iconify-icon { color: #22d3ee; }
+        .crystal-cyan { box-shadow: 0 8px 32px rgba(34,211,238,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-emerald i, .crystal-emerald iconify-icon { color: #34d399; }
+        .crystal-emerald { box-shadow: 0 8px 32px rgba(52,211,153,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-amber i, .crystal-amber iconify-icon { color: #fbbf24; }
+        .crystal-amber { box-shadow: 0 8px 32px rgba(251,191,36,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-rose i, .crystal-rose iconify-icon { color: #fb7185; }
+        .crystal-rose { box-shadow: 0 8px 32px rgba(251,113,133,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+
+/* pricing.html */
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0e1a; color: #f8fafc; }
+        .glass-nav { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .input-field { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 12px 16px; width: 100%; color: white; transition: all 0.3s; }
+        .input-field:focus { border-color: #3b82f6; outline: none; background: rgba(255, 255, 255, 0.08); }
+        /* 3D 水晶圖標效果 */
+        .crystal-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.12) 100%); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .crystal-icon::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%); border-radius: 50%; pointer-events: none; }
+        .crystal-icon i, .crystal-icon iconify-icon { font-size: 1.5rem; color: #60a5fa; filter: drop-shadow(0 2px 8px rgba(59,130,246,0.4)); position: relative; z-index: 1; }
+        .crystal-icon:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.15); border-color: rgba(96, 165, 250, 0.4); }
+        .crystal-icon-lg { width: 72px; height: 72px; border-radius: 20px; }
+        .crystal-icon-lg i, .crystal-icon-lg iconify-icon { font-size: 2rem; }
+        .crystal-icon-sm { width: 40px; height: 40px; border-radius: 12px; }
+        .crystal-icon-sm i, .crystal-icon-sm iconify-icon { font-size: 1.1rem; }
+        @keyframes crystalShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .crystal-icon-shimmer { background-size: 200% 100%; animation: crystalShimmer 3s ease-in-out infinite; }
+        .crystal-blue i, .crystal-blue iconify-icon { color: #60a5fa; }
+        .crystal-blue { box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-purple i, .crystal-purple iconify-icon { color: #a78bfa; }
+        .crystal-purple { box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-cyan i, .crystal-cyan iconify-icon { color: #22d3ee; }
+        .crystal-cyan { box-shadow: 0 8px 32px rgba(34,211,238,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-emerald i, .crystal-emerald iconify-icon { color: #34d399; }
+        .crystal-emerald { box-shadow: 0 8px 32px rgba(52,211,153,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-amber i, .crystal-amber iconify-icon { color: #fbbf24; }
+        .crystal-amber { box-shadow: 0 8px 32px rgba(251,191,36,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-rose i, .crystal-rose iconify-icon { color: #fb7185; }
+        .crystal-rose { box-shadow: 0 8px 32px rgba(251,113,133,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+
+/* service-agora.html */
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0e1a; color: #f8fafc; }
+        .glass-nav { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .bg-gradient-agora { background: linear-gradient(135deg, #0ea5e9 0%, #2dd4bf 100%); }
+        /* 3D 水晶圖標效果 */
+        .crystal-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.12) 100%); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .crystal-icon::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%); border-radius: 50%; pointer-events: none; }
+        .crystal-icon i, .crystal-icon iconify-icon { font-size: 1.5rem; color: #60a5fa; filter: drop-shadow(0 2px 8px rgba(59,130,246,0.4)); position: relative; z-index: 1; }
+        .crystal-icon:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.15); border-color: rgba(96, 165, 250, 0.4); }
+        .crystal-icon-lg { width: 72px; height: 72px; border-radius: 20px; }
+        .crystal-icon-lg i, .crystal-icon-lg iconify-icon { font-size: 2rem; }
+        .crystal-icon-sm { width: 40px; height: 40px; border-radius: 12px; }
+        .crystal-icon-sm i, .crystal-icon-sm iconify-icon { font-size: 1.1rem; }
+        @keyframes crystalShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .crystal-icon-shimmer { background-size: 200% 100%; animation: crystalShimmer 3s ease-in-out infinite; }
+        .crystal-blue i, .crystal-blue iconify-icon { color: #60a5fa; }
+        .crystal-blue { box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-purple i, .crystal-purple iconify-icon { color: #a78bfa; }
+        .crystal-purple { box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-cyan i, .crystal-cyan iconify-icon { color: #22d3ee; }
+        .crystal-cyan { box-shadow: 0 8px 32px rgba(34,211,238,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-emerald i, .crystal-emerald iconify-icon { color: #34d399; }
+        .crystal-emerald { box-shadow: 0 8px 32px rgba(52,211,153,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-amber i, .crystal-amber iconify-icon { color: #fbbf24; }
+        .crystal-amber { box-shadow: 0 8px 32px rgba(251,191,36,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-rose i, .crystal-rose iconify-icon { color: #fb7185; }
+        .crystal-rose { box-shadow: 0 8px 32px rgba(251,113,133,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+
+/* service-byteplus.html */
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0e1a; color: #f8fafc; }
+        .glass-nav { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .bg-gradient-byteplus { background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); }
+        /* 3D 水晶圖標效果 */
+        .crystal-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.12) 100%); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .crystal-icon::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%); border-radius: 50%; pointer-events: none; }
+        .crystal-icon i, .crystal-icon iconify-icon { font-size: 1.5rem; color: #60a5fa; filter: drop-shadow(0 2px 8px rgba(59,130,246,0.4)); position: relative; z-index: 1; }
+        .crystal-icon:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.15); border-color: rgba(96, 165, 250, 0.4); }
+        .crystal-icon-lg { width: 72px; height: 72px; border-radius: 20px; }
+        .crystal-icon-lg i, .crystal-icon-lg iconify-icon { font-size: 2rem; }
+        .crystal-icon-sm { width: 40px; height: 40px; border-radius: 12px; }
+        .crystal-icon-sm i, .crystal-icon-sm iconify-icon { font-size: 1.1rem; }
+        @keyframes crystalShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .crystal-icon-shimmer { background-size: 200% 100%; animation: crystalShimmer 3s ease-in-out infinite; }
+        .crystal-blue i, .crystal-blue iconify-icon { color: #60a5fa; }
+        .crystal-blue { box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-purple i, .crystal-purple iconify-icon { color: #a78bfa; }
+        .crystal-purple { box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-cyan i, .crystal-cyan iconify-icon { color: #22d3ee; }
+        .crystal-cyan { box-shadow: 0 8px 32px rgba(34,211,238,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-emerald i, .crystal-emerald iconify-icon { color: #34d399; }
+        .crystal-emerald { box-shadow: 0 8px 32px rgba(52,211,153,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-amber i, .crystal-amber iconify-icon { color: #fbbf24; }
+        .crystal-amber { box-shadow: 0 8px 32px rgba(251,191,36,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-rose i, .crystal-rose iconify-icon { color: #fb7185; }
+        .crystal-rose { box-shadow: 0 8px 32px rgba(251,113,133,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+
+/* service-css.html */
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0e1a; color: #f8fafc; }
+        .glass-nav { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .bg-gradient-tencent { background: linear-gradient(135deg, #0052d9 0%, #2563eb 100%); }
+        /* 3D 水晶圖標效果 */
+        .crystal-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.12) 100%); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .crystal-icon::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%); border-radius: 50%; pointer-events: none; }
+        .crystal-icon i, .crystal-icon iconify-icon { font-size: 1.5rem; color: #60a5fa; filter: drop-shadow(0 2px 8px rgba(59,130,246,0.4)); position: relative; z-index: 1; }
+        .crystal-icon:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.15); border-color: rgba(96, 165, 250, 0.4); }
+        .crystal-icon-lg { width: 72px; height: 72px; border-radius: 20px; }
+        .crystal-icon-lg i, .crystal-icon-lg iconify-icon { font-size: 2rem; }
+        .crystal-icon-sm { width: 40px; height: 40px; border-radius: 12px; }
+        .crystal-icon-sm i, .crystal-icon-sm iconify-icon { font-size: 1.1rem; }
+        @keyframes crystalShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .crystal-icon-shimmer { background-size: 200% 100%; animation: crystalShimmer 3s ease-in-out infinite; }
+        .crystal-blue i, .crystal-blue iconify-icon { color: #60a5fa; }
+        .crystal-blue { box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-purple i, .crystal-purple iconify-icon { color: #a78bfa; }
+        .crystal-purple { box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-cyan i, .crystal-cyan iconify-icon { color: #22d3ee; }
+        .crystal-cyan { box-shadow: 0 8px 32px rgba(34,211,238,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-emerald i, .crystal-emerald iconify-icon { color: #34d399; }
+        .crystal-emerald { box-shadow: 0 8px 32px rgba(52,211,153,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-amber i, .crystal-amber iconify-icon { color: #fbbf24; }
+        .crystal-amber { box-shadow: 0 8px 32px rgba(251,191,36,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-rose i, .crystal-rose iconify-icon { color: #fb7185; }
+        .crystal-rose { box-shadow: 0 8px 32px rgba(251,113,133,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+
+/* services.html */
+body {
+            font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+            background-color: #0a0e1a;
+            color: #f8fafc;
+        }
+        .glass-nav {
+            background: rgba(10, 14, 26, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-tech {
+            background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+        }
+        .grid-pattern {
+            background-image: radial-gradient(rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        /* 3D 水晶圖標效果 */
+        .crystal-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.12) 100%); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .crystal-icon::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%); border-radius: 50%; pointer-events: none; }
+        .crystal-icon i, .crystal-icon iconify-icon { font-size: 1.5rem; color: #60a5fa; filter: drop-shadow(0 2px 8px rgba(59,130,246,0.4)); position: relative; z-index: 1; }
+        .crystal-icon:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.15); border-color: rgba(96, 165, 250, 0.4); }
+        .crystal-icon-lg { width: 72px; height: 72px; border-radius: 20px; }
+        .crystal-icon-lg i, .crystal-icon-lg iconify-icon { font-size: 2rem; }
+        .crystal-icon-sm { width: 40px; height: 40px; border-radius: 12px; }
+        .crystal-icon-sm i, .crystal-icon-sm iconify-icon { font-size: 1.1rem; }
+        @keyframes crystalShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .crystal-icon-shimmer { background-size: 200% 100%; animation: crystalShimmer 3s ease-in-out infinite; }
+        .crystal-blue i, .crystal-blue iconify-icon { color: #60a5fa; }
+        .crystal-blue { box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-purple i, .crystal-purple iconify-icon { color: #a78bfa; }
+        .crystal-purple { box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-cyan i, .crystal-cyan iconify-icon { color: #22d3ee; }
+        .crystal-cyan { box-shadow: 0 8px 32px rgba(34,211,238,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-emerald i, .crystal-emerald iconify-icon { color: #34d399; }
+        .crystal-emerald { box-shadow: 0 8px 32px rgba(52,211,153,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-amber i, .crystal-amber iconify-icon { color: #fbbf24; }
+        .crystal-amber { box-shadow: 0 8px 32px rgba(251,191,36,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-rose i, .crystal-rose iconify-icon { color: #fb7185; }
+        .crystal-rose { box-shadow: 0 8px 32px rgba(251,113,133,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+
+/* solutions.html */
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0e1a; color: #f8fafc; }
+        .glass-nav { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s ease; }
+        .glass-card:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.06); }
+        .text-gradient { background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* 3D 水晶圖標效果 */
+        .crystal-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.12) 100%); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .crystal-icon::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%); border-radius: 50%; pointer-events: none; }
+        .crystal-icon i, .crystal-icon iconify-icon { font-size: 1.5rem; color: #60a5fa; filter: drop-shadow(0 2px 8px rgba(59,130,246,0.4)); position: relative; z-index: 1; }
+        .crystal-icon:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.15); border-color: rgba(96, 165, 250, 0.4); }
+        .crystal-icon-lg { width: 72px; height: 72px; border-radius: 20px; }
+        .crystal-icon-lg i, .crystal-icon-lg iconify-icon { font-size: 2rem; }
+        .crystal-icon-sm { width: 40px; height: 40px; border-radius: 12px; }
+        .crystal-icon-sm i, .crystal-icon-sm iconify-icon { font-size: 1.1rem; }
+        @keyframes crystalShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .crystal-icon-shimmer { background-size: 200% 100%; animation: crystalShimmer 3s ease-in-out infinite; }
+        .crystal-blue i, .crystal-blue iconify-icon { color: #60a5fa; }
+        .crystal-blue { box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-purple i, .crystal-purple iconify-icon { color: #a78bfa; }
+        .crystal-purple { box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-cyan i, .crystal-cyan iconify-icon { color: #22d3ee; }
+        .crystal-cyan { box-shadow: 0 8px 32px rgba(34,211,238,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-emerald i, .crystal-emerald iconify-icon { color: #34d399; }
+        .crystal-emerald { box-shadow: 0 8px 32px rgba(52,211,153,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-amber i, .crystal-amber iconify-icon { color: #fbbf24; }
+        .crystal-amber { box-shadow: 0 8px 32px rgba(251,191,36,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-rose i, .crystal-rose iconify-icon { color: #fb7185; }
+        .crystal-rose { box-shadow: 0 8px 32px rgba(251,113,133,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+
+/* support.html */
+body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0e1a; color: #f8fafc; }
+        .glass-nav { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        /* 3D 水晶圖標效果 */
+        .crystal-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 56px; height: 56px; border-radius: 16px; background: linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.05) 40%, rgba(255,255,255,0.12) 100%); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(255,255,255,0.1); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .crystal-icon::before { content: ''; position: absolute; top: -2px; left: 50%; transform: translateX(-50%); width: 60%; height: 40%; background: linear-gradient(180deg, rgba(255,255,255,0.5) 0%, transparent 100%); border-radius: 50%; pointer-events: none; }
+        .crystal-icon i, .crystal-icon iconify-icon { font-size: 1.5rem; color: #60a5fa; filter: drop-shadow(0 2px 8px rgba(59,130,246,0.4)); position: relative; z-index: 1; }
+        .crystal-icon:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 12px 48px rgba(59, 130, 246, 0.25), inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.15); border-color: rgba(96, 165, 250, 0.4); }
+        .crystal-icon-lg { width: 72px; height: 72px; border-radius: 20px; }
+        .crystal-icon-lg i, .crystal-icon-lg iconify-icon { font-size: 2rem; }
+        .crystal-icon-sm { width: 40px; height: 40px; border-radius: 12px; }
+        .crystal-icon-sm i, .crystal-icon-sm iconify-icon { font-size: 1.1rem; }
+        @keyframes crystalShimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
+        .crystal-icon-shimmer { background-size: 200% 100%; animation: crystalShimmer 3s ease-in-out infinite; }
+        .crystal-blue i, .crystal-blue iconify-icon { color: #60a5fa; }
+        .crystal-blue { box-shadow: 0 8px 32px rgba(59,130,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-purple i, .crystal-purple iconify-icon { color: #a78bfa; }
+        .crystal-purple { box-shadow: 0 8px 32px rgba(139,92,246,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-cyan i, .crystal-cyan iconify-icon { color: #22d3ee; }
+        .crystal-cyan { box-shadow: 0 8px 32px rgba(34,211,238,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-emerald i, .crystal-emerald iconify-icon { color: #34d399; }
+        .crystal-emerald { box-shadow: 0 8px 32px rgba(52,211,153,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-amber i, .crystal-amber iconify-icon { color: #fbbf24; }
+        .crystal-amber { box-shadow: 0 8px 32px rgba(251,191,36,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }
+        .crystal-rose i, .crystal-rose iconify-icon { color: #fb7185; }
+        .crystal-rose { box-shadow: 0 8px 32px rgba(251,113,133,0.15), inset 0 1px 0 rgba(255,255,255,0.3); }

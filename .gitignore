@@ -1,0 +1,27 @@
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Nuxt / Nitro output
+.nuxt/
+.output/
+dist/
+
+# Cloudflare local state
+.wrangler/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+ssh/
+
+# Legacy static exports kept locally for reference
+/*.html
+
+# Local reports / handoff archives
+sitemap-gsc-check-*/
+sitemap-gsc-check-*.zip

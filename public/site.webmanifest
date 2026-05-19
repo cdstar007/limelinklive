@@ -1,0 +1,16 @@
+{
+  "name": "LIMELINK",
+  "short_name": "LIMELINK",
+  "description": "Cloud video service agent and technology integrator.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050816",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "950x950",
+      "type": "image/png"
+    }
+  ]
+}
