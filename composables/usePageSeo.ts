@@ -26,7 +26,7 @@ type PageSeo = {
   serviceName?: LocalizedText
 }
 
-const siteUrl = 'https://streaming.limelink.cc'
+const siteUrl = 'https://limelink.live'
 const siteName = 'LIMELINK'
 const defaultOgImage = `${siteUrl}/og-default.svg`
 

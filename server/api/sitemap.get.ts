@@ -1,4 +1,4 @@
-const siteUrl = 'https://streaming.limelink.cc'
+const siteUrl = 'https://limelink.live'
 
 const routes = [
   { path: '/', priority: '1.0', changefreq: 'weekly' },
