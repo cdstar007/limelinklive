@@ -27,18 +27,21 @@ This outputs `.output/server/index.mjs`, which can be run with PM2 using `ecosys
 
 ## CI/CD
 
-Pushes to the `main` branch run `.github/workflows/deploy.yml`:
+Pushes to the `main` branch run `.github/workflows/deploy.yml` and deploy to the VPS:
 
-1. Install dependencies with `npm ci`
-2. Build with `npm run build`
-3. Deploy `dist` to Cloudflare Pages project `limelinkstreaming`
+1. SSH into the VPS
+2. Pull `origin/main`
+3. Install dependencies with `npm ci`
+4. Build with `npm run build:server`
+5. Reload PM2 app `limelinklive`
 
 Configure these GitHub repository secrets before relying on automatic deploys:
 
-- `CLOUDFLARE_API_TOKEN`
-- `CLOUDFLARE_ACCOUNT_ID`
+- `VPS_HOST`
+- `VPS_USER`
+- `VPS_SSH_KEY`
 
-Configure runtime environment variables in Cloudflare Pages:
+Configure runtime environment variables on the VPS or in the PM2 ecosystem file:
 
 - `FEISHU_WEBHOOK_URL`
 - `FEISHU_WEBHOOK_SECRET` if Feishu signature verification is enabled
