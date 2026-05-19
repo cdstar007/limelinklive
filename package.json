@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nuxt dev --host 0.0.0.0",
     "build": "nuxt build",
+    "build:server": "NITRO_PRESET=node-server nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview --host 0.0.0.0"
   },

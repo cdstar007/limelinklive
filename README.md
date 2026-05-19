@@ -17,6 +17,14 @@ npm run build
 
 The production build outputs to `dist`, matching `wrangler.toml`.
 
+For a Node server deployment, build with:
+
+```bash
+npm run build:server
+```
+
+This outputs `.output/server/index.mjs`, which can be run with PM2 using `ecosystem.config.cjs`.
+
 ## CI/CD
 
 Pushes to the `main` branch run `.github/workflows/deploy.yml`:
