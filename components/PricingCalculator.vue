@@ -392,7 +392,7 @@ const officialCost = computed(() => {
   const rate = getTierRate(trafficGb.value, tencentRates)
   return trafficGb.value * rate
 })
-const discountedCost = computed(() => officialCost.value * 0.9)
+const discountedCost = computed(() => officialCost.value * 0.95)
 
 const formattedTraffic = computed(() => {
   if (trafficGb.value >= 1000) return `${(trafficGb.value / 1000).toFixed(1)} TB`
