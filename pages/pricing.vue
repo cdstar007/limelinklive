@@ -26,12 +26,14 @@
 <div class="text-sm font-bold text-cyan-400" data-i18n="pricing_model_3_discount">代理折扣：專案申請，低至 7 折</div>
 </div>
 </div>
+<PricingCalculator v-model:summary="calculatorSummary" @request-quote="scrollToQuoteForm" />
 <div class="flex flex-col lg:flex-row gap-16">
 <!-- Inquiry Form -->
-<div class="lg:w-2/3">
+<div ref="quoteForm" class="lg:w-2/3">
 <div class="glass-card p-10 rounded-[40px]">
 <h2 class="text-3xl font-bold mb-8" data-i18n="pricing_form_title">獲取專屬報價單</h2>
 <form class="space-y-6" @submit.prevent="submitPricingInquiry">
+<input name="calculatorEstimate" type="hidden" :value="calculatorSummary"/>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div>
 <label class="block text-sm font-medium text-gray-400 mb-2" data-i18n="pricing_form_company">公司名稱</label>
@@ -161,11 +163,17 @@ usePageSeo('pricing')
 
 const { currentLang } = useDomI18n()
 const { inquiryMessage, inquiryStatus, submitInquiry } = useInquiryEmail()
+const calculatorSummary = ref('')
+const quoteForm = ref<HTMLElement | null>(null)
 const pricingSubmitLabel = computed(() => {
   return inquiryStatus.value === 'submitting'
     ? messages[currentLang.value].pricing_form_submitting
     : messages[currentLang.value].pricing_form_submit
 })
+
+function scrollToQuoteForm() {
+  quoteForm.value?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
 
 function submitPricingInquiry(event: Event) {
   submitInquiry(event, 'Pricing inquiry')
