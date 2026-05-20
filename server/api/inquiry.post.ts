@@ -24,9 +24,9 @@ type RuntimeEvent = {
 function getWebhookConfig(event: RuntimeEvent) {
   const config = useRuntimeConfig(event)
   const cloudflareEnv = event.context?.cloudflare?.env || {}
-  const webhookUrl = cloudflareEnv.FEISHU_WEBHOOK_URL || config.feishuWebhookUrl
-  const webhookSecret = cloudflareEnv.FEISHU_WEBHOOK_SECRET || config.feishuWebhookSecret
-  const recaptchaSecretKey = cloudflareEnv.RECAPTCHA_SECRET_KEY || config.recaptchaSecretKey
+  const webhookUrl = cloudflareEnv.FEISHU_WEBHOOK_URL || process.env.FEISHU_WEBHOOK_URL || config.feishuWebhookUrl
+  const webhookSecret = cloudflareEnv.FEISHU_WEBHOOK_SECRET || process.env.FEISHU_WEBHOOK_SECRET || config.feishuWebhookSecret
+  const recaptchaSecretKey = cloudflareEnv.RECAPTCHA_SECRET_KEY || process.env.RECAPTCHA_SECRET_KEY || config.recaptchaSecretKey
 
   return {
     webhookUrl,
