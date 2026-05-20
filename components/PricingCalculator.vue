@@ -55,20 +55,6 @@
             <option v-for="option in qualityOptions" :key="option.value" :value="option.value">{{ option.label }}</option>
           </select>
         </label>
-
-        <div class="space-y-2">
-          <span class="block text-sm font-medium text-gray-400">{{ t.pricing_calc_addons }}</span>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <label
-              v-for="option in addonOptions"
-              :key="option.value"
-              class="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3 py-3 text-sm text-gray-300 cursor-pointer hover:bg-white/10"
-            >
-              <input v-model="addons" class="w-4 h-4 rounded border-white/10 bg-white/5" type="checkbox" :value="option.value">
-              <span>{{ t[option.label] }}</span>
-            </label>
-          </div>
-        </div>
       </div>
 
       <div class="rounded-3xl bg-[#050810]/70 border border-white/10 p-6 md:p-8">
@@ -110,7 +96,6 @@ type Provider = 'tencent' | 'byteplus' | 'agora'
 type ServiceType = 'tencentLeb' | 'byteplusStandard' | 'byteplusRtm' | 'agoraBroadcast' | 'agoraInteractive' | 'agoraVideoHd' | 'agoraVideoFullHd'
 type Region = 'mainland' | 'asiaPacific1' | 'asiaPacific2' | 'asiaPacific3' | 'northAmerica' | 'europe' | 'global'
 type Quality = '480p' | '720p' | '1080p' | '4k'
-type Addon = 'recording' | 'transcoding' | 'lowLatency' | 'integration'
 type TrafficTier = { upToGb: number, rate: number }
 
 const emit = defineEmits<{
@@ -130,7 +115,6 @@ const region = ref<Region>('asiaPacific1')
 const monthlyUsers = ref(10000)
 const minutesPerUser = ref(30)
 const quality = ref<Quality>('720p')
-const addons = ref<Addon[]>(['transcoding'])
 
 const providerOptions: Array<{ value: Provider, label: string }> = [
   { value: 'tencent', label: 'Tencent Cloud CSS' },
@@ -188,13 +172,6 @@ const qualityOptions: Array<{ value: Quality, label: string, bitrate: number }> 
   { value: '720p', label: '720p · 2.5 Mbps', bitrate: 2.5 },
   { value: '1080p', label: '1080p · 5 Mbps', bitrate: 5 },
   { value: '4k', label: '4K · 12 Mbps', bitrate: 12 }
-]
-
-const addonOptions: Array<{ value: Addon, label: OptionKey }> = [
-  { value: 'recording', label: 'pricing_calc_addon_recording' },
-  { value: 'transcoding', label: 'pricing_calc_addon_transcoding' },
-  { value: 'lowLatency', label: 'pricing_calc_addon_low_latency' },
-  { value: 'integration', label: 'pricing_calc_addon_integration' }
 ]
 
 const tencentLebRates: Record<Region, TrafficTier[]> = {
@@ -393,12 +370,6 @@ const recommendation = computed(() => {
 })
 
 const summary = computed(() => {
-  const addonLabels = addons.value
-    .map((value) => addonOptions.find((option) => option.value === value))
-    .filter(Boolean)
-    .map((option) => t.value[option!.label])
-    .join(', ') || t.value.pricing_calc_addon_none
-
   return [
     `${t.value.pricing_calc_summary_title}:`,
     `${t.value.pricing_calc_provider}: ${providerOptions.find((option) => option.value === provider.value)!.label}`,
@@ -407,7 +378,6 @@ const summary = computed(() => {
     `${t.value.pricing_calc_users}: ${safeUsers.value.toLocaleString()}`,
     `${t.value.pricing_calc_minutes}: ${safeMinutes.value.toLocaleString()}`,
     provider.value === 'agora' ? '' : `${t.value.pricing_calc_quality}: ${selectedQuality.value.label}`,
-    `${t.value.pricing_calc_addons}: ${addonLabels}`,
     `${usageLabel.value}: ${formattedUsage.value}`,
     `${t.value.pricing_calc_rate_basis}: ${pricingBasis.value}`,
     `${t.value.pricing_calc_official_cost}: ${formattedOfficialCost.value}`,
