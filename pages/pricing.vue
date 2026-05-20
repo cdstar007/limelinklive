@@ -84,7 +84,7 @@
 </div>
 <RecaptchaChallenge />
 <button class="w-full py-4 bg-blue-600 rounded-xl font-bold text-lg hover:bg-blue-500 transition-all disabled:cursor-not-allowed disabled:opacity-60" :disabled="inquiryStatus === 'submitting'" type="submit">
-<span>{{ inquiryStatus === 'submitting' ? '提交中...' : '提交詢價申請' }}</span>
+<span>{{ pricingSubmitLabel }}</span>
 </button>
 <p v-if="inquiryMessage" class="text-sm" :class="inquiryStatus === 'success' ? 'text-green-400' : 'text-red-400'">{{ inquiryMessage }}</p>
 </form>
@@ -151,13 +151,21 @@
 </template>
 
 <script setup lang="ts">
+import { messages } from '~/data/i18n'
+
 definePageMeta({
   alias: ['/zh/pricing']
 })
 
 usePageSeo('pricing')
 
+const { currentLang } = useDomI18n()
 const { inquiryMessage, inquiryStatus, submitInquiry } = useInquiryEmail()
+const pricingSubmitLabel = computed(() => {
+  return inquiryStatus.value === 'submitting'
+    ? messages[currentLang.value].pricing_form_submitting
+    : messages[currentLang.value].pricing_form_submit
+})
 
 function submitPricingInquiry(event: Event) {
   submitInquiry(event, 'Pricing inquiry')

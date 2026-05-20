@@ -1,8 +1,11 @@
+import { messages } from '~/data/i18n'
+
 const INQUIRY_EMAIL = 'support@limelink.live'
 
 type InquiryStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 export function useInquiryEmail() {
+  const { currentLang } = useDomI18n()
   const inquiryStatus = ref<InquiryStatus>('idle')
   const inquiryMessage = ref('')
 
@@ -55,13 +58,13 @@ export function useInquiryEmail() {
       })
 
       inquiryStatus.value = 'success'
-      inquiryMessage.value = '已收到您的訊息，我們會盡快與您聯繫。'
+      inquiryMessage.value = messages[currentLang.value].inquiry_success
       form.reset()
       resetRecaptcha()
     } catch (error) {
       console.error('Failed to submit inquiry', error)
       inquiryStatus.value = 'error'
-      inquiryMessage.value = `提交失敗，請稍後再試，或直接郵件聯繫 ${INQUIRY_EMAIL}。`
+      inquiryMessage.value = messages[currentLang.value].inquiry_error
       resetRecaptcha()
     }
   }

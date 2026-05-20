@@ -50,8 +50,8 @@
 </div>
 <textarea class="input-field h-40" data-i18n-placeholder="contact_placeholder_message" name="message" placeholder="請詳細描述您的需求或問題..." required></textarea>
 <RecaptchaChallenge />
-<button class="w-full py-4 bg-blue-600 rounded-xl font-bold text-lg hover:bg-blue-500 transition-all disabled:cursor-not-allowed disabled:opacity-60" data-i18n="contact_form_submit" :disabled="inquiryStatus === 'submitting'" type="submit">
-{{ inquiryStatus === 'submitting' ? '發送中...' : '發送訊息' }}
+<button class="w-full py-4 bg-blue-600 rounded-xl font-bold text-lg hover:bg-blue-500 transition-all disabled:cursor-not-allowed disabled:opacity-60" :disabled="inquiryStatus === 'submitting'" type="submit">
+{{ contactSubmitLabel }}
 </button>
 <p v-if="inquiryMessage" class="text-sm" :class="inquiryStatus === 'success' ? 'text-green-400' : 'text-red-400'">{{ inquiryMessage }}</p>
 </form>
@@ -81,6 +81,7 @@
 </template>
 
 <script setup lang="ts">
+import { messages } from '~/data/i18n'
 import emailIcon from '~/assets/images/email.png'
 import telegramIcon from '~/assets/images/Telegram.png'
 import whatsAppIcon from '~/assets/images/WhatsApp.png'
@@ -91,7 +92,13 @@ definePageMeta({
 
 usePageSeo('contact')
 
+const { currentLang } = useDomI18n()
 const { inquiryMessage, inquiryStatus, submitInquiry } = useInquiryEmail()
+const contactSubmitLabel = computed(() => {
+  return inquiryStatus.value === 'submitting'
+    ? messages[currentLang.value].contact_form_sending
+    : messages[currentLang.value].contact_form_submit
+})
 
 function submitContactInquiry(event: Event) {
   submitInquiry(event, 'Contact inquiry')
