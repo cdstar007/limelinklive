@@ -81,6 +81,7 @@
           <div>
             <p class="text-sm font-bold mb-2">{{ t.pricing_calc_note_title }}</p>
             <p class="text-xs text-gray-500 leading-relaxed">{{ t.pricing_calc_note }}</p>
+            <p v-if="provider === 'agora'" class="mt-3 text-xs text-cyan-300 leading-relaxed">{{ t.pricing_calc_agora_free_minutes }}</p>
           </div>
         </div>
       </div>
@@ -93,7 +94,7 @@ import { messages } from '~/data/i18n'
 
 type OptionKey = keyof typeof messages.zh
 type Provider = 'tencent' | 'byteplus' | 'agora'
-type ServiceType = 'tencentLeb' | 'byteplusStandard' | 'byteplusRtm' | 'agoraBroadcast' | 'agoraInteractive' | 'agoraVideoHd' | 'agoraVideoFullHd'
+type ServiceType = 'tencentLvb' | 'tencentLeb' | 'byteplusStandard' | 'byteplusRtm' | 'agoraBroadcast' | 'agoraInteractive' | 'agoraVideoHd' | 'agoraVideoFullHd'
 type Region = 'mainland' | 'asiaPacific1' | 'asiaPacific2' | 'asiaPacific3' | 'northAmerica' | 'europe' | 'global'
 type Quality = '480p' | '720p' | '1080p' | '4k'
 type TrafficTier = { upToGb: number, rate: number }
@@ -112,7 +113,7 @@ const t = computed(() => messages[currentLang.value])
 const provider = ref<Provider>('tencent')
 const serviceType = ref<ServiceType>('tencentLeb')
 const region = ref<Region>('asiaPacific1')
-const monthlyUsers = ref(10000)
+const monthlyUsers = ref(100)
 const minutesPerUser = ref(30)
 const quality = ref<Quality>('720p')
 
@@ -124,6 +125,7 @@ const providerOptions: Array<{ value: Provider, label: string }> = [
 
 const serviceOptions: Record<Provider, Array<{ value: ServiceType, label: OptionKey }>> = {
   tencent: [
+    { value: 'tencentLvb', label: 'pricing_calc_service_tencent_lvb' },
     { value: 'tencentLeb', label: 'pricing_calc_service_tencent_leb' }
   ],
   byteplus: [
@@ -227,6 +229,59 @@ const tencentLebRates: Record<Region, TrafficTier[]> = {
   ]
 }
 
+const tencentLvbRates: Record<Region, TrafficTier[]> = {
+  mainland: [
+    { upToGb: 2000, rate: 0.0423 },
+    { upToGb: 10000, rate: 0.0407 },
+    { upToGb: 50000, rate: 0.0390 },
+    { upToGb: 100000, rate: 0.0358 },
+    { upToGb: 1000000, rate: 0.0309 },
+    { upToGb: Number.POSITIVE_INFINITY, rate: 0.0260 }
+  ],
+  asiaPacific1: [
+    { upToGb: 2000, rate: 0.0748 },
+    { upToGb: 50000, rate: 0.0699 },
+    { upToGb: 100000, rate: 0.0585 },
+    { upToGb: 1000000, rate: 0.0504 },
+    { upToGb: Number.POSITIVE_INFINITY, rate: 0.0455 }
+  ],
+  asiaPacific2: [
+    { upToGb: 2000, rate: 0.1236 },
+    { upToGb: 50000, rate: 0.1138 },
+    { upToGb: 100000, rate: 0.1057 },
+    { upToGb: 1000000, rate: 0.0911 },
+    { upToGb: Number.POSITIVE_INFINITY, rate: 0.0846 }
+  ],
+  asiaPacific3: [
+    { upToGb: 2000, rate: 0.1138 },
+    { upToGb: 50000, rate: 0.1041 },
+    { upToGb: 100000, rate: 0.0911 },
+    { upToGb: 1000000, rate: 0.0813 },
+    { upToGb: Number.POSITIVE_INFINITY, rate: 0.0715 }
+  ],
+  northAmerica: [
+    { upToGb: 2000, rate: 0.0715 },
+    { upToGb: 50000, rate: 0.0634 },
+    { upToGb: 100000, rate: 0.0504 },
+    { upToGb: 1000000, rate: 0.0325 },
+    { upToGb: Number.POSITIVE_INFINITY, rate: 0.0260 }
+  ],
+  europe: [
+    { upToGb: 2000, rate: 0.0715 },
+    { upToGb: 50000, rate: 0.0634 },
+    { upToGb: 100000, rate: 0.0504 },
+    { upToGb: 1000000, rate: 0.0325 },
+    { upToGb: Number.POSITIVE_INFINITY, rate: 0.0260 }
+  ],
+  global: [
+    { upToGb: 2000, rate: 0.0892 },
+    { upToGb: 50000, rate: 0.0830 },
+    { upToGb: 100000, rate: 0.0712 },
+    { upToGb: 1000000, rate: 0.0576 },
+    { upToGb: Number.POSITIVE_INFINITY, rate: 0.0507 }
+  ]
+}
+
 const byteplusStandardRates: Record<Region, TrafficTier[]> = {
   mainland: [
     { upToGb: 10000, rate: 0.034 },
@@ -291,6 +346,7 @@ const agoraRatesPerThousand: Record<ServiceType, number> = {
   agoraInteractive: 0.99,
   agoraVideoHd: 3.99,
   agoraVideoFullHd: 8.99,
+  tencentLvb: 0,
   tencentLeb: 0,
   byteplusStandard: 0,
   byteplusRtm: 0
@@ -332,7 +388,8 @@ const officialCost = computed(() => {
     return calculateProgressiveTrafficCost(trafficGb.value, rates)
   }
 
-  const rate = getTierRate(trafficGb.value, tencentLebRates[region.value])
+  const tencentRates = serviceType.value === 'tencentLvb' ? tencentLvbRates[region.value] : tencentLebRates[region.value]
+  const rate = getTierRate(trafficGb.value, tencentRates)
   return trafficGb.value * rate
 })
 const discountedCost = computed(() => officialCost.value * 0.9)
@@ -360,7 +417,8 @@ const pricingBasis = computed(() => {
     return `${formatUsd(rate)} / GB`
   }
 
-  return `${formatUsd(getTierRate(trafficGb.value, tencentLebRates[region.value]))} / GB`
+  const tencentRates = serviceType.value === 'tencentLvb' ? tencentLvbRates[region.value] : tencentLebRates[region.value]
+  return `${formatUsd(getTierRate(trafficGb.value, tencentRates))} / GB`
 })
 
 const recommendation = computed(() => {
@@ -382,6 +440,7 @@ const summary = computed(() => {
     `${t.value.pricing_calc_rate_basis}: ${pricingBasis.value}`,
     `${t.value.pricing_calc_official_cost}: ${formattedOfficialCost.value}`,
     `${t.value.pricing_calc_discount_cost}: ${formattedDiscountedCost.value}`,
+    provider.value === 'agora' ? t.value.pricing_calc_agora_free_minutes : '',
     `${t.value.pricing_calc_recommendation}: ${recommendation.value}`
   ].filter(Boolean).join('\n')
 })
