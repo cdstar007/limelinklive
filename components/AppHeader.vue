@@ -52,8 +52,8 @@
   </nav>
   </header>
 
-  <div class="fixed inset-0 z-40 overflow-y-auto bg-[#0a0e1a] transform transition-transform duration-300 lg:hidden" :class="mobileOpen ? 'translate-x-0' : 'translate-x-full'">
-    <div class="flex min-h-full flex-col items-center justify-center space-y-6 px-6 py-24 text-xl font-semibold">
+  <div class="fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-[#0a0e1a] transform transition-transform duration-300 lg:hidden" :class="mobileOpen ? 'translate-x-0' : 'translate-x-full'">
+    <div class="flex min-h-full flex-col items-center justify-start space-y-5 px-6 pb-16 pt-28 text-xl font-semibold">
       <NuxtLink v-for="item in localizedNavItems" :key="item.to" :to="item.to" active-class="text-blue-500" @click="mobileOpen = false">
         <span>{{ item.label }}</span>
       </NuxtLink>
