@@ -52,12 +52,12 @@
   </nav>
   </header>
 
-  <div class="fixed inset-0 z-40 bg-[#0a0e1a] transform transition-transform duration-300 lg:hidden" :class="mobileOpen ? 'translate-x-0' : 'translate-x-full'">
-    <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-semibold">
+  <div class="fixed inset-0 z-40 overflow-y-auto bg-[#0a0e1a] transform transition-transform duration-300 lg:hidden" :class="mobileOpen ? 'translate-x-0' : 'translate-x-full'">
+    <div class="flex min-h-full flex-col items-center justify-center space-y-6 px-6 py-24 text-xl font-semibold">
       <NuxtLink v-for="item in localizedNavItems" :key="item.to" :to="item.to" active-class="text-blue-500" @click="mobileOpen = false">
         <span>{{ item.label }}</span>
       </NuxtLink>
-      <NuxtLink class="px-8 py-3 bg-gradient-tech rounded-full text-lg" :to="localizePath('/pricing')" @click="mobileOpen = false">
+      <NuxtLink class="px-8 py-3 bg-gradient-tech rounded-full text-base" :to="localizePath('/pricing')" @click="mobileOpen = false">
         <span>{{ t('nav_cta', '立即諮詢') }}</span>
       </NuxtLink>
       <div class="relative flex flex-col items-center text-base">
