@@ -5,7 +5,7 @@
 <source :srcset="mobileHero" media="(max-width: 767px)"/>
 <img class="h-full w-full object-cover object-center" :src="webHero" alt="LIMELINK cloud video streaming platform banner" fetchpriority="high"/>
 </picture>
-<div class="absolute inset-0 bg-[#050810]/30 pointer-events-none md:hidden"></div>
+<div class="absolute inset-0 bg-[#050810]/65 pointer-events-none md:hidden"></div>
 <div class="max-w-7xl mx-auto px-6 relative z-10 lg:-translate-x-8 xl:-translate-x-12">
 <div class="max-w-3xl">
 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-6 fade-in-up">
