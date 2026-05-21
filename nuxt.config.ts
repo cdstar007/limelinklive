@@ -35,6 +35,12 @@ export default defineNuxtConfig({
       isCustomElement: (tag) => tag === 'iconify-icon'
     }
   },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {}
+    }
+  },
   app: {
     head: {
       titleTemplate: (titleChunk) => titleChunk ? `${titleChunk}` : 'LIMELINK | Cloud Video Service Agent',
@@ -55,7 +61,6 @@ export default defineNuxtConfig({
         }
       ],
       script: [
-        { src: 'https://modao.cc/agent-py/static/source/js/tailwindcss.js' },
         { src: 'https://modao.cc/agent-py/static/source/js/iconify-icon.min.js' }
       ]
     }

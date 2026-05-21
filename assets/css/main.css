@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* about.html */
 body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0a0e1a; color: #f8fafc; }
         .glass-nav { background: rgba(10, 14, 26, 0.8); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
