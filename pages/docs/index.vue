@@ -55,6 +55,46 @@
   </div>
 </section>
 
+<section class="py-20">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+      <div>
+        <p class="text-sm font-semibold text-blue-400 mb-3">{{ copy.articlesEyebrow }}</p>
+        <h2 class="text-3xl font-bold mb-3">{{ copy.articlesTitle }}</h2>
+        <p class="text-gray-400 max-w-2xl">{{ copy.articlesDesc }}</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <NuxtLink
+        v-for="article in articles"
+        :key="article.href"
+        class="group block cursor-pointer glass-card p-7 rounded-3xl border border-white/5 hover:border-blue-400/50 transition-colors"
+        :to="localizePath(article.href)"
+        @click="openArticle(article.href)"
+      >
+        <div class="flex flex-col md:flex-row gap-6">
+          <div class="h-16 w-16 rounded-2xl bg-blue-500/10 border border-blue-400/20 flex items-center justify-center shrink-0">
+            <iconify-icon class="text-3xl text-blue-300" :icon="article.icon" />
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <span class="text-xs font-bold uppercase tracking-[0.18em] text-blue-300">{{ article.category }}</span>
+              <span class="text-xs text-gray-500">{{ article.readTime }}</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-3 group-hover:text-blue-300 transition-colors">{{ article.title }}</h3>
+            <p class="text-sm text-gray-400 leading-relaxed mb-5">{{ article.desc }}</p>
+            <span class="inline-flex items-center gap-2 text-sm font-bold text-blue-400">
+              {{ copy.readArticle }}
+              <iconify-icon class="transition-transform group-hover:translate-x-1" icon="heroicons:arrow-right" />
+            </span>
+          </div>
+        </div>
+      </NuxtLink>
+    </div>
+  </div>
+</section>
+
 <section class="py-20 bg-white/5">
   <div class="max-w-7xl mx-auto px-6">
     <div class="max-w-3xl mb-10">
@@ -110,6 +150,7 @@ definePageMeta({
 usePageSeo('docs')
 
 const { currentLang, localizePath } = useDomI18n()
+const router = useRouter()
 
 const content = {
   zh: {
@@ -120,6 +161,10 @@ const content = {
     vendorDesc: '從產品概覽、推流播放、轉碼錄製到 API 參考，快速定位各平台最常用的官方資料。',
     requestDocs: '需要接入協助',
     quickUse: '適合查找',
+    articlesEyebrow: 'LimeLink Tech Articles',
+    articlesTitle: 'LimeLink Tech Articles',
+    articlesDesc: '把實際音視頻、AI 互動與上線架構經驗整理成可閱讀、可轉交團隊的技術文章。',
+    readArticle: '閱讀文章',
     internalTitle: 'LIMELINK 技術文檔整理',
     internalDesc: '這裡預留給你自己的技術沉澱，可逐步補充內部 SOP、排障手冊、架構模板與客戶交付清單。',
     ctaTitle: '需要把文檔落到具體架構嗎？',
@@ -134,6 +179,10 @@ const content = {
     vendorDesc: 'Jump quickly into product overviews, ingest, playback, transcoding, recording and API references from each platform.',
     requestDocs: 'Need integration help',
     quickUse: 'Best for',
+    articlesEyebrow: 'LimeLink Tech Articles',
+    articlesTitle: 'LimeLink Tech Articles',
+    articlesDesc: 'Practical technical articles covering real-time video, AI interaction patterns and production launch architecture.',
+    readArticle: 'Read article',
     internalTitle: 'LIMELINK Technical Notes',
     internalDesc: 'A structured space for your own SOPs, troubleshooting guides, architecture templates and delivery checklists.',
     ctaTitle: 'Need to turn docs into an architecture?',
@@ -143,6 +192,48 @@ const content = {
 }
 
 const copy = computed(() => content[currentLang.value])
+
+const articles = computed(() => currentLang.value === 'zh'
+  ? [
+      {
+        category: 'AI Video',
+        title: '如何建構 AI 視訊通話應用程式',
+        desc: '完整解析 AI 視訊通話的四層架構、WebRTC / LiveKit 媒體管線、STT / LLM / TTS / 虛擬人物管線，以及延遲與成本最佳化。',
+        readTime: '8 分鐘閱讀',
+        href: '/docs/ai-video-call-app',
+        icon: 'heroicons:video-camera'
+      },
+      {
+        category: 'WebRTC',
+        title: '2026 年最佳 WebRTC 供應商比較',
+        desc: '比較 Agora、Vonage、AWS Chime 與亞洲雲端 RTC 供應商在全球延遲、弱網能力、SDK、價格與合規上的差異。',
+        readTime: '10 分鐘閱讀',
+        href: '/docs/best-webrtc-providers-2026',
+        icon: 'heroicons:signal'
+      }
+    ]
+  : [
+      {
+        category: 'AI Video',
+        title: 'How to Build an AI Video Call App',
+        desc: 'A production-oriented guide to AI video call architecture, WebRTC / LiveKit transport, STT / LLM / TTS / avatar pipelines, and latency optimization.',
+        readTime: '8 min read',
+        href: '/docs/ai-video-call-app',
+        icon: 'heroicons:video-camera'
+      },
+      {
+        category: 'WebRTC',
+        title: 'Best WebRTC Providers in 2026',
+        desc: 'Compare Agora, Vonage, AWS Chime and Asian RTC providers across latency, weak-network performance, SDK coverage, pricing and compliance.',
+        readTime: '10 min read',
+        href: '/docs/best-webrtc-providers-2026',
+        icon: 'heroicons:signal'
+      }
+    ])
+
+function openArticle(path: string) {
+  router.push(localizePath(path))
+}
 
 const vendors = computed(() => currentLang.value === 'zh'
   ? [
