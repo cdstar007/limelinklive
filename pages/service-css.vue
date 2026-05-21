@@ -5,7 +5,7 @@
 <div class="flex flex-col lg:flex-row items-center gap-12">
 <div class="lg:w-2/3">
 <div class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-bold mb-6">TENCENT CLOUD CSS</div>
-<h1 class="text-5xl lg:text-7xl font-bold mb-8" data-i18n="css_hero_title">騰訊雲 CSS 直播串流服務</h1>
+<h1 class="text-5xl lg:text-7xl font-bold mb-8"><span class="text-gradient" data-i18n="css_hero_title">騰訊雲 CSS 直播串流服務</span></h1>
 <p class="text-xl text-blue-100 mb-10 leading-relaxed max-w-2xl" data-i18n="css_hero_desc">
                         依託騰訊強大的技術底座，為您提供超低延遲、高清晰、全球加速的直播體驗。支持千萬級併發，是電商直播與大型賽事的首選。
                     </p>

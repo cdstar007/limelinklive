@@ -16,7 +16,7 @@
 <span data-i18n="hero_badge">騰訊雲 / BytePlus / Agora 官方核心代理</span>
 </div>
 <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-8 fade-in-up">
-<span data-i18n="hero_tagline">專業雲端視頻服務代理與技術整合商</span>
+<span class="text-gradient" data-i18n="hero_tagline">專業雲端視頻服務代理與技術整合商</span>
 </h1>
 <p class="text-xl text-gray-400 mb-10 leading-relaxed fade-in-up" data-i18n="hero_desc">
                     LIMELINK 為企業提供全球領先的實時音視頻與媒體處理方案。我們整合騰訊雲 CSS、BytePlus 與 Agora 的頂尖技術，助您快速構建高品質的視頻應用。

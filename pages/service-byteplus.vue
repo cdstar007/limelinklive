@@ -5,7 +5,7 @@
 <div class="flex flex-col lg:flex-row items-center gap-12">
 <div class="lg:w-2/3">
 <div class="inline-block px-4 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-bold mb-6 uppercase">BytePlus Media Live</div>
-<h1 class="text-5xl lg:text-7xl font-bold mb-8" data-i18n="byteplus_hero_title">BytePlus 媒體直播服務</h1>
+<h1 class="text-5xl lg:text-7xl font-bold mb-8"><span class="text-gradient" data-i18n="byteplus_hero_title">BytePlus 媒體直播服務</span></h1>
 <p class="text-xl text-purple-100 mb-10 leading-relaxed max-w-2xl" data-i18n="byteplus_hero_desc">
                         將 TikTok 同源的視頻處理與推薦技術帶給您的業務。專為全球化佈局與極致用戶體驗而設計。
                     </p>

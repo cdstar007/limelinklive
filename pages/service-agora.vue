@@ -5,7 +5,7 @@
 <div class="flex flex-col lg:flex-row items-center gap-12">
 <div class="lg:w-2/3">
 <div class="inline-block px-4 py-1 rounded-full bg-black/5 border border-black/10 text-xs font-bold mb-6 uppercase">Agora RTC SDK</div>
-<h1 class="text-5xl lg:text-7xl font-bold mb-8" data-i18n="agora_hero_title">Agora RTC 即時互動領航者</h1>
+<h1 class="text-5xl lg:text-7xl font-bold mb-8"><span class="text-gradient" data-i18n="agora_hero_title">Agora RTC 即時互動領航者</span></h1>
 <p class="text-xl font-medium mb-10 leading-relaxed max-w-2xl text-black/70" data-i18n="agora_hero_desc">
                         為全球開發者提供穩定、高質量的實時音視頻互動能力。低於 400ms 的延遲，讓互動如同面對面。
                     </p>

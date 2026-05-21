@@ -9,7 +9,7 @@
 
       <div class="mb-12">
         <p class="text-sm font-bold text-blue-400 mb-4">{{ copy.eyebrow }}</p>
-        <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">{{ copy.title }}</h1>
+        <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6"><span class="text-gradient">{{ copy.title }}</span></h1>
         <p class="text-lg lg:text-xl text-gray-400 leading-relaxed max-w-3xl">{{ copy.description }}</p>
       </div>
 

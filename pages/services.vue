@@ -2,7 +2,7 @@
 <!-- Header Section -->
 <section class="pt-40 pb-20 relative grid-pattern">
 <div class="max-w-7xl mx-auto px-6 text-center">
-<h1 class="text-4xl lg:text-6xl font-bold mb-6" data-i18n="services_title">雲端視頻服務產品</h1>
+<h1 class="text-4xl lg:text-6xl font-bold mb-6"><span class="text-gradient" data-i18n="services_title">雲端視頻服務產品</span></h1>
 <p class="text-xl text-gray-400 max-w-3xl mx-auto" data-i18n="services_hero_desc">
                 我們代理全球最頂尖的音視頻基礎設施，結合 LIMELINK 的技術集成能力，為您提供最優質的雲端體驗。
             </p>

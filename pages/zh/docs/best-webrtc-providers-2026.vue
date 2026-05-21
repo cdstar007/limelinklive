@@ -9,7 +9,7 @@
 
       <div class="mb-12">
         <p class="text-sm font-bold text-blue-400 mb-4">LimeLink Tech Articles</p>
-        <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">2026 年最佳 WebRTC 供應商比較</h1>
+        <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6"><span class="text-gradient">2026 年最佳 WebRTC 供應商比較</span></h1>
         <p class="text-lg lg:text-xl text-gray-400 leading-relaxed max-w-3xl">比較全球與亞洲 WebRTC 供應商在延遲、弱網能力、SDK、價格、合規與適用場景上的差異。</p>
       </div>
 

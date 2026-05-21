@@ -3,9 +3,9 @@
     <div class="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 text-white">
       <NuxtLink class="mx-auto flex min-h-10 max-w-7xl items-center justify-center gap-2 px-6 py-2 text-center text-xs font-bold sm:text-sm" :to="localizePath('/pricing')">
         <iconify-icon class="text-base" icon="heroicons:sparkles" />
-        <span data-i18n="promo_summer_discount">暑期特惠額外 5% 折扣</span>
+        <span>{{ t('promo_summer_discount', '暑期特惠額外 5% 折扣') }}</span>
         <span class="hidden text-blue-100 sm:inline">|</span>
-        <span class="underline decoration-white/60 underline-offset-4" data-i18n="promo_summer_cta">立即申請折扣</span>
+        <span class="underline decoration-white/60 underline-offset-4">{{ t('promo_summer_cta', '立即申請折扣') }}</span>
       </NuxtLink>
     </div>
 
@@ -17,7 +17,7 @@
 
       <div class="hidden lg:flex items-center space-x-8 text-sm font-medium text-gray-300">
         <NuxtLink v-for="item in localizedNavItems" :key="item.to" :to="item.to" class="hover:text-white transition-colors" active-class="text-blue-500">
-          <span :data-i18n="item.key">{{ item.zh }}</span>
+          <span>{{ item.label }}</span>
         </NuxtLink>
       </div>
 
@@ -42,7 +42,7 @@
       </div>
 
       <NuxtLink class="hidden lg:block px-6 py-2.5 bg-gradient-tech rounded-full font-semibold text-sm hover:opacity-90 transition-all transform hover:-translate-y-0.5" :to="localizePath('/pricing')">
-        <span data-i18n="nav_cta">立即諮詢</span>
+        <span>{{ t('nav_cta', '立即諮詢') }}</span>
       </NuxtLink>
 
       <button class="lg:hidden text-3xl" @click="mobileOpen = true">
@@ -55,10 +55,10 @@
   <div class="fixed inset-0 z-40 bg-[#0a0e1a] transform transition-transform duration-300 lg:hidden" :class="mobileOpen ? 'translate-x-0' : 'translate-x-full'">
     <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-semibold">
       <NuxtLink v-for="item in localizedNavItems" :key="item.to" :to="item.to" active-class="text-blue-500" @click="mobileOpen = false">
-        <span :data-i18n="item.key">{{ item.zh }}</span>
+        <span>{{ item.label }}</span>
       </NuxtLink>
       <NuxtLink class="px-8 py-3 bg-gradient-tech rounded-full text-lg" :to="localizePath('/pricing')" @click="mobileOpen = false">
-        <span data-i18n="nav_cta">立即諮詢</span>
+        <span>{{ t('nav_cta', '立即諮詢') }}</span>
       </NuxtLink>
       <div class="relative flex flex-col items-center text-base">
         <button type="button" class="inline-flex h-12 items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 font-semibold text-gray-200" aria-label="Select language" :aria-expanded="languageOpen" @click="languageOpen = !languageOpen">
@@ -89,7 +89,7 @@
 
 <script setup lang="ts">
 import logoWide from '~/assets/images/logowide.png'
-import type { Lang } from '~/data/i18n'
+import { messages, type Lang } from '~/data/i18n'
 
 const mobileOpen = ref(false)
 const languageOpen = ref(false)
@@ -103,6 +103,10 @@ const languageOptions: Array<{ lang: Lang, label: string, short: string }> = [
 
 const currentLanguage = computed(() => languageOptions.find((option) => option.lang === currentLang.value) ?? languageOptions[0])
 
+function t(key: keyof typeof messages.zh, fallback: string) {
+  return messages[currentLang.value][key] ?? fallback
+}
+
 const navItems = [
   { to: '/', key: 'nav_home', zh: '首頁' },
   { to: '/services', key: 'nav_services', zh: '服務產品' },
@@ -115,7 +119,8 @@ const navItems = [
 
 const localizedNavItems = computed(() => navItems.map((item) => ({
   ...item,
-  to: localizePath(item.to)
+  to: localizePath(item.to),
+  label: t(item.key as keyof typeof messages.zh, item.zh)
 })))
 
 async function chooseLanguage(lang: Lang) {

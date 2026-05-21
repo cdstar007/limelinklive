@@ -3,7 +3,7 @@
   <div class="max-w-7xl mx-auto px-6">
     <div class="max-w-3xl">
       <p class="text-blue-400 text-sm font-bold mb-4">{{ copy.eyebrow }}</p>
-      <h1 class="text-4xl lg:text-6xl font-bold mb-6">{{ copy.title }}</h1>
+      <h1 class="text-4xl lg:text-6xl font-bold mb-6"><span class="text-gradient">{{ copy.title }}</span></h1>
       <p class="text-xl text-gray-400 leading-relaxed">{{ copy.description }}</p>
     </div>
   </div>

@@ -9,7 +9,7 @@
 
       <div class="mb-12">
         <p class="text-sm font-bold text-blue-400 mb-4">LimeLink Tech Articles</p>
-        <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">如何建構 AI 視訊通話應用程式</h1>
+        <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6"><span class="text-gradient">如何建構 AI 視訊通話應用程式</span></h1>
         <p class="text-lg lg:text-xl text-gray-400 leading-relaxed max-w-3xl">從 WebRTC 媒體管線、AI 後端協調、虛擬人物生成到延遲最佳化，整理一套可落地的 AI 視訊通話應用架構。</p>
       </div>
 

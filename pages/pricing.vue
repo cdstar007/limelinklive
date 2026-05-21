@@ -1,7 +1,7 @@
 <template>
 <section class="pt-40 pb-20 relative overflow-hidden">
 <div class="max-w-7xl mx-auto px-6 text-center">
-<h1 class="text-4xl lg:text-6xl font-bold mb-6" data-i18n="pricing_title">成本優化 · 彈性定價</h1>
+<h1 class="text-4xl lg:text-6xl font-bold mb-6"><span class="text-gradient" data-i18n="pricing_title">成本優化 · 彈性定價</span></h1>
 <p class="text-xl text-gray-400 max-w-3xl mx-auto" data-i18n="pricing_hero_desc">
                 作為核心代理商，我們為您提供靈活的計費模式與極具競爭力的折扣方案，助您精確掌控運營成本。
             </p>

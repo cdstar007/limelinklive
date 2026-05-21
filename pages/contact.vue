@@ -1,7 +1,7 @@
 <template>
 <section class="pt-40 pb-20 relative overflow-hidden">
 <div class="max-w-7xl mx-auto px-6 text-center">
-<h1 class="text-4xl lg:text-6xl font-bold mb-6" data-i18n="contact_title">聯絡我們</h1>
+<h1 class="text-4xl lg:text-6xl font-bold mb-6"><span class="text-gradient" data-i18n="contact_title">聯絡我們</span></h1>
 <p class="text-xl text-gray-400 max-w-3xl mx-auto" data-i18n="contact_hero_desc">
                 無論您有任何技術疑問或商務合作需求，我們的專家團隊隨時準備為您服務。
             </p>

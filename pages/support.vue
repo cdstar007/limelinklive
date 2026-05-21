@@ -1,7 +1,7 @@
 <template>
 <section class="pt-40 pb-20 relative overflow-hidden">
 <div class="max-w-7xl mx-auto px-6 text-center">
-<h1 class="text-4xl lg:text-6xl font-bold mb-6" data-i18n="support_title">技術支援與服務保障</h1>
+<h1 class="text-4xl lg:text-6xl font-bold mb-6"><span class="text-gradient" data-i18n="support_title">技術支援與服務保障</span></h1>
 <p class="text-xl text-gray-400 max-w-3xl mx-auto" data-i18n="support_hero_desc">
                 我們提供全方位的技術支援體系，確保您的業務在任何情況下都能穩定運行。
             </p>
