@@ -19,7 +19,7 @@
 <span data-i18n="hero_tagline">專業雲端視頻服務代理與技術整合商</span>
 </h1>
 <p class="text-xl text-gray-400 mb-10 leading-relaxed fade-in-up" data-i18n="hero_desc">
-                    LIMELINK 為企業提供全球領先的實時音視頻與媒體處理方案。我們整合騰訊雲 CSS、BytePlus 與 Agora 的頂尖技術，助您快速構建高品質的視頻應用。
+                    低延遲串流、即時通訊、內容傳送網路與人工智慧即時基礎設施，優化全球規模並壓低成本
                 </p>
 <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 fade-in-up">
 <a class="px-8 py-4 bg-gradient-tech rounded-xl font-bold text-center hover:scale-105 transition-transform" href="/pricing"><span data-i18n="get_started">開始使用</span></a>
