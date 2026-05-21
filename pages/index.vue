@@ -6,7 +6,7 @@
 <img class="h-full w-full object-cover object-center" :src="webHero" alt="LIMELINK cloud video streaming platform banner" fetchpriority="high"/>
 </picture>
 <div class="absolute inset-0 bg-[#050810]/30 pointer-events-none md:hidden"></div>
-<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="max-w-7xl mx-auto px-6 relative z-10 lg:-translate-x-8 xl:-translate-x-12">
 <div class="max-w-3xl">
 <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-6 fade-in-up">
 <span class="relative flex h-2 w-2">
@@ -32,21 +32,21 @@
 <section class="py-20 border-y border-white/5 bg-[#0a0e1a]/50">
 <div class="max-w-7xl mx-auto px-6">
 <p class="text-center text-sm font-semibold text-gray-500 uppercase tracking-widest mb-10" data-i18n="home_brand_trust">官方授權合作夥伴</p>
-<div class="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-60">
-<div class="flex items-center space-x-3">
-<iconify-icon class="text-3xl grayscale hover:grayscale-0 transition-all" icon="logos:tencent-cloud"></iconify-icon>
+<div class="flex flex-wrap justify-center items-center gap-12 lg:gap-24 opacity-75">
+<div class="flex flex-col items-center gap-3">
+<img class="h-14 w-14 object-contain grayscale hover:grayscale-0 transition-all" :src="tencentLogo" alt="Tencent Cloud logo">
 <span class="font-bold text-xl" data-i18n="brand_tencent">騰訊雲</span>
 </div>
-<div class="flex items-center space-x-3">
-<iconify-icon class="text-3xl grayscale hover:grayscale-0 transition-all" icon="logos:byteplus"></iconify-icon>
+<div class="flex flex-col items-center gap-3">
+<img class="h-14 w-14 object-contain grayscale hover:grayscale-0 transition-all" :src="bytePlusLogo" alt="BytePlus logo">
 <span class="font-bold text-xl">BytePlus</span>
 </div>
-<div class="flex items-center space-x-3">
-<iconify-icon class="text-3xl grayscale hover:grayscale-0 transition-all" icon="logos:agora"></iconify-icon>
+<div class="flex flex-col items-center gap-3">
+<img class="h-14 w-14 object-contain grayscale hover:grayscale-0 transition-all" :src="agoraLogo" alt="Agora logo">
 <span class="font-bold text-xl">Agora</span>
 </div>
-<div class="flex items-center space-x-3">
-<iconify-icon class="text-3xl grayscale hover:grayscale-0 transition-all" icon="logos:aws"></iconify-icon>
+<div class="flex flex-col items-center gap-3">
+<img class="h-14 w-14 object-contain grayscale hover:grayscale-0 transition-all" :src="awsLogo" alt="AWS logo">
 <span class="font-bold text-xl">AWS</span>
 </div>
 </div>
@@ -221,30 +221,22 @@
 <div class="relative flex flex-col md:flex-row justify-between items-start space-y-12 md:space-y-0 md:space-x-8">
 <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 bg-white/10 z-0"></div>
 <div class="relative z-10 flex flex-col items-center text-center md:w-1/4">
-<div class="w-24 h-24 rounded-full bg-[#0a0e1a] border-4 border-blue-500 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(59,130,246,0.5)]">
-<span class="text-3xl font-bold">01</span>
-</div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="communicationIcon" alt="需求溝通 icon">
 <h5 class="text-xl font-bold mb-2" data-i18n="home_process_1">需求溝通</h5>
 <p class="text-sm text-gray-400" data-i18n="home_process_1_desc">分析業務場景，明確技術指標與預算規模。</p>
 </div>
 <div class="relative z-10 flex flex-col items-center text-center md:w-1/4">
-<div class="w-24 h-24 rounded-full bg-[#0a0e1a] border-4 border-cyan-500 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(6,182,212,0.5)]">
-<span class="text-3xl font-bold">02</span>
-</div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="designIcon" alt="方案設計 icon">
 <h5 class="text-xl font-bold mb-2" data-i18n="home_process_2">方案設計</h5>
 <p class="text-sm text-gray-400" data-i18n="home_process_2_desc">架構師設計專屬方案，提供最佳產品選型建議。</p>
 </div>
 <div class="relative z-10 flex flex-col items-center text-center md:w-1/4">
-<div class="w-24 h-24 rounded-full bg-[#0a0e1a] border-4 border-purple-500 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(168,85,247,0.5)]">
-<span class="text-3xl font-bold">03</span>
-</div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="testingIcon" alt="部署測試 icon">
 <h5 class="text-xl font-bold mb-2" data-i18n="home_process_3">部署測試</h5>
 <p class="text-sm text-gray-400" data-i18n="home_process_3_desc">協助 SDK 接入手冊與聯調測試，確保穩定性。</p>
 </div>
 <div class="relative z-10 flex flex-col items-center text-center md:w-1/4">
-<div class="w-24 h-24 rounded-full bg-[#0a0e1a] border-4 border-green-500 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(34,197,94,0.5)]">
-<span class="text-3xl font-bold">04</span>
-</div>
+<img class="w-[90px] h-[90px] object-contain mb-6" :src="operationsIcon" alt="上線運維 icon">
 <h5 class="text-xl font-bold mb-2" data-i18n="home_process_4">上線運維</h5>
 <p class="text-sm text-gray-400" data-i18n="home_process_4_desc">7×24 小時監控保障，持續優化使用成本。</p>
 </div>
@@ -331,15 +323,23 @@
 </template>
 
 <script setup lang="ts">
-import webHero from '~/assets/images/webhero.png'
+import webHero from '~/assets/images/webheroclear.png'
 import mobileHero from '~/assets/images/mobilehero.png'
 import support247Icon from '~/assets/images/724.png'
+import agoraLogo from '~/assets/images/Agora.png'
+import awsLogo from '~/assets/images/aws-color.png'
+import bytePlusLogo from '~/assets/images/BytePlus.png'
 import commerceIcon from '~/assets/images/dianshang.png'
+import testingIcon from '~/assets/images/ceshi.png'
+import communicationIcon from '~/assets/images/goutong.png'
 import educationIcon from '~/assets/images/jiaoyu.png'
 import integrationAdvantageIcon from '~/assets/images/jishuzhenghe.png'
 import crossBorderIcon from '~/assets/images/kuajing.png'
 import globalNodesIcon from '~/assets/images/quanqiujiedian.png'
+import designIcon from '~/assets/images/sheji.png'
 import socialIcon from '~/assets/images/shejiao.png'
+import tencentLogo from '~/assets/images/tencent.png'
+import operationsIcon from '~/assets/images/yunwei.png'
 import gamingIcon from '~/assets/images/youxi.png'
 import remoteMeetingIcon from '~/assets/images/yuancheng.png'
 

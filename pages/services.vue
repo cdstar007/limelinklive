@@ -53,7 +53,7 @@
 </div>
 </div>
 <div class="w-full lg:w-1/2">
-<img alt="Tencent Cloud CSS Dashboard" class="w-full rounded-2xl shadow-2xl border border-white/10" src="https://modao.cc/agent-py/media/generated_images/2026-05-14/6898a741a23b40d3bd02312dc454faf6.jpg"/>
+<img alt="Tencent Cloud CSS Dashboard" class="w-full rounded-2xl shadow-2xl border border-white/10" :src="tencentCardImage"/>
 </div>
 </div>
 <!-- BytePlus -->
@@ -98,23 +98,7 @@
 </div>
 </div>
 <div class="w-full lg:w-1/2">
-<div class="w-full aspect-[4/3] rounded-2xl shadow-2xl border border-purple-400/20 bg-gradient-to-br from-purple-950 via-slate-950 to-fuchsia-950 p-8 overflow-hidden relative">
-<div class="absolute -top-16 -right-16 w-56 h-56 bg-purple-500/20 rounded-full blur-3xl"></div>
-<div class="flex items-center justify-between mb-8 relative z-10">
-<iconify-icon class="text-5xl" icon="logos:byteplus"></iconify-icon>
-<div class="px-3 py-1 rounded-full bg-purple-500/15 text-purple-200 text-xs font-bold">LIVE MEDIA</div>
-</div>
-<div class="grid grid-cols-3 gap-3 mb-6 relative z-10">
-<div class="h-28 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center"><iconify-icon class="text-4xl text-purple-300" icon="heroicons:sparkles"></iconify-icon></div>
-<div class="h-28 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center"><iconify-icon class="text-4xl text-fuchsia-300" icon="heroicons:scissors"></iconify-icon></div>
-<div class="h-28 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center"><iconify-icon class="text-4xl text-cyan-300" icon="heroicons:chart-bar"></iconify-icon></div>
-</div>
-<div class="space-y-3 relative z-10">
-<div class="h-3 rounded-full bg-white/10 overflow-hidden"><div class="h-full w-4/5 bg-purple-400"></div></div>
-<div class="h-3 rounded-full bg-white/10 overflow-hidden"><div class="h-full w-2/3 bg-fuchsia-400"></div></div>
-<div class="h-3 rounded-full bg-white/10 overflow-hidden"><div class="h-full w-3/4 bg-cyan-400"></div></div>
-</div>
-</div>
+<img alt="BytePlus Media Live Dashboard" class="w-full rounded-2xl shadow-2xl border border-white/10" :src="bytePlusCardImage"/>
 </div>
 </div>
 <!-- Agora -->
@@ -159,30 +143,7 @@
 </div>
 </div>
 <div class="w-full lg:w-1/2">
-<div class="w-full aspect-[4/3] rounded-2xl shadow-2xl border border-cyan-400/20 bg-gradient-to-br from-cyan-950 via-slate-950 to-blue-950 p-8 overflow-hidden relative">
-<div class="absolute -bottom-20 -left-20 w-64 h-64 bg-cyan-400/20 rounded-full blur-3xl"></div>
-<div class="flex items-center justify-between mb-10 relative z-10">
-<iconify-icon class="text-5xl" icon="logos:agora"></iconify-icon>
-<div class="px-3 py-1 rounded-full bg-cyan-500/15 text-cyan-200 text-xs font-bold">RTC SDK</div>
-</div>
-<div class="grid grid-cols-2 gap-5 relative z-10">
-<div class="rounded-2xl bg-white/10 border border-white/10 p-5">
-<iconify-icon class="text-4xl text-cyan-300 mb-5" icon="heroicons:video-camera"></iconify-icon>
-<div class="h-2 w-24 bg-white/20 rounded-full"></div>
-</div>
-<div class="rounded-2xl bg-white/10 border border-white/10 p-5">
-<iconify-icon class="text-4xl text-blue-300 mb-5" icon="heroicons:microphone"></iconify-icon>
-<div class="h-2 w-20 bg-white/20 rounded-full"></div>
-</div>
-<div class="col-span-2 rounded-2xl bg-white/10 border border-white/10 p-5 flex items-center justify-between">
-<div>
-<div class="text-3xl font-bold text-cyan-200">&lt;400ms</div>
-<div class="text-xs text-cyan-100/70">real-time interaction</div>
-</div>
-<iconify-icon class="text-5xl text-cyan-300" icon="heroicons:signal"></iconify-icon>
-</div>
-</div>
-</div>
+<img alt="Agora RTC Dashboard" class="w-full rounded-2xl shadow-2xl border border-white/10" :src="agoraCardImage"/>
 </div>
 </div>
 </div>
@@ -275,10 +236,13 @@
 </template>
 
 <script setup lang="ts">
+import agoraCardImage from '~/assets/images/Agoracard.png'
+import bytePlusCardImage from '~/assets/images/BytePluscard.png'
 import managementIcon from '~/assets/images/guanli.png'
 import integrationIcon from '~/assets/images/jicheng.png'
 import priceIcon from '~/assets/images/jiage.png'
 import supportIcon from '~/assets/images/zhiyuan.png'
+import tencentCardImage from '~/assets/images/tencentcard.png'
 
 definePageMeta({
   alias: ['/zh/services']

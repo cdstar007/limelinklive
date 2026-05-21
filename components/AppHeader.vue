@@ -1,5 +1,15 @@
 <template>
-  <nav class="fixed top-0 w-full z-50 glass-nav">
+  <header class="fixed top-0 w-full z-50 glass-nav">
+    <div class="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 text-white">
+      <NuxtLink class="mx-auto flex min-h-10 max-w-7xl items-center justify-center gap-2 px-6 py-2 text-center text-xs font-bold sm:text-sm" :to="localizePath('/pricing')">
+        <iconify-icon class="text-base" icon="heroicons:sparkles" />
+        <span data-i18n="promo_summer_discount">暑期特惠額外 5% 折扣</span>
+        <span class="hidden text-blue-100 sm:inline">|</span>
+        <span class="underline decoration-white/60 underline-offset-4" data-i18n="promo_summer_cta">立即申請折扣</span>
+      </NuxtLink>
+    </div>
+
+    <nav>
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <NuxtLink class="flex items-center" :to="localizePath('/')" aria-label="LIMELINK home">
         <img class="h-9 w-auto md:h-10" :src="logoWide" alt="LIMELINK" />
@@ -26,6 +36,7 @@
       </button>
     </div>
   </nav>
+  </header>
 
   <div class="fixed inset-0 z-40 bg-[#0a0e1a] transform transition-transform duration-300 lg:hidden" :class="mobileOpen ? 'translate-x-0' : 'translate-x-full'">
     <div class="flex flex-col items-center justify-center h-full space-y-8 text-2xl font-semibold">
