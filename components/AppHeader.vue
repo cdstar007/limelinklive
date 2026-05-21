@@ -21,10 +21,24 @@
         </NuxtLink>
       </div>
 
-      <div class="hidden lg:flex items-center gap-1 ml-4">
-        <button type="button" class="lang-btn text-sm px-2 py-1 rounded-lg transition-all duration-300 text-gray-400 hover:text-white data-[active=true]:bg-white/10 data-[active=true]:text-white" data-lang="zh" @click="setLanguage('zh')">繁中</button>
-        <span class="text-gray-600">|</span>
-        <button type="button" class="lang-btn text-sm px-2 py-1 rounded-lg transition-all duration-300 text-gray-400 hover:text-white data-[active=true]:bg-white/10 data-[active=true]:text-white" data-lang="en" @click="setLanguage('en')">EN</button>
+      <div class="relative hidden lg:block ml-4">
+        <button type="button" class="inline-flex h-10 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 text-sm font-semibold text-gray-200 transition-colors hover:bg-white/10" aria-label="Select language" :aria-expanded="languageOpen" @click="languageOpen = !languageOpen">
+          <iconify-icon class="text-lg" icon="heroicons:globe-alt" />
+          <span>{{ currentLanguage.short }}</span>
+        </button>
+        <div v-if="languageOpen" class="absolute right-0 mt-3 w-40 overflow-hidden rounded-2xl border border-white/10 bg-[#0a0e1a]/95 p-2 shadow-2xl shadow-black/30 backdrop-blur-xl">
+          <button
+            v-for="option in languageOptions"
+            :key="option.lang"
+            type="button"
+            class="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left text-sm transition-colors hover:bg-white/10"
+            :class="currentLang === option.lang ? 'text-white' : 'text-gray-400'"
+            @click="chooseLanguage(option.lang)"
+          >
+            <span>{{ option.label }}</span>
+            <iconify-icon v-if="currentLang === option.lang" class="text-blue-400" icon="heroicons:check" />
+          </button>
+        </div>
       </div>
 
       <NuxtLink class="hidden lg:block px-6 py-2.5 bg-gradient-tech rounded-full font-semibold text-sm hover:opacity-90 transition-all transform hover:-translate-y-0.5" :to="localizePath('/pricing')">
@@ -46,9 +60,25 @@
       <NuxtLink class="px-8 py-3 bg-gradient-tech rounded-full text-lg" :to="localizePath('/pricing')" @click="mobileOpen = false">
         <span data-i18n="nav_cta">立即諮詢</span>
       </NuxtLink>
-      <div class="flex items-center gap-2 text-base">
-        <button type="button" class="lang-btn px-3 py-1 rounded-lg text-gray-400 data-[active=true]:bg-white/10 data-[active=true]:text-white" data-lang="zh" @click="setLanguage('zh')">繁中</button>
-        <button type="button" class="lang-btn px-3 py-1 rounded-lg text-gray-400 data-[active=true]:bg-white/10 data-[active=true]:text-white" data-lang="en" @click="setLanguage('en')">EN</button>
+      <div class="relative flex flex-col items-center text-base">
+        <button type="button" class="inline-flex h-12 items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 font-semibold text-gray-200" aria-label="Select language" :aria-expanded="languageOpen" @click="languageOpen = !languageOpen">
+          <iconify-icon class="text-xl" icon="heroicons:globe-alt" />
+          <span>{{ currentLanguage.label }}</span>
+          <iconify-icon class="text-base text-gray-400" :class="languageOpen ? 'rotate-180' : ''" icon="heroicons:chevron-down" />
+        </button>
+        <div v-if="languageOpen" class="mt-4 w-48 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] p-2">
+          <button
+            v-for="option in languageOptions"
+            :key="option.lang"
+            type="button"
+            class="flex w-full items-center justify-between rounded-xl px-4 py-3 text-left transition-colors hover:bg-white/10"
+            :class="currentLang === option.lang ? 'text-white' : 'text-gray-400'"
+            @click="chooseLanguage(option.lang)"
+          >
+            <span>{{ option.label }}</span>
+            <iconify-icon v-if="currentLang === option.lang" class="text-blue-400" icon="heroicons:check" />
+          </button>
+        </div>
       </div>
     </div>
     <button class="absolute top-8 right-8 text-4xl" @click="mobileOpen = false">
@@ -59,10 +89,19 @@
 
 <script setup lang="ts">
 import logoWide from '~/assets/images/logowide.png'
+import type { Lang } from '~/data/i18n'
 
 const mobileOpen = ref(false)
+const languageOpen = ref(false)
 const route = useRoute()
-const { localizePath, setLanguage } = useDomI18n()
+const { currentLang, localizePath, setLanguage } = useDomI18n()
+
+const languageOptions: Array<{ lang: Lang, label: string, short: string }> = [
+  { lang: 'zh', label: '繁體中文', short: '中' },
+  { lang: 'en', label: 'English', short: 'EN' }
+]
+
+const currentLanguage = computed(() => languageOptions.find((option) => option.lang === currentLang.value) ?? languageOptions[0])
 
 const navItems = [
   { to: '/', key: 'nav_home', zh: '首頁' },
@@ -79,10 +118,17 @@ const localizedNavItems = computed(() => navItems.map((item) => ({
   to: localizePath(item.to)
 })))
 
+async function chooseLanguage(lang: Lang) {
+  languageOpen.value = false
+  mobileOpen.value = false
+  await setLanguage(lang)
+}
+
 watch(
   () => route.path,
   () => {
     mobileOpen.value = false
+    languageOpen.value = false
   }
 )
 </script>
