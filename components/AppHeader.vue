@@ -45,15 +45,15 @@
         <span>{{ t('nav_cta', '立即諮詢') }}</span>
       </NuxtLink>
 
-      <button class="lg:hidden text-3xl" @click="mobileOpen = true">
-        <iconify-icon icon="heroicons:bars-3-bottom-right" />
+      <button class="lg:hidden text-3xl" :aria-expanded="mobileOpen" aria-label="Toggle menu" @click="mobileOpen = !mobileOpen">
+        <iconify-icon :icon="mobileOpen ? 'heroicons:x-mark' : 'heroicons:bars-3-bottom-right'" />
       </button>
     </div>
   </nav>
   </header>
 
   <div class="fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-[#0a0e1a] transform transition-transform duration-300 lg:hidden" :class="mobileOpen ? 'translate-x-0' : 'translate-x-full'">
-    <div class="flex min-h-full flex-col items-center justify-start space-y-5 px-6 pb-16 pt-28 text-xl font-semibold">
+    <div class="flex min-h-full flex-col items-center justify-start space-y-5 px-6 pb-16 pt-40 text-xl font-semibold">
       <NuxtLink v-for="item in localizedNavItems" :key="item.to" :to="item.to" active-class="text-blue-500" @click="mobileOpen = false">
         <span>{{ item.label }}</span>
       </NuxtLink>
