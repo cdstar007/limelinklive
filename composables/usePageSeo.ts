@@ -13,6 +13,7 @@ type PageSeoKey =
   | 'support'
   | 'docs'
   | 'contact'
+  | 'privacy'
   | 'serviceCss'
   | 'serviceByteplus'
   | 'serviceAgora'
@@ -167,6 +168,21 @@ const seoPages: Record<PageSeoKey, PageSeo> = {
     keywords: {
       zh: ['聯絡 LIMELINK', '視頻雲顧問', '直播顧問', 'RTC 顧問'],
       en: ['contact LIMELINK', 'video cloud consultation', 'live streaming consulting', 'RTC consulting']
+    }
+  },
+  privacy: {
+    path: '/privacy',
+    title: {
+      zh: '隱私權政策 | LIMELINK',
+      en: 'Privacy Policy | LIMELINK'
+    },
+    description: {
+      zh: '了解 LIMELINK 如何收集、使用、保護與管理您在使用網站、表單與雲端視頻顧問服務時提供的個人資料。',
+      en: 'Learn how LIMELINK collects, uses, protects and manages personal information provided through our website, forms and cloud video consulting services.'
+    },
+    keywords: {
+      zh: ['LIMELINK 隱私權政策', '個人資料保護', '隱私政策', '資料安全'],
+      en: ['LIMELINK privacy policy', 'personal data protection', 'privacy policy', 'data security']
     }
   },
   serviceCss: {

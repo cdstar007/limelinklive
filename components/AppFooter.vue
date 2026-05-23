@@ -57,7 +57,12 @@
         </div>
       </div>
       <div class="pt-10 border-t border-white/5 text-center text-gray-500 text-xs">
-        <span data-i18n="footer_copyright">© 2026 LIMELINK. All rights reserved.</span>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+          <span data-i18n="footer_copyright">© 2026 LIMELINK. All rights reserved.</span>
+          <NuxtLink class="hover:text-blue-500 transition-colors" :to="localizePath('/privacy')" data-i18n="footer_privacy">
+            隱私權政策
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </footer>

@@ -19,6 +19,8 @@ const routes = [
   { path: '/zh/docs/best-webrtc-providers-2026', priority: '0.7', changefreq: 'monthly' },
   { path: '/contact', priority: '0.8', changefreq: 'monthly' },
   { path: '/zh/contact', priority: '0.8', changefreq: 'monthly' },
+  { path: '/privacy', priority: '0.3', changefreq: 'yearly' },
+  { path: '/zh/privacy', priority: '0.3', changefreq: 'yearly' },
   { path: '/service-css', priority: '0.8', changefreq: 'monthly' },
   { path: '/zh/service-css', priority: '0.8', changefreq: 'monthly' },
   { path: '/service-byteplus', priority: '0.8', changefreq: 'monthly' },
