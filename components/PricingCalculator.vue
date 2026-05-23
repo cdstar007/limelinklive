@@ -100,11 +100,7 @@ type Quality = '480p' | '720p' | '1080p' | '4k'
 type TrafficTier = { upToGb: number, rate: number }
 
 const emit = defineEmits<{
-  'update:summary': [value: string]
   requestQuote: []
-}>()
-defineProps<{
-  summary?: string
 }>()
 
 const { currentLang } = useDomI18n()
@@ -409,41 +405,9 @@ function formatUsd(value: number) {
 
 const formattedOfficialCost = computed(() => formatUsd(officialCost.value))
 const formattedDiscountedCost = computed(() => formatUsd(discountedCost.value))
-const pricingBasis = computed(() => {
-  if (provider.value === 'agora') return `${formatUsd(agoraRatesPerThousand[serviceType.value])} / 1,000 min`
-
-  if (provider.value === 'byteplus') {
-    const rate = getTierRate(trafficGb.value, serviceType.value === 'byteplusRtm' ? byteplusRtmRates[region.value] : byteplusStandardRates[region.value])
-    return `${formatUsd(rate)} / GB`
-  }
-
-  const tencentRates = serviceType.value === 'tencentLvb' ? tencentLvbRates[region.value] : tencentLebRates[region.value]
-  return `${formatUsd(getTierRate(trafficGb.value, tencentRates))} / GB`
-})
-
 const recommendation = computed(() => {
   if (provider.value === 'agora') return t.value.pricing_calc_reco_agora
   if (provider.value === 'byteplus') return serviceType.value === 'byteplusRtm' ? t.value.pricing_calc_reco_byteplus_rtm : t.value.pricing_calc_reco_byteplus
   return t.value.pricing_calc_reco_tencent
 })
-
-const summary = computed(() => {
-  return [
-    `${t.value.pricing_calc_summary_title}:`,
-    `${t.value.pricing_calc_provider}: ${providerOptions.find((option) => option.value === provider.value)!.label}`,
-    `${t.value.pricing_calc_service}: ${t.value[currentServiceOptions.value.find((option) => option.value === serviceType.value)!.label]}`,
-    `${t.value.pricing_calc_region}: ${t.value[regionOptions.find((option) => option.value === region.value)!.label]}`,
-    `${t.value.pricing_calc_users}: ${safeUsers.value.toLocaleString()}`,
-    `${t.value.pricing_calc_minutes}: ${safeMinutes.value.toLocaleString()}`,
-    provider.value === 'agora' ? '' : `${t.value.pricing_calc_quality}: ${selectedQuality.value.label}`,
-    `${usageLabel.value}: ${formattedUsage.value}`,
-    `${t.value.pricing_calc_rate_basis}: ${pricingBasis.value}`,
-    `${t.value.pricing_calc_official_cost}: ${formattedOfficialCost.value}`,
-    `${t.value.pricing_calc_discount_cost}: ${formattedDiscountedCost.value}`,
-    provider.value === 'agora' ? t.value.pricing_calc_agora_free_minutes : '',
-    `${t.value.pricing_calc_recommendation}: ${recommendation.value}`
-  ].filter(Boolean).join('\n')
-})
-
-watch(summary, (value) => emit('update:summary', value), { immediate: true })
 </script>
