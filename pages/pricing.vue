@@ -174,6 +174,11 @@ function scrollToQuoteForm() {
 }
 
 function submitPricingInquiry(event: Event) {
-  submitInquiry(event, 'Pricing inquiry')
+  submitInquiry(event, 'Pricing inquiry', {
+    successEvent: {
+      event: 'request_quote_submit_success',
+      form_type: 'pricing'
+    }
+  })
 }
 </script>

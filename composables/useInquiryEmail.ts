@@ -4,6 +4,16 @@ const INQUIRY_EMAIL = 'support@limelink.live'
 
 type InquiryStatus = 'idle' | 'submitting' | 'success' | 'error'
 
+type DataLayerEvent = {
+  event: string
+  form_type?: string
+  page_path?: string
+}
+
+type SubmitInquiryOptions = {
+  successEvent?: DataLayerEvent
+}
+
 export function useInquiryEmail() {
   const { currentLang } = useDomI18n()
   const inquiryStatus = ref<InquiryStatus>('idle')
@@ -17,7 +27,21 @@ export function useInquiryEmail() {
     grecaptcha?.reset()
   }
 
-  async function submitInquiry(event: Event, subject: string) {
+  function pushSuccessEvent(successEvent?: DataLayerEvent) {
+    if (!successEvent) return
+
+    const win = window as typeof window & {
+      dataLayer?: DataLayerEvent[]
+    }
+
+    win.dataLayer = win.dataLayer || []
+    win.dataLayer.push({
+      ...successEvent,
+      page_path: successEvent.page_path || window.location.pathname
+    })
+  }
+
+  async function submitInquiry(event: Event, subject: string, options: SubmitInquiryOptions = {}) {
     const form = event.currentTarget as HTMLFormElement | null
     if (!form || !import.meta.client) return
 
@@ -59,6 +83,7 @@ export function useInquiryEmail() {
 
       inquiryStatus.value = 'success'
       inquiryMessage.value = messages[currentLang.value].inquiry_success
+      pushSuccessEvent(options.successEvent)
       form.reset()
       resetRecaptcha()
     } catch (error) {

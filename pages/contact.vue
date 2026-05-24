@@ -101,6 +101,11 @@ const contactSubmitLabel = computed(() => {
 })
 
 function submitContactInquiry(event: Event) {
-  submitInquiry(event, 'Contact inquiry')
+  submitInquiry(event, 'Contact inquiry', {
+    successEvent: {
+      event: 'contact_submit_success',
+      form_type: 'contact'
+    }
+  })
 }
 </script>
