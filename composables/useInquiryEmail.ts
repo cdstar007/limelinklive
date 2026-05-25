@@ -88,8 +88,16 @@ export function useInquiryEmail() {
       resetRecaptcha()
     } catch (error) {
       console.error('Failed to submit inquiry', error)
+      const responseStatus = (error as {
+        status?: number
+        statusCode?: number
+        response?: { status?: number }
+      }).status || (error as { statusCode?: number }).statusCode || (error as { response?: { status?: number } }).response?.status
+
       inquiryStatus.value = 'error'
-      inquiryMessage.value = messages[currentLang.value].inquiry_error
+      inquiryMessage.value = responseStatus === 429
+        ? messages[currentLang.value].inquiry_rate_limited
+        : messages[currentLang.value].inquiry_error
       resetRecaptcha()
     }
   }

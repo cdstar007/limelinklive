@@ -6,6 +6,20 @@ type InquiryPayload = {
   recaptchaToken?: string
 }
 
+const INQUIRY_COOLDOWN_MS = 10 * 60 * 1000
+
+type CooldownStore = Map<string, number>
+
+declare global {
+  // eslint-disable-next-line no-var
+  var __limelinkInquiryCooldowns: CooldownStore | undefined
+}
+
+function getCooldownStore() {
+  globalThis.__limelinkInquiryCooldowns ||= new Map()
+  return globalThis.__limelinkInquiryCooldowns
+}
+
 function normalizeText(value: unknown, maxLength = 2000) {
   return String(value || '')
     .replace(/\r\n/g, '\n')
@@ -19,6 +33,50 @@ type RuntimeEvent = {
       env?: Record<string, string>
     }
   }
+}
+
+function getClientIp(event: Parameters<typeof getHeader>[0]) {
+  const headerIp = getHeader(event, 'cf-connecting-ip')
+    || getHeader(event, 'true-client-ip')
+    || getHeader(event, 'x-real-ip')
+    || getHeader(event, 'x-forwarded-for')
+    || ''
+  const forwardedIp = headerIp.split(',')[0]?.trim()
+  const socketIp = event.node?.req?.socket?.remoteAddress || ''
+
+  return forwardedIp || socketIp || 'unknown'
+}
+
+function reserveInquiryCooldown(event: Parameters<typeof getHeader>[0]) {
+  const ip = getClientIp(event)
+  const now = Date.now()
+  const store = getCooldownStore()
+
+  for (const [key, blockedUntil] of store.entries()) {
+    if (blockedUntil <= now) {
+      store.delete(key)
+    }
+  }
+
+  const blockedUntil = store.get(ip)
+
+  if (blockedUntil && blockedUntil > now) {
+    throw createError({
+      statusCode: 429,
+      statusMessage: 'Please wait 10 minutes before submitting another inquiry',
+      data: {
+        retryAfterSeconds: Math.ceil((blockedUntil - now) / 1000)
+      }
+    })
+  }
+
+  store.set(ip, now + INQUIRY_COOLDOWN_MS)
+
+  return ip
+}
+
+function clearInquiryCooldown(ip: string) {
+  getCooldownStore().delete(ip)
 }
 
 function getWebhookConfig(event: RuntimeEvent) {
@@ -128,6 +186,7 @@ export default defineEventHandler(async (event) => {
       text: message
     }
   }
+  const cooldownIp = reserveInquiryCooldown(event)
 
   if (webhookSecret) {
     const timestamp = Math.floor(Date.now() / 1000).toString()
@@ -141,6 +200,7 @@ export default defineEventHandler(async (event) => {
       body: feishuPayload
     })
   } catch (error) {
+    clearInquiryCooldown(cooldownIp)
     console.error('Failed to send Feishu webhook', error)
     throw createError({
       statusCode: 502,
