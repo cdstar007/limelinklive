@@ -3,9 +3,9 @@
     <div class="bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 text-white">
       <NuxtLink class="mx-auto flex min-h-10 max-w-7xl items-center justify-center gap-2 px-6 py-2 text-center text-xs font-bold sm:text-sm" :to="localizePath('/pricing')">
         <iconify-icon class="text-base" icon="heroicons:sparkles" />
-        <span>{{ t('promo_summer_discount', '暑期特惠額外 5% 折扣') }}</span>
+        <span>{{ t('promo_procurement', '直播／RTC 採購｜官網 8 折，企業用量專案議價') }}</span>
         <span class="hidden text-blue-100 sm:inline">|</span>
-        <span class="underline decoration-white/60 underline-offset-4">{{ t('promo_summer_cta', '立即申請折扣') }}</span>
+        <span class="underline decoration-white/60 underline-offset-4">{{ t('promo_review_cta', '申請帳單健檢') }}</span>
       </NuxtLink>
     </div>
 
@@ -15,13 +15,13 @@
         <img class="h-9 w-auto md:h-10" :src="logoWide" alt="LIMELINK" />
       </NuxtLink>
 
-      <div class="hidden lg:flex items-center space-x-8 text-sm font-medium text-gray-300">
+      <div class="hidden xl:flex items-center space-x-5 text-sm font-medium text-gray-300">
         <NuxtLink v-for="item in localizedNavItems" :key="item.to" :to="item.to" class="hover:text-white transition-colors" active-class="text-blue-500">
           <span>{{ item.label }}</span>
         </NuxtLink>
       </div>
 
-      <div class="relative hidden lg:block ml-4">
+      <div class="relative hidden xl:block ml-4">
         <button type="button" class="inline-flex h-10 items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 text-sm font-semibold text-gray-200 transition-colors hover:bg-white/10" aria-label="Select language" :aria-expanded="languageOpen" @click="languageOpen = !languageOpen">
           <iconify-icon class="text-lg" icon="heroicons:globe-alt" />
           <span>{{ currentLanguage.short }}</span>
@@ -41,24 +41,24 @@
         </div>
       </div>
 
-      <NuxtLink class="hidden lg:block px-6 py-2.5 bg-gradient-tech rounded-full font-semibold text-sm hover:opacity-90 transition-all transform hover:-translate-y-0.5" :to="localizePath('/pricing')">
-        <span>{{ t('nav_cta', '立即諮詢') }}</span>
+      <NuxtLink class="hidden xl:block px-6 py-2.5 bg-gradient-tech rounded-full font-semibold text-sm hover:opacity-90 transition-all transform hover:-translate-y-0.5" :to="localizePath('/pricing')">
+        <span>{{ t('nav_cta', '申請帳單健檢') }}</span>
       </NuxtLink>
 
-      <button class="lg:hidden text-3xl" :aria-expanded="mobileOpen" aria-label="Toggle menu" @click="mobileOpen = !mobileOpen">
+      <button class="xl:hidden text-3xl" :aria-expanded="mobileOpen" aria-label="Toggle menu" @click="mobileOpen = !mobileOpen">
         <iconify-icon :icon="mobileOpen ? 'heroicons:x-mark' : 'heroicons:bars-3-bottom-right'" />
       </button>
     </div>
   </nav>
   </header>
 
-  <div class="fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-[#0a0e1a] transform transition-transform duration-300 lg:hidden" :class="mobileOpen ? 'translate-x-0' : 'translate-x-full'">
+  <div class="fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-[#0a0e1a] transform transition-transform duration-300 xl:hidden" :class="mobileOpen ? 'translate-x-0' : 'translate-x-full'">
     <div class="flex min-h-full flex-col items-center justify-start space-y-5 px-6 pb-16 pt-40 text-xl font-semibold">
       <NuxtLink v-for="item in localizedNavItems" :key="item.to" :to="item.to" active-class="text-blue-500" @click="mobileOpen = false">
         <span>{{ item.label }}</span>
       </NuxtLink>
       <NuxtLink class="px-8 py-3 bg-gradient-tech rounded-full text-base" :to="localizePath('/pricing')" @click="mobileOpen = false">
-        <span>{{ t('nav_cta', '立即諮詢') }}</span>
+        <span>{{ t('nav_cta', '申請帳單健檢') }}</span>
       </NuxtLink>
       <div class="relative flex flex-col items-center text-base">
         <button type="button" class="inline-flex h-12 items-center gap-3 rounded-full border border-white/10 bg-white/5 px-5 font-semibold text-gray-200" aria-label="Select language" :aria-expanded="languageOpen" @click="languageOpen = !languageOpen">
@@ -97,7 +97,8 @@ const route = useRoute()
 const { currentLang, localizePath, setLanguage } = useDomI18n()
 
 const languageOptions: Array<{ lang: Lang, label: string, short: string }> = [
-  { lang: 'zh', label: '繁體中文', short: '中' },
+  { lang: 'zh', label: '繁體中文（台灣）', short: '繁' },
+  { lang: 'zh-cn', label: '简体中文', short: '简' },
   { lang: 'en', label: 'English', short: 'EN' }
 ]
 
@@ -114,6 +115,7 @@ const navItems = [
   { to: '/pricing', key: 'nav_pricing', zh: '價格諮詢' },
   { to: '/support', key: 'nav_support', zh: '技術支援' },
   { to: '/docs', key: 'nav_docs', zh: '文檔' },
+  { to: '/about', key: 'nav_about', zh: '關於我們' },
   { to: '/contact', key: 'nav_contact', zh: '聯絡我們' }
 ]
 

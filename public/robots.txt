@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://limelink.live/sitemap-index.xml
-Sitemap: https://limelink.live/sitemap.xml

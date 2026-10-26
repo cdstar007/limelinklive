@@ -1,0 +1,120 @@
+{
+  "tocLabel": "On this page",
+  "overviewTitle": "What the service does",
+  "featuresTitle": "Capabilities to evaluate",
+  "scenariosTitle": "Where it fits",
+  "pricingTitle": "Procurement pricing and total cost",
+  "stepsTitle": "From assessment to production",
+  "caseTitle": "An implementation scenario",
+  "caseLabel": "Illustrative scenario — not a customer case or a performance claim",
+  "faqTitle": "Frequently asked questions",
+  "sourcesTitle": "Official product references",
+  "ctaTitle": "Start with your current usage and bill",
+  "ctaText": "Tell us your provider, service regions, usage and renewal timing. We can scope a comparable procurement review before proposing technical changes.",
+  "ctaLabel": "Request a Cost Review",
+  "contactLabel": "Discuss Your Requirements",
+  "compareLabel": "Compare the three services",
+  "docsLabel": "Explore technical resources",
+  "kicker": "AGORA RTC · INTERACTION & PROCUREMENT",
+  "title": "Agora RTC for video calls and interactive live streaming",
+  "lead": "Review Agora for the conversations your application needs to support, then connect participant usage to a comparable procurement proposal. LIMELINK helps existing RTC businesses assess SDK integration, account constraints and the practical cost of changing a live service.",
+  "overview": [
+    "Agora RTC is designed for real-time audio and video interaction, including one-to-one calls, group communication and interactive streaming. It is a candidate when users need to publish and receive media as part of an application workflow, rather than only watch a one-way broadcast. Start by defining participant roles and how those roles change.",
+    "An RTC evaluation is also an application evaluation. Permissions, user identity, session lifecycle and recovery affect the experience as much as transport choices. Existing customers can first review procurement conditions, but a change involving projects, credentials or SDK behavior needs explicit technical checks. An attractive minute rate is only useful when the service remains suitable for the application."
+  ],
+  "features": [
+    {
+      "title": "Calls, channels and participant roles",
+      "text": "The SDK workflow includes initializing the engine, joining a channel and publishing or receiving media. Interactive streaming distinguishes hosts and audiences, while calling applications use a different participation pattern. Map those choices to actual product behavior, particularly guest promotion, reconnection and the point at which a viewer becomes an active participant."
+    },
+    {
+      "title": "Device coverage and collaboration",
+      "text": "Agora documents SDK support across web, mobile and other application platforms, along with features such as screen sharing. Match the SDK and version to the devices you support. Test the exact combination of browsers, permissions, audio devices and application lifecycle behavior rather than assume every platform has identical capabilities."
+    },
+    {
+      "title": "Quality controls and optional media services",
+      "text": "Recording and other media services or extensions may complement a call. Identify the features actually required, their integration dependencies and their charges. Use a representative weak-network and reconnect test to assess quality, and avoid turning a product’s marketing latency or availability figure into an application-level guarantee."
+    }
+  ],
+  "scenarios": [
+    {
+      "title": "Interactive education and coaching",
+      "text": "A lesson involves more than two video tiles. Define teacher and learner roles, screen sharing, device switching and any recording requirement. A pilot should test the normal session and an interrupted one, with clear ownership of user access and of support when a participant cannot join."
+    },
+    {
+      "title": "Social rooms and audience participation",
+      "text": "A room with hosts, guests and listeners needs explicit rules for publishing and receiving streams. Map role changes to the product flow and cost model. If most users only watch, compare the appropriate broadcast and interactive options instead of assuming the same mode should serve every participant."
+    },
+    {
+      "title": "Consultations and customer support",
+      "text": "A support call requires a dependable session journey: an invitation, permission prompts, joining, reconnecting and ending cleanly. Review how the application handles these states and protects access. Any industry-specific privacy or compliance requirement must be assessed separately; purchasing an RTC service does not automatically make an application compliant."
+    }
+  ],
+  "pricing": [
+    "The public LIMELINK standard procurement reference is 20% off eligible official list-price items, with custom quotes for committed usage and enterprise scope. It does not promise to undercut a negotiated Agora contract or to discount all add-ons. Compare the same service mode and billable usage before drawing a savings conclusion.",
+    "The official pricing references distinguish RTC and additional media services, and eligible products can include free allowances. Session duration alone is not a reliable replacement for the billable usage reported by the platform. Reconcile participant-related usage, media type, quality tier, service mode and any recording or processing requirements against the actual billing rules.",
+    "For illustration, USD 500 of eligible list-price charges would have a standard reference of USD 400 before exclusions. The comparison must also consider any applicable allowances, existing packages, support and implementation work. If a change requires SDK testing or a parallel release, include those costs and the release risk before deciding whether the recurring difference justifies a move."
+  ],
+  "steps": [
+    {
+      "title": "1. Map sessions and current charges",
+      "text": "Describe the application, user roles, target platforms, session patterns, service regions and current spend. Separate RTC usage from recording and other services. Agree which functions and quality observations need to remain comparable, and identify the renewal or release window for a potential change."
+    },
+    {
+      "title": "2. Verify account and integration constraints",
+      "text": "Check what the current project, partner policies and contract permit. Identify SDK versions, authentication responsibilities, user IDs, channel rules and any server-side dependencies. A procurement review should not imply that project ownership, credentials or the application integration can change without investigation."
+    },
+    {
+      "title": "3. Test a complete user journey",
+      "text": "Use representative devices to test permissions, joining, publishing, subscribing, leaving and reconnecting. Include the required role changes and optional services. Keep test credentials separate from production and record both the user experience and the usage observations needed for a cost comparison."
+    },
+    {
+      "title": "4. Release gradually and review usage",
+      "text": "Agree on an application rollout, monitoring responsibilities, support contacts and rollback criteria. Compare production usage and the first bill with the proposal after acceptance. A future volume discount is only useful when usage commitments and the operational support scope remain appropriate for the business."
+    }
+  ],
+  "caseStudy": [
+    "Consider a coaching platform with an existing RTC integration and a forthcoming renewal. It wants a better procurement arrangement but cannot risk changing the learner experience during an active course. The initial review would separate RTC and recording charges and check which account arrangements are permitted before proposing an application change.",
+    "This is an illustrative scenario, not a claim about a completed customer engagement. If a technical change were needed, the pilot would cover a lesson, screen sharing and a reconnection on the supported devices. The decision would use a comparable quote, a documented acceptance checklist and a release plan; it would not assume a particular saving or completion time."
+  ],
+  "faqs": [
+    {
+      "question": "When is Agora RTC a better fit than one-way live delivery?",
+      "answer": "Use an RTC evaluation when participants must speak, share media or change roles during a session. If most users are viewers, compare the appropriate streaming modes and delivery architecture as well. The decision should follow the interaction pattern, supported devices and full cost, not a product label alone."
+    },
+    {
+      "question": "Are all Agora minutes billed in the same way?",
+      "answer": "No single minute count describes every product and configuration. Reconcile the reported billable usage with the relevant service, media and quality tier, and check applicable allowances and add-ons. The site estimator is an initial reference, not a substitute for the current billing rules or a written quote."
+    },
+    {
+      "question": "Will the public discount beat my existing Agora agreement?",
+      "answer": "That cannot be assumed. The public reference is relative to eligible official list prices, while your current contract may already have negotiated terms. Compare equivalent charges and any commitment, support or migration costs. Enterprise requirements are quoted individually rather than covered by a guaranteed saving percentage."
+    },
+    {
+      "question": "Can we keep the current SDK and project?",
+      "answer": "Possibly, but this depends on the account arrangement, SDK integration and contract. We check those constraints first. A proposal must state any changes to projects, authentication, application code or release procedures; it should not promise unchanged credentials or no engineering work before verification."
+    },
+    {
+      "question": "Does RTC procurement include recording, whiteboards or other extensions?",
+      "answer": "Only if they are explicitly included in the agreed scope. Optional media services and extensions may have separate product, integration and billing requirements. List the features your sessions need, then confirm their availability and cost instead of treating the RTC quote as an all-inclusive application platform."
+    },
+    {
+      "question": "What will we receive from a pilot assessment?",
+      "answer": "Agree the deliverables before testing: a session and device checklist, account and SDK constraints, observed issues, comparable usage and a scoped proposal. The assessment can support a release, further testing or a decision to retain the current setup. It is not a blanket latency, compliance or uptime guarantee."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Agora video calling and streaming capabilities",
+      "url": "https://www.agora.io/en/products/video-call/"
+    },
+    {
+      "title": "Agora RTC overview and implementation quickstart",
+      "url": "https://docs.agora.io/en/realtime-media/rtc/get-started-sdk"
+    },
+    {
+      "title": "Agora RTC pricing reference",
+      "url": "https://docs.agora.io/en/realtime-media/rtc/reference/pricing"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "tocLabel": "On this page",
+  "overviewTitle": "What the service does",
+  "featuresTitle": "Capabilities to evaluate",
+  "scenariosTitle": "Where it fits",
+  "pricingTitle": "Procurement pricing and total cost",
+  "stepsTitle": "From assessment to production",
+  "caseTitle": "An implementation scenario",
+  "caseLabel": "Illustrative scenario — not a customer case or a performance claim",
+  "faqTitle": "Frequently asked questions",
+  "sourcesTitle": "Official product references",
+  "ctaTitle": "Start with your current usage and bill",
+  "ctaText": "Tell us your provider, service regions, usage and renewal timing. We can scope a comparable procurement review before proposing technical changes.",
+  "ctaLabel": "Request a Cost Review",
+  "contactLabel": "Discuss Your Requirements",
+  "compareLabel": "Compare the three services",
+  "docsLabel": "Explore technical resources",
+  "kicker": "BYTEPLUS MEDIALIVE · PROCUREMENT & DELIVERY",
+  "title": "BytePlus MediaLive for live video delivery",
+  "lead": "Evaluate BytePlus MediaLive around the stream you need to deliver, the regions you serve and the services you actually consume. LIMELINK combines a procurement comparison with a domain, player and media-processing review for existing video businesses.",
+  "overview": [
+    "MediaLive covers a live streaming path from publishing through delivery and playback. Its documented ecosystem includes live distribution, player integration and media-processing options. It is a useful candidate when a team wants to examine regional delivery and playback together, rather than compare an isolated traffic rate without the application workflow.",
+    "The scope should remain specific to MediaLive. Recommendations, video on demand, effects and RTC may involve other BytePlus products or separate charges. A platform comparison should identify these boundaries early. Similar branding does not make every capability part of one service or included in a single procurement discount."
+  ],
+  "features": [
+    {
+      "title": "Streaming protocols and player integration",
+      "text": "The product supports multiple live-delivery protocols and client SDKs. Evaluate the publishing source, playback devices and the interaction delay the application needs. A format that works in one browser is not enough evidence for the full audience; include your mobile apps, intended operating systems and representative networks in the pilot."
+    },
+    {
+      "title": "Media processing with explicit requirements",
+      "text": "Transcoding, recording and time-shifting can support different publishing workflows, but each should be scoped deliberately. Specify required outputs, retention and replay behavior. Compare the quality and operational usefulness of a configuration before treating an advertised processing improvement as a saving for your own content."
+    },
+    {
+      "title": "Operational controls and domain setup",
+      "text": "The official getting-started guide uses push and pull domains, domain-name spaces and CNAME configuration. These are deployment dependencies, not just billing settings. Identify who controls DNS and certificates and how stream addresses are generated. Use the official guide for account-specific prerequisites and product limits."
+    }
+  ],
+  "scenarios": [
+    {
+      "title": "A publisher serving several markets",
+      "text": "A media team with changing audience geography can compare regional traffic and playback behavior. Start with one representative programme and reconcile the delivery region with the bill. The objective is a repeatable cost and quality baseline, rather than a theoretical global average that hides weak markets."
+    },
+    {
+      "title": "Live shopping with a defined interaction path",
+      "text": "Separate one-to-many viewing from any co-host or guest participation requirements. The latter may introduce RTC services and additional integration work. Confirm where the application changes roles and which teams own those transitions so the procurement proposal describes the complete viewing and interaction journey."
+    },
+    {
+      "title": "Events that need replay and operational control",
+      "text": "A sports or entertainment publisher may require recording, delayed replay or controlled playback access. List which features are necessary for launch and which can wait. This prevents an initial streaming quote from quietly becoming a larger media-processing, storage and player-licensing project."
+    }
+  ],
+  "pricing": [
+    "The public LIMELINK standard reference is 20% off eligible official list-price items. Stable committed usage and enterprise delivery needs are quoted individually. This reference does not mean a fixed saving against an existing BytePlus contract, and it does not automatically apply to every related BytePlus service.",
+    "The official billing overview separates live-streaming, value-added and other cloud-service charges. Check the billing cycle, traffic or bandwidth measurement, regional allocation and resource-pack deductions before comparing proposals. Recording, transcoding, storage and SDK licensing can have different charging rules; model the items you intend to use rather than assume they share a billing unit.",
+    "As an illustration, eligible list charges of USD 2,000 would give a standard reference of USD 1,600, before excluded charges and any separately scoped work. Compare that amount with the equivalent portion of your current bill. A migration decision should additionally include integration time, temporary overlap and the risk of introducing a different playback path."
+  ],
+  "steps": [
+    {
+      "title": "1. Map the current publishing workflow",
+      "text": "Describe the publishing tools, stream types, audience regions, viewing time and current bill. List any recording, replay and interaction requirements separately. Agree what a comparable service means so that an attractive delivery price is not compared with a broader existing media contract."
+    },
+    {
+      "title": "2. Confirm account, domains and procurement scope",
+      "text": "Check service activation and account requirements, applicable product terms and the proposed quote. Assign owners for push and pull domains, their association, DNS and certificates. Document any approval or regional prerequisite before a launch date is promised."
+    },
+    {
+      "title": "3. Validate an end-to-end pilot",
+      "text": "Publish a controlled test stream and verify playback on intended devices. Exercise the selected processing settings, an interruption and recovery. Check which usage items appear in the billing view. Use the observed quality, engineering effort and cost scope as the basis for an implementation decision."
+    },
+    {
+      "title": "4. Roll out and reconcile the first bill",
+      "text": "Agree on traffic stages, a rollback condition and contacts for operational issues. Keep a comparison record of the selected configuration and quote. After launch, reconcile actual regions and enabled services against the estimate, then set a review point before the next commitment or renewal."
+    }
+  ],
+  "caseStudy": [
+    "Imagine a publisher whose live audience is growing across several markets. Its current bill combines delivery, recording and playback-related services. An initial assessment would separate those components and select a representative stream for a MediaLive pilot, while leaving the existing production path available.",
+    "This scenario illustrates a decision process, not a completed LIMELINK customer project. The intended outputs are a service-boundary map, domain and player test results, and a comparable cost worksheet. The next decision could be a staged move, a procurement-only change where permitted, or retaining the existing provider if the overall proposal is not better."
+  ],
+  "faqs": [
+    {
+      "question": "Is MediaLive the same service as BytePlus VOD, RTC or recommendations?",
+      "answer": "No. Treat the product boundary as a procurement question. A live workflow can involve other services, but those capabilities and charges should be listed separately. Confirm exactly which features the proposed MediaLive configuration includes instead of assuming every BytePlus product is bundled."
+    },
+    {
+      "question": "Does a traffic discount also reduce recording and SDK charges?",
+      "answer": "Not automatically. The quote must identify eligible items. BytePlus documents separate live-streaming, value-added and related cloud-service fees, with different billing rules. Compare each relevant item and any package deductions before calculating a total; the public discount is not a blanket reduction on an entire account."
+    },
+    {
+      "question": "Can we keep our existing publishing tools and player?",
+      "answer": "That depends on supported protocols, integration details and the application. Review current stream formats, devices, authentication and playback features, then run a representative test. Do not assume that a successful browser playback proves the production app or every player feature will work unchanged."
+    },
+    {
+      "question": "What is needed before we can start a pilot?",
+      "answer": "You need to confirm account readiness, the appropriate service scope, domain ownership and access to the publishing and playback environments. The official guide describes domain and CNAME setup. LIMELINK can scope responsibilities and dependencies before the pilot; detailed account eligibility is verified for the actual project."
+    },
+    {
+      "question": "Can the same setup serve every target region?",
+      "answer": "A regional plan needs technical and commercial checks. Audience location, routing, billing regions and any account or domain prerequisites can affect the proposal. Test the markets that matter to the business and confirm applicable requirements rather than rely on the word global in a product description."
+    },
+    {
+      "question": "What should a MediaLive implementation quote include?",
+      "answer": "Ask for the selected live services, regions, charging basis, processing and related-product scope, along with integration, pilot and support responsibilities. Include payment and commitment conditions and the rollback plan. The most useful comparison is total scoped cost with acceptance criteria, not a single headline traffic rate."
+    }
+  ],
+  "sources": [
+    {
+      "title": "BytePlus MediaLive product overview",
+      "url": "https://www.byteplus.com/en/product/medialive"
+    },
+    {
+      "title": "Getting started with MediaLive",
+      "url": "https://docs.byteplus.com/en/docs/byteplus-media-live/docs-getting-started"
+    },
+    {
+      "title": "MediaLive billing overview",
+      "url": "https://docs.byteplus.com/en/docs/byteplus-media-live/docs-overview-1"
+    }
+  ]
+}

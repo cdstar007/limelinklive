@@ -1,100 +1,40 @@
-import { messages, type Lang } from '~/data/i18n'
-
-function inferLangFromPath(path: string): Lang {
-  if (path === '/zh' || path.startsWith('/zh/')) return 'zh'
-  if (path === '/en' || path.startsWith('/en/')) return 'en'
-  return 'en'
-}
+import { type Lang } from '~/data/i18n'
+import { inferLanguage, localizePath as localizedRoute, locales } from '~/utils/locales'
 
 export function useDomI18n() {
   const route = useRoute()
   const router = useRouter()
-  const currentLang = useState<Lang>('limelink-lang', () => inferLangFromPath(route.path))
-
-  function normalizeZhPath(path: string) {
-    if (path === '/' || path === '') return '/'
-    return path.endsWith('/') ? path.slice(0, -1) : path
-  }
+  const currentLang = computed<Lang>(() => inferLanguage(route.path))
 
   function localizePath(path: string, lang: Lang = currentLang.value) {
-    const primaryPath = path === '/zh'
-      ? '/'
-      : path.startsWith('/zh/')
-        ? normalizeZhPath(path.replace(/^\/zh/, ''))
-        : path === '/en'
-          ? '/'
-          : path.startsWith('/en/')
-            ? normalizeZhPath(path.replace(/^\/en/, ''))
-            : normalizeZhPath(path)
-
-    if (lang === 'zh') {
-      if (primaryPath === '/') return '/zh'
-      return `/zh${primaryPath}`
-    }
-
-    if (path === '/en') return '/'
-    if (path.startsWith('/en/')) return normalizeZhPath(path.replace(/^\/en/, ''))
-    return primaryPath
+    return localizedRoute(path, lang)
   }
 
+  // Visible copy is rendered reactively on the server and client. Keep this
+  // hook for the app lifecycle without rewriting Vue-managed DOM text.
   function applyTranslations(lang: Lang = currentLang.value) {
-    if (!import.meta.client) return
-
-    document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
-      const key = el.dataset.i18n
-      if (key && key in messages[lang]) {
-        el.textContent = messages[lang][key as keyof typeof messages[typeof lang]]
-      }
-    })
-
-    document.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('[data-i18n-placeholder]').forEach((el) => {
-      const key = el.dataset.i18nPlaceholder
-      if (key && key in messages[lang]) {
-        el.placeholder = messages[lang][key as keyof typeof messages[typeof lang]]
-      }
-    })
-
-    document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : 'en'
-    document.querySelectorAll<HTMLButtonElement>('.lang-btn').forEach((btn) => {
-      btn.dataset.active = btn.dataset.lang === lang ? 'true' : 'false'
-    })
+    if (import.meta.client) document.documentElement.lang = locales[lang].htmlLang
   }
 
   function syncLanguageFromRoute(path = route.path) {
-    const lang = path === '/zh' || path.startsWith('/zh/')
-      ? 'zh'
-      : path === '/en' || path.startsWith('/en/')
-        ? 'en'
-        : inferLangFromPath(path)
-    currentLang.value = lang
-    applyTranslations(currentLang.value)
+    applyTranslations(inferLanguage(path))
   }
 
   async function setLanguage(lang: Lang) {
+    const target = localizePath(route.path, lang) + route.fullPath.slice(route.path.length)
+    if (route.fullPath === target) return
+    // Vue Router treats aliases of one page as the same route. A document
+    // navigation selects the locale URL reliably and renders its SSR copy.
     if (import.meta.client) {
-      window.localStorage.setItem('limelink-lang', lang)
-    }
-
-    const targetPath = localizePath(route.path, lang)
-    currentLang.value = lang
-    applyTranslations(lang)
-
-    if (route.path !== targetPath) {
-      await router.push(targetPath)
+      window.location.assign(target)
       return
     }
+    await router.push(target)
   }
 
   function initLanguage() {
-    syncLanguageFromRoute(route.path)
+    applyTranslations()
   }
 
-  return {
-    currentLang,
-    applyTranslations,
-    localizePath,
-    setLanguage,
-    syncLanguageFromRoute,
-    initLanguage
-  }
+  return { currentLang, localizePath, applyTranslations, syncLanguageFromRoute, setLanguage, initLanguage }
 }

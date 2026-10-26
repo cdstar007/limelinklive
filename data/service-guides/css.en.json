@@ -1,0 +1,116 @@
+{
+  "tocLabel": "On this page",
+  "overviewTitle": "What the service does",
+  "featuresTitle": "Capabilities to evaluate",
+  "scenariosTitle": "Where it fits",
+  "pricingTitle": "Procurement pricing and total cost",
+  "stepsTitle": "From assessment to production",
+  "caseTitle": "An implementation scenario",
+  "caseLabel": "Illustrative scenario — not a customer case or a performance claim",
+  "faqTitle": "Frequently asked questions",
+  "sourcesTitle": "Official product references",
+  "ctaTitle": "Start with your current usage and bill",
+  "ctaText": "Tell us your provider, service regions, usage and renewal timing. We can scope a comparable procurement review before proposing technical changes.",
+  "ctaLabel": "Request a Cost Review",
+  "contactLabel": "Discuss Your Requirements",
+  "compareLabel": "Compare the three services",
+  "docsLabel": "Explore technical resources",
+  "kicker": "TENCENT CLOUD CSS · PROCUREMENT & INTEGRATION",
+  "title": "Tencent Cloud CSS live streaming services",
+  "lead": "Assess Tencent Cloud CSS for an existing live streaming business, with a clear view of delivery options, regional usage and procurement costs. LIMELINK helps connect the commercial comparison to a practical integration and testing plan.",
+  "overview": [
+    "Cloud Streaming Services is Tencent Cloud’s live video platform. It is relevant when a publisher sends a stream to many viewers and needs to consider distribution, playback and media processing together. Standard live broadcasting and lower-latency delivery are different choices: the right starting point is how the audience participates, not a headline latency number.",
+    "For an existing CSS user, a procurement review starts with the current account, billing items and renewal terms. For a team considering a move, the review also covers encoder settings, domains, players and operational dependencies. Keeping the current platform can be the best outcome when a new quote does not compensate for the cost and risk of change."
+  ],
+  "features": [
+    {
+      "title": "Distribution matched to audience behavior",
+      "text": "Evaluate standard LVB and low-latency LEB against the actual viewing experience. A public event can tolerate a different delay from a live auction. Build a representative playback test before choosing a delivery mode, and compare startup time, buffering and continuity on the networks your audience uses."
+    },
+    {
+      "title": "Transcoding, recording and content protection",
+      "text": "CSS includes media-processing and streaming-protection capabilities. Treat recording, transcoding and access controls as explicit requirements rather than assuming every capability is included in a delivery quote. Document the formats, retention needs and access rules your application requires; these choices affect both the architecture and the final service scope."
+    },
+    {
+      "title": "Regional usage and billing visibility",
+      "text": "The official LVB billing guide distinguishes billing regions and traffic or bandwidth models. A regional audience shift can change the cost even when total viewing time stays similar. Compare the billing unit, measurement period and service mode before interpreting a lower unit price as a lower total bill."
+    }
+  ],
+  "scenarios": [
+    {
+      "title": "Scheduled events and publisher broadcasts",
+      "text": "A broadcaster with existing production tools can evaluate CSS around the ingest-to-player path. The assessment should cover an event rehearsal, audience geography, a backup stream and responsibility for incidents. Put recovery procedures alongside picture quality in the acceptance checklist."
+    },
+    {
+      "title": "Live commerce with selected interactive moments",
+      "text": "A shopping stream may need a shorter viewing delay during an offer, while a catalogue presentation has different requirements. Identify which interactions genuinely need low latency. Avoid buying a more expensive delivery path for every viewer without checking the business reason and device compatibility."
+    },
+    {
+      "title": "Recorded training and repeatable sessions",
+      "text": "Training publishers should separate live distribution from recording retention and subsequent replay. Review participant access, expected watch time and the workflow for publishing recordings. If most sessions are prerecorded or require everyone to speak, evaluate a VOD or RTC architecture as well as live delivery."
+    }
+  ],
+  "pricing": [
+    "LIMELINK’s public standard procurement reference is 20% off eligible official list-price items. Committed usage and enterprise requirements receive a written custom quote. This is a comparison with applicable list prices, not a promise to beat an existing negotiated Tencent Cloud contract or to apply one discount to every product.",
+    "For illustration, an eligible list-price charge of USD 1,000 would produce a standard reference of USD 800 before excluded charges. If your current comparable contract is already USD 750, that example does not represent a saving. The review must include billing regions, traffic or bandwidth basis, resource-pack terms and any additional processing or support costs.",
+    "A useful proposal separates procurement, integration and ongoing support. It also states commitment periods, payment conditions and what happens when usage changes. For a migration, include testing and temporary parallel running in the comparison. Use the cost estimator as a starting point, then reconcile the result with the actual bill and the written quote."
+  ],
+  "steps": [
+    {
+      "title": "1. Establish a comparable baseline",
+      "text": "Share the current CSS services, regional usage, recent cost ranges and renewal window. Identify business-critical streams and existing account restrictions. Define the billing scope and the playback-quality criteria that must stay comparable so the procurement discussion does not quietly change the service being purchased."
+    },
+    {
+      "title": "2. Confirm account and delivery arrangements",
+      "text": "Check which procurement arrangements are permitted for the account and what the contract covers. If configuration changes are needed, list domains, certificates, ingest addresses, playback rules and processing templates. Assign an owner for each dependency before agreeing to a rollout date."
+    },
+    {
+      "title": "3. Run a representative pilot",
+      "text": "Use a test event with the intended encoder and player. Check playback on relevant devices and regions, including a weak connection and a stream interruption. Record the observed startup and buffering behavior, expected billable usage and any changes required before a production decision."
+    },
+    {
+      "title": "4. Release with a rollback plan",
+      "text": "Agree on a staged traffic change, an observation period and conditions for reverting. Keep the original path available where practical until acceptance is complete. After launch, compare the first bill with the quote and review responsibility for monitoring, troubleshooting and the next renewal."
+    }
+  ],
+  "caseStudy": [
+    "Consider a training publisher already using CSS and approaching renewal. Its audience has expanded into another region, and the operations team cannot explain a higher bill. The first step is to separate the regional delivery charges from recording and transcoding, then compare equivalent usage and contract conditions.",
+    "In this illustrative workflow, LIMELINK would prepare a procurement comparison and identify any configuration questions for the technical team. A small rehearsal would be used if the delivery setup changes. The deliverables are a documented cost scope, a test checklist and a go-or-stay decision; no customer saving, deployment duration or business outcome is being claimed."
+  ],
+  "faqs": [
+    {
+      "question": "How should I choose between standard CSS delivery and lower latency?",
+      "answer": "Start with the interaction the audience needs. A broadcast-only programme and a time-sensitive auction have different requirements. Test the appropriate service mode with representative devices and networks, then compare its cost and observed playback behavior. A vendor headline is not an acceptance result for your application."
+    },
+    {
+      "question": "Does the public 20% discount cover my entire Tencent Cloud bill?",
+      "answer": "No. It is a reference for eligible list-price items, subject to product, region and quotation terms. Resource packs, existing contracts, processing and other cloud services need separate checks. Only a like-for-like comparison with your current charges can establish whether there is a saving."
+    },
+    {
+      "question": "Can an existing CSS account change procurement without migration?",
+      "answer": "It depends on the account, partner policies and current contract. These must be checked before a proposal can confirm what is possible. We do not assume that ownership, credentials, domains or SDK configurations can remain unchanged, or promise a zero-downtime transition before assessment."
+    },
+    {
+      "question": "What information is useful for an initial quote?",
+      "answer": "Provide the service mode, main audience regions, approximate traffic or bandwidth, monthly spend range and renewal timing. Note recording and transcoding requirements. An initial conversation does not require passwords, private keys or unrestricted account access; detailed billing information can be scoped after the first review."
+    },
+    {
+      "question": "Are migration, load testing and around-the-clock support included?",
+      "answer": "Those services depend on the agreed scope. A procurement reference is not an unlimited engineering or operational support plan. Ask for the deliverables, support window, escalation path and any separate fees to be recorded in the quote before comparing proposals."
+    },
+    {
+      "question": "How long does an implementation take?",
+      "answer": "The schedule depends on account eligibility, domains, player changes, testing access and the approval process. A procurement-only adjustment may have a different scope from a provider migration. We confirm dependencies and acceptance criteria first rather than advertise one delivery time for every customer."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Tencent Cloud CSS product capabilities",
+      "url": "https://www.tencentcloud.com/products/css"
+    },
+    {
+      "title": "Tencent Cloud: Billing of LVB",
+      "url": "https://www.tencentcloud.com/document/product/267/2818"
+    }
+  ]
+}

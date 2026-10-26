@@ -2,10 +2,14 @@
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>https://limelink.live/sitemap-en.xml</loc>
-    <lastmod>2026-05-21</lastmod>
+    <lastmod>2026-10-27</lastmod>
   </sitemap>
   <sitemap>
     <loc>https://limelink.live/sitemap-zh.xml</loc>
-    <lastmod>2026-05-21</lastmod>
+    <lastmod>2026-10-27</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://limelink.live/sitemap-zh-cn.xml</loc>
+    <lastmod>2026-10-27</lastmod>
   </sitemap>
 </sitemapindex>

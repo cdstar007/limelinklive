@@ -22,19 +22,26 @@
 
 <script setup lang="ts">
 import articleEn from '~/assets/articles/article_2652002.md?raw'
+import articleCn from '~/assets/articles/article_2652002_zh-cn.md?raw'
 import articleZh from '~/assets/articles/article_2652002_zh.md?raw'
 
 definePageMeta({
-  alias: ['/zh/docs/best-webrtc-providers-2026']
+  alias: ['/zh/docs/best-webrtc-providers-2026', '/zh-cn/docs/best-webrtc-providers-2026']
 })
 
-usePageSeo('docs')
+usePageSeo('articleWebrtc')
 
 const { currentLang, localizePath } = useDomI18n()
 
 const content = {
+  'zh-cn': {
+    back: '返回文档中心',
+    eyebrow: 'LimeLink Tech Articles',
+    title: '2026 年最佳 WebRTC 供应商比较',
+    description: '比较全球与亚洲 WebRTC 供应商在延迟、弱网能力、SDK、价格、合规与适用场景上的差异。'
+  },
   zh: {
-    back: '返回文檔中心',
+    back: '返回文件中心',
     eyebrow: 'LimeLink Tech Articles',
     title: '2026 年最佳 WebRTC 供應商比較',
     description: '比較全球與亞洲 WebRTC 供應商在延遲、弱網能力、SDK、價格、合規與適用場景上的差異。'
@@ -48,5 +55,5 @@ const content = {
 }
 
 const copy = computed(() => content[currentLang.value])
-const markdown = computed(() => currentLang.value === 'zh' ? articleZh : articleEn)
+const markdown = computed(() => currentLang.value === 'zh-cn' ? articleCn : currentLang.value === 'zh' ? articleZh : articleEn)
 </script>

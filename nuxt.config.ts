@@ -18,7 +18,8 @@ export default defineNuxtConfig({
             '/sitemap.xml',
             '/sitemap-index.xml',
             '/sitemap-en.xml',
-            '/sitemap-zh.xml'
+            '/sitemap-zh.xml',
+            '/sitemap-zh-cn.xml'
           ]
         }
       }

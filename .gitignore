@@ -19,6 +19,9 @@ dist/
 *.key
 ssh/
 
+# Internal commercial costs and negotiation guidance
+docs/internal/
+
 # Legacy static exports kept locally for reference
 /*.html
 

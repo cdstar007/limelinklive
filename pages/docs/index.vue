@@ -144,7 +144,7 @@ import sopIcon from '~/assets/images/sop.png'
 import tencentLogo from '~/assets/images/tencent.png'
 
 definePageMeta({
-  alias: ['/zh/docs']
+  alias: ['/zh/docs', '/zh-cn/docs']
 })
 
 usePageSeo('docs')
@@ -153,21 +153,39 @@ const { currentLang, localizePath } = useDomI18n()
 const router = useRouter()
 
 const content = {
+  'zh-cn': {
+    eyebrow: '文档中心',
+    title: '直播与实时音视频技术文档',
+    description: '集中整理三家主流流媒体平台的直播文档入口，并沉淀 LIMELINK 自有的接入、排障、成本优化与安全实践笔记。',
+    vendorTitle: '官方直播文档',
+    vendorDesc: '从产品概览、推流播放、转码录制到 API 参考，快速定位各平台最常用的官方数据。',
+    requestDocs: '需要接入协助',
+    quickUse: '适合查找',
+    articlesEyebrow: 'LimeLink Tech Articles',
+    articlesTitle: 'LimeLink Tech Articles',
+    articlesDesc: '把实际音视频、AI 互动与上线架构经验整理成可阅读、可转交团队的技术文章。',
+    readArticle: '阅读文章',
+    internalTitle: 'LIMELINK 技术文档整理',
+    internalDesc: '这里预留给你自己的技术沉淀，可逐步补充内部 SOP、排障手册、架构模板与客户交付清单。',
+    ctaTitle: '需要把文档落到具体架构吗？',
+    ctaDesc: '把你的业务场景、目标地区、并发规模和预算发给我们，我们可以协助整理供应商选型与接入路线。',
+    ctaButton: '联系技术顾问'
+  },
   zh: {
-    eyebrow: '文檔中心',
-    title: '直播與即時音視頻技術文檔',
-    description: '集中整理三家主流流媒體平台的直播文檔入口，並沉澱 LIMELINK 自有的接入、排障、成本優化與安全實踐筆記。',
-    vendorTitle: '官方直播文檔',
+    eyebrow: '文件中心',
+    title: '直播與即時音視訊技術文件',
+    description: '集中整理三家主流流媒體平台的直播文件入口，並沉澱 LIMELINK 自有的接入、排障、成本優化與安全實踐筆記。',
+    vendorTitle: '官方直播文件',
     vendorDesc: '從產品概覽、推流播放、轉碼錄製到 API 參考，快速定位各平台最常用的官方資料。',
     requestDocs: '需要接入協助',
     quickUse: '適合查找',
     articlesEyebrow: 'LimeLink Tech Articles',
     articlesTitle: 'LimeLink Tech Articles',
-    articlesDesc: '把實際音視頻、AI 互動與上線架構經驗整理成可閱讀、可轉交團隊的技術文章。',
+    articlesDesc: '把實際音視訊、AI 互動與上線架構經驗整理成可閱讀、可轉交團隊的技術文章。',
     readArticle: '閱讀文章',
-    internalTitle: 'LIMELINK 技術文檔整理',
+    internalTitle: 'LIMELINK 技術文件整理',
     internalDesc: '這裡預留給你自己的技術沉澱，可逐步補充內部 SOP、排障手冊、架構模板與客戶交付清單。',
-    ctaTitle: '需要把文檔落到具體架構嗎？',
+    ctaTitle: '需要把文件落到具體架構嗎？',
     ctaDesc: '把你的業務場景、目標地區、併發規模和預算發給我們，我們可以協助整理供應商選型與接入路線。',
     ctaButton: '聯絡技術顧問'
   },
@@ -193,7 +211,24 @@ const content = {
 
 const copy = computed(() => content[currentLang.value])
 
-const articles = computed(() => currentLang.value === 'zh'
+const articles = computed(() => currentLang.value === 'zh-cn' ? [
+      {
+        category: 'AI Video',
+        title: '如何构建 AI 视频通话应用程序',
+        desc: '完整解析 AI 视频通话的四层架构、WebRTC / LiveKit 媒体管线、STT / LLM / TTS / 虚拟人物管线，以及延迟与成本最佳化。',
+        readTime: '8 分钟阅读',
+        href: '/docs/ai-video-call-app',
+        icon: 'heroicons:video-camera'
+      },
+      {
+        category: 'WebRTC',
+        title: '2026 年最佳 WebRTC 供应商比较',
+        desc: '比较 Agora、Vonage、AWS Chime 与亚洲云端 RTC 供应商在全球延迟、弱网能力、SDK、价格与合规上的差异。',
+        readTime: '10 分钟阅读',
+        href: '/docs/best-webrtc-providers-2026',
+        icon: 'heroicons:signal'
+      }
+    ] : currentLang.value === 'zh'
   ? [
       {
         category: 'AI Video',
@@ -235,28 +270,65 @@ function openArticle(path: string) {
   router.push(localizePath(path))
 }
 
-const vendors = computed(() => currentLang.value === 'zh'
-  ? [
+const vendors = computed(() => currentLang.value === 'zh-cn' ? [
       {
-        name: '騰訊雲 CSS',
+        name: '腾讯云 CSS',
         scope: 'Live Streaming',
         logo: tencentLogo,
-        summary: '雲直播文檔覆蓋直播接入、域名配置、推流播放、轉碼、錄製、鑒權與控制台運維。',
+        summary: '云直播文档覆盖直播接入、域名配置、推流播放、转码、录制、鉴权与控制台运维。',
         links: [
-          { title: '雲直播文檔中心', desc: '產品文檔總入口', href: 'https://cloud.tencent.com/document/product/267' },
-          { title: '國際站 CSS 文檔', desc: '英文文檔與海外接入參考', href: 'https://www.tencentcloud.com/document/product/267' },
-          { title: 'CSS 產品介紹', desc: '能力、節點與場景概覽', href: 'https://www.tencentcloud.com/products/css' }
+          { title: '云直播文档中心', desc: '产品文档总入口', href: 'https://cloud.tencent.com/document/product/267' },
+          { title: '国际站 CSS 文档', desc: '英文文档与海外接入参考', href: 'https://www.tencentcloud.com/document/product/267' },
+          { title: 'CSS 产品介绍', desc: '能力、节点与场景概览', href: 'https://www.tencentcloud.com/products/css' }
         ],
-        useCases: ['直播域名與推流播放配置', '轉碼、錄製、截圖與水印', 'URL 鑒權與防盜鏈']
+        useCases: ['直播域名与推流播放配置', '转码、录制、截图与水印', 'URL 鉴权与防盗链']
       },
       {
         name: 'BytePlus MediaLive',
         scope: 'Media Live',
         logo: bytePlusLogo,
-        summary: 'BytePlus MediaLive 文檔涵蓋端到端直播架構、Broadcast SDK、Player SDK、OpenAPI 與媒體處理能力。',
+        summary: 'BytePlus MediaLive 文档涵盖端到端直播架构、Broadcast SDK、Player SDK、OpenAPI 与媒体处理能力。',
+        links: [
+          { title: 'MediaLive 产品概览', desc: '架构与核心能力', href: 'https://docs.byteplus.com/api/docs/byteplus-media-live/docs-product-overview' },
+          { title: 'MediaLive API 参考', desc: '服务端集成与自动化管理', href: 'https://docs.byteplus.com/en/docs/byteplus-media-live/reference-api-reference' },
+          { title: 'BytePlus MediaLive', desc: '产品页与方案入口', href: 'https://www.byteplus.com/zh-CN/product/medialive' }
+        ],
+        useCases: ['跨境直播分发与媒体处理', 'Broadcast SDK / Player SDK 接入', 'OpenAPI 自动化管理']
+      },
+      {
+        name: 'Agora RTC / 互动直播',
+        scope: 'RTC + Live',
+        logo: agoraLogo,
+        summary: 'Agora 文档适合查找互动直播、实时音视频、云端录制、媒体网关与低延迟互动能力。',
+        links: [
+          { title: 'Agora Broadcast Streaming', desc: '直播能力与文档入口', href: 'https://www.agora.io/en/products/broadcast-streaming/' },
+          { title: 'Agora Docs', desc: 'SDK、API 与平台文档', href: 'https://docs.agora.io/en/' },
+          { title: 'Cloud Recording Docs', desc: '云端录制与回放归档', href: 'https://docs.agora.io/en/cloud-recording/overview/product-overview' }
+        ],
+        useCases: ['低延迟连麦与互动直播', 'RTC SDK 多端接入', '云端录制与媒体网关']
+      }
+    ] : currentLang.value === 'zh'
+  ? [
+      {
+        name: '騰訊雲 CSS',
+        scope: 'Live Streaming',
+        logo: tencentLogo,
+        summary: '雲直播文件覆蓋直播接入、域名設定、推流播放、轉碼、錄製、鑒權與控制台維運。',
+        links: [
+          { title: '雲直播文件中心', desc: '產品文件總入口', href: 'https://cloud.tencent.com/document/product/267' },
+          { title: '國際站 CSS 文件', desc: '英文文件與海外接入參考', href: 'https://www.tencentcloud.com/document/product/267' },
+          { title: 'CSS 產品介紹', desc: '能力、節點與場景概覽', href: 'https://www.tencentcloud.com/products/css' }
+        ],
+        useCases: ['直播域名與推流播放設定', '轉碼、錄製、截圖與水印', 'URL 鑒權與防盜鏈']
+      },
+      {
+        name: 'BytePlus MediaLive',
+        scope: 'Media Live',
+        logo: bytePlusLogo,
+        summary: 'BytePlus MediaLive 文件涵蓋端到端直播架構、Broadcast SDK、Player SDK、OpenAPI 與媒體處理能力。',
         links: [
           { title: 'MediaLive 產品概覽', desc: '架構與核心能力', href: 'https://docs.byteplus.com/api/docs/byteplus-media-live/docs-product-overview' },
-          { title: 'MediaLive API 參考', desc: '服務端集成與自動化管理', href: 'https://docs.byteplus.com/en/docs/byteplus-media-live/reference-api-reference' },
+          { title: 'MediaLive API 參考', desc: '伺服器端整合與自動化管理', href: 'https://docs.byteplus.com/en/docs/byteplus-media-live/reference-api-reference' },
           { title: 'BytePlus MediaLive', desc: '產品頁與方案入口', href: 'https://www.byteplus.com/zh-CN/product/medialive' }
         ],
         useCases: ['跨境直播分發與媒體處理', 'Broadcast SDK / Player SDK 接入', 'OpenAPI 自動化管理']
@@ -265,10 +337,10 @@ const vendors = computed(() => currentLang.value === 'zh'
         name: 'Agora RTC / 互動直播',
         scope: 'RTC + Live',
         logo: agoraLogo,
-        summary: 'Agora 文檔適合查找互動直播、即時音視頻、雲端錄製、媒體網關與低延遲互動能力。',
+        summary: 'Agora 文件適合查找互動直播、即時音視訊、雲端錄製、媒體網關與低延遲互動能力。',
         links: [
-          { title: 'Agora Broadcast Streaming', desc: '直播能力與文檔入口', href: 'https://www.agora.io/en/products/broadcast-streaming/' },
-          { title: 'Agora Docs', desc: 'SDK、API 與平台文檔', href: 'https://docs.agora.io/en/' },
+          { title: 'Agora Broadcast Streaming', desc: '直播能力與文件入口', href: 'https://www.agora.io/en/products/broadcast-streaming/' },
+          { title: 'Agora Docs', desc: 'SDK、API 與平台文件', href: 'https://docs.agora.io/en/' },
           { title: 'Cloud Recording Docs', desc: '雲端錄製與回放歸檔', href: 'https://docs.agora.io/en/cloud-recording/overview/product-overview' }
         ],
         useCases: ['低延遲連麥與互動直播', 'RTC SDK 多端接入', '雲端錄製與媒體網關']
@@ -313,11 +385,16 @@ const vendors = computed(() => currentLang.value === 'zh'
       }
     ])
 
-const internalDocs = computed(() => currentLang.value === 'zh'
+const internalDocs = computed(() => currentLang.value === 'zh-cn' ? [
+      { title: '直播架构选型清单', desc: '根据直播型态、地区、延迟、并发与预算，快速选择 CSS、BytePlus 或 Agora 的接入路线。', image: checklistIcon, tags: ['选型', '架构', '成本'] },
+      { title: '推流与播放排障手册', desc: '整理 RTMP / WebRTC / HLS 常见问题，包括首帧慢、卡顿、断流、音画不同步与跨境弱网。', image: handbookIcon, tags: ['推流', '播放', '排障'] },
+      { title: '安全与鉴权实践', desc: '沉淀播放鉴权、防盗链、回调验签、管理后台权限与 webhook 安全配置。', image: practiceIcon, tags: ['安全', '鉴权', 'Webhook'] },
+      { title: '上线交付 SOP', desc: '从域名、证书、CNAME、测试流、监控告警到重大活动护航的交付检查表。', image: sopIcon, tags: ['交付', '监控', 'SLA'] }
+    ] : currentLang.value === 'zh'
   ? [
       { title: '直播架構選型清單', desc: '根據直播型態、地區、延遲、併發與預算，快速選擇 CSS、BytePlus 或 Agora 的接入路線。', image: checklistIcon, tags: ['選型', '架構', '成本'] },
       { title: '推流與播放排障手冊', desc: '整理 RTMP / WebRTC / HLS 常見問題，包括首幀慢、卡頓、斷流、音畫不同步與跨境弱網。', image: handbookIcon, tags: ['推流', '播放', '排障'] },
-      { title: '安全與鑒權實踐', desc: '沉澱播放鑒權、防盜鏈、回調驗簽、管理後台權限與 webhook 安全配置。', image: practiceIcon, tags: ['安全', '鑒權', 'Webhook'] },
+      { title: '安全與鑒權實踐', desc: '沉澱播放鑒權、防盜鏈、回調驗簽、管理後台權限與 webhook 安全設定。', image: practiceIcon, tags: ['安全', '鑒權', 'Webhook'] },
       { title: '上線交付 SOP', desc: '從域名、證書、CNAME、測試流、監控告警到重大活動護航的交付檢查表。', image: sopIcon, tags: ['交付', '監控', 'SLA'] }
     ]
   : [

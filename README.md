@@ -2,6 +2,8 @@
 
 Nuxt 3 site for LIMELINK cloud video service pages, built for Cloudflare Pages.
 
+Deployment configuration, verification results, and VPS deployment details are recorded in [DEPLOY.md](./DEPLOY.md).
+
 ## Development
 
 ```bash
@@ -16,6 +18,73 @@ npm run build
 ```
 
 The production build outputs to `dist`, matching `wrangler.toml`.
+
+## Sitemap maintenance
+
+Page-specific `lastmod` dates are maintained in `server/utils/sitemap.mjs`.
+Change a date only when that page's main content, structured data, or substantive
+links change; do not use the request, deployment, or build date. The current
+English historical dates come from page/article Git history. The 2026-10-26
+dates mark procurement-content changes, the Taiwan terminology revision and
+the new Simplified Chinese translations. Each page stores a separate date for
+each language.
+
+The API and static XML files share this source. `npm run build`,
+`npm run build:server` and `npm run generate` regenerate the static files
+automatically. After editing dates locally, regenerate and verify with:
+
+```bash
+npm run generate:sitemaps
+npm test
+```
+
+`robots.txt` advertises only `/sitemap-index.xml`, which links to the English,
+Traditional Chinese and Simplified Chinese sitemaps. `/sitemap.xml` remains
+available for existing consumers.
+
+## Languages and regional copy
+
+- English: `/`, with unprefixed service and article routes.
+- Traditional Chinese for Taiwan: `/zh`, with `/zh/...` routes. Use Taiwanese
+  terms such as 視訊、影音、直播、即時、軟體、資料、文件 and 網路.
+- Simplified Chinese: `/zh-cn`, with `/zh-cn/...` routes and its own copy.
+
+Shared messages live in `data/i18n.ts`; page-specific content is maintained in
+the relevant page's three-language content object. Chinese article sources use
+`_zh.md` and `_zh-cn.md`. Simplified copy was initially converted using OpenCC
+and adjusted for regional terminology; no conversion library ships to browsers.
+Maintain the three versions explicitly when copy changes.
+
+Language selection preserves the current page, query and fragment and loads
+the selected locale document to avoid Vue Router deduplicating language aliases.
+All versions
+render their copy on the server, with self-referencing canonical URLs and
+reciprocal `en`, `zh-Hant` and `zh-Hans` alternate links. Article SEO uses each
+article's own URL, not the documentation index. Each language has 14 sitemap
+entries; update only the affected language's content date when making changes.
+
+## Service page content and FAQs
+
+The CSS, BytePlus and Agora pages each load their own English, Traditional
+Chinese and Simplified Chinese content from `data/service-guides/`. The shared
+`components/ServiceLanding.vue` renders the product overview, features,
+scenarios, procurement terms, rollout steps, illustrative example and FAQ.
+
+FAQPage JSON-LD is generated from the same six question/answer objects displayed
+on each page, using `utils/service-faq.ts`. Keep answers visible in the page's
+expandable FAQ; do not add schema-only promotional answers. Google discontinued
+FAQ rich results in May 2026, so this markup must not be presented as a promise
+of a special Search appearance. See [Google's update log](https://developers.google.com/search/updates).
+
+Examples are explicitly hypothetical, as approved by the user. Do not replace
+them with named customers, results, dates or testimonials without verified,
+publishable source material. Public pricing remains 20% off eligible list items
+(8 折); enterprise terms require a custom quote. Internal purchasing costs are
+not part of these files.
+
+`npm test` checks the nine content variants, editorial depth, FAQ/schema parity
+and script-safe JSON serialization. After content changes, update the relevant
+service route's language-specific `lastmod` in `server/utils/sitemap.mjs`.
 
 For a Node server deployment, build with:
 

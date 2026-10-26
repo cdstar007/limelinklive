@@ -55,6 +55,12 @@
             <option v-for="option in qualityOptions" :key="option.value" :value="option.value">{{ option.label }}</option>
           </select>
         </label>
+
+        <label class="space-y-2 md:col-span-2">
+          <span class="block text-sm font-medium text-gray-400">{{ t.pricing_calc_current_bill }}</span>
+          <input v-model="currentBill" class="input-field" min="0.01" step="0.01" type="number" inputmode="decimal" placeholder="USD" aria-describedby="current-bill-help">
+          <span id="current-bill-help" class="block text-xs text-gray-500">{{ t.pricing_calc_comparison_scope }}</span>
+        </label>
       </div>
 
       <div class="rounded-3xl bg-[#050810]/70 border border-white/10 p-6 md:p-8">
@@ -71,6 +77,16 @@
             <p class="text-xs uppercase tracking-[0.18em] text-blue-300 mb-2">{{ t.pricing_calc_discount_cost }}</p>
             <p class="text-3xl font-bold text-cyan-300">{{ formattedDiscountedCost }}</p>
           </div>
+        </div>
+
+        <div v-if="billComparison" class="rounded-2xl border border-white/10 p-5 mb-6" aria-live="polite">
+          <p class="text-sm font-semibold mb-2">{{ t.pricing_calc_actual_comparison }}</p>
+          <template v-if="billComparison.hasSavings">
+            <p class="text-2xl font-bold text-cyan-300">{{ formatUsd(billComparison.difference) }} <span class="text-sm">/ {{ t.pricing_calc_month }}</span></p>
+            <p class="text-sm text-gray-300 mt-2">{{ t.pricing_calc_potential_saving }} {{ billComparison.savingsPercent }}%</p>
+          </template>
+          <p v-else class="text-sm text-amber-200">{{ t.pricing_calc_no_saving }}</p>
+          <p class="text-xs text-gray-500 mt-3">{{ t.pricing_calc_comparison_note }}</p>
         </div>
 
         <div class="space-y-4">
@@ -91,6 +107,7 @@
 
 <script setup lang="ts">
 import { messages } from '~/data/i18n'
+import { estimateStandardMonthlyCost, compareMonthlyCosts } from '~/utils/pricing'
 
 type OptionKey = keyof typeof messages.zh
 type Provider = 'tencent' | 'byteplus' | 'agora'
@@ -109,9 +126,10 @@ const t = computed(() => messages[currentLang.value])
 const provider = ref<Provider>('tencent')
 const serviceType = ref<ServiceType>('tencentLeb')
 const region = ref<Region>('asiaPacific1')
-const monthlyUsers = ref(100)
+const monthlyUsers = ref(10000)
 const minutesPerUser = ref(30)
 const quality = ref<Quality>('720p')
+const currentBill = ref<string | number>('')
 
 const providerOptions: Array<{ value: Provider, label: string }> = [
   { value: 'tencent', label: 'Tencent Cloud CSS' },
@@ -349,8 +367,8 @@ const agoraRatesPerThousand: Record<ServiceType, number> = {
 }
 
 const selectedQuality = computed(() => qualityOptions.find((option) => option.value === quality.value) || qualityOptions[1])
-const safeUsers = computed(() => Math.max(Number(monthlyUsers.value) || 0, 1))
-const safeMinutes = computed(() => Math.max(Number(minutesPerUser.value) || 0, 1))
+const safeUsers = computed(() => Number.isFinite(Number(monthlyUsers.value)) ? Math.max(Number(monthlyUsers.value) || 0, 1) : 1)
+const safeMinutes = computed(() => Number.isFinite(Number(minutesPerUser.value)) ? Math.max(Number(minutesPerUser.value) || 0, 1) : 1)
 const trafficGb = computed(() => safeUsers.value * safeMinutes.value * selectedQuality.value.bitrate * 60 / 8 / 1024)
 const participantMinutes = computed(() => safeUsers.value * safeMinutes.value)
 
@@ -388,7 +406,8 @@ const officialCost = computed(() => {
   const rate = getTierRate(trafficGb.value, tencentRates)
   return trafficGb.value * rate
 })
-const discountedCost = computed(() => officialCost.value * 0.95)
+const discountedCost = computed(() => estimateStandardMonthlyCost(officialCost.value))
+const billComparison = computed(() => compareMonthlyCosts(currentBill.value, discountedCost.value))
 
 const formattedTraffic = computed(() => {
   if (trafficGb.value >= 1000) return `${(trafficGb.value / 1000).toFixed(1)} TB`
@@ -400,7 +419,7 @@ const usageLabel = computed(() => provider.value === 'agora' ? t.value.pricing_c
 const formattedUsage = computed(() => provider.value === 'agora' ? formattedMinutes.value : formattedTraffic.value)
 
 function formatUsd(value: number) {
-  return `USD $${Math.max(value, 0).toLocaleString(undefined, { maximumFractionDigits: value < 100 ? 2 : 0 })}`
+  return `USD $${Math.max(value, 0).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
 }
 
 const formattedOfficialCost = computed(() => formatUsd(officialCost.value))

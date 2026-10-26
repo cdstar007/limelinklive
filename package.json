@@ -3,6 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "generate:sitemaps": "node scripts/generate-sitemaps.mjs",
+    "prebuild": "npm run generate:sitemaps",
+    "prebuild:server": "npm run generate:sitemaps",
+    "pregenerate": "npm run generate:sitemaps",
     "dev": "nuxt dev --host 0.0.0.0",
     "build": "nuxt build",
     "build:server": "NITRO_PRESET=node-server nuxt build",

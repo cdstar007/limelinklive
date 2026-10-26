@@ -22,19 +22,26 @@
 
 <script setup lang="ts">
 import articleEn from '~/assets/articles/article_26520.md?raw'
+import articleCn from '~/assets/articles/article_26520_zh-cn.md?raw'
 import articleZh from '~/assets/articles/article_26520_zh.md?raw'
 
 definePageMeta({
-  alias: ['/zh/docs/ai-video-call-app']
+  alias: ['/zh/docs/ai-video-call-app', '/zh-cn/docs/ai-video-call-app']
 })
 
-usePageSeo('docs')
+usePageSeo('articleAi')
 
 const { currentLang, localizePath } = useDomI18n()
 
 const content = {
+  'zh-cn': {
+    back: '返回文档中心',
+    eyebrow: 'LimeLink Tech Articles',
+    title: '如何构建 AI 视频通话应用程序',
+    description: '从 WebRTC 媒体管线、AI 后端协调、虚拟人物生成到延迟最佳化，整理一套可落地的 AI 视频通话应用架构。'
+  },
   zh: {
-    back: '返回文檔中心',
+    back: '返回文件中心',
     eyebrow: 'LimeLink Tech Articles',
     title: '如何建構 AI 視訊通話應用程式',
     description: '從 WebRTC 媒體管線、AI 後端協調、虛擬人物生成到延遲最佳化，整理一套可落地的 AI 視訊通話應用架構。'
@@ -48,5 +55,5 @@ const content = {
 }
 
 const copy = computed(() => content[currentLang.value])
-const markdown = computed(() => currentLang.value === 'zh' ? articleZh : articleEn)
+const markdown = computed(() => currentLang.value === 'zh-cn' ? articleCn : currentLang.value === 'zh' ? articleZh : articleEn)
 </script>
