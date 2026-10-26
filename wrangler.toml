@@ -1,4 +1,6 @@
-name = "limelinkstreaming"
-pages_build_output_dir = "dist"
+# Nitro generates the Worker entry point and ASSETS binding during the build.
+name = "limelinklive"
 compatibility_date = "2026-05-15"
 compatibility_flags = ["nodejs_compat"]
+workers_dev = false
+preview_urls = true
