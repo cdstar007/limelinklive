@@ -7,12 +7,18 @@ function normalizePrimaryPath(path: string) {
 
 export default defineEventHandler((event) => {
   const url = getRequestURL(event)
+  const isLegacyEnglishPath = url.pathname === '/en' || url.pathname.startsWith('/en/')
+  const targetPath = isLegacyEnglishPath ? normalizePrimaryPath(url.pathname) : url.pathname
 
-  if (url.pathname !== '/en' && !url.pathname.startsWith('/en/')) {
+  // Normalize the scheme and legacy language prefix together to avoid redirect chains.
+  if (url.hostname === 'limelink.live' && url.protocol === 'http:') {
+    return sendRedirect(event, `https://limelink.live${targetPath}${url.search}`, 301)
+  }
+
+  if (!isLegacyEnglishPath) {
     return
   }
 
-  const targetPath = normalizePrimaryPath(url.pathname)
   const target = `${targetPath}${url.search}`
 
   return sendRedirect(event, target, 301)

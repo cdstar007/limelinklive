@@ -1,5 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
+import { request } from 'node:http'
 
 // Run against a production build: SEO_BASE_URL=http://127.0.0.1:3107 node --test tests/seo.test.mjs
 const base = process.env.SEO_BASE_URL || 'http://127.0.0.1:3107'
@@ -48,4 +49,17 @@ test('Chinese homepage content links stay in the Chinese section', async () => {
   const links = tags(html, 'a').map(tag => tag.href)
   assert.ok(links.includes('/zh/service-css'), 'Missing localized service link')
   assert.ok(!links.includes('/service-css'), 'Chinese service card links to English page')
+})
+
+test('HTTP requests for the production host redirect permanently to HTTPS in one hop', async () => {
+  // Node fetch does not preserve a custom Host header; send the actual proxy request.
+  const response = await new Promise((resolve, reject) => {
+    const req = request(base + '/en/services?source=seo', {
+      headers: { host: 'limelink.live', 'x-forwarded-proto': 'http' }
+    }, res => { res.resume(); resolve(res) })
+    req.on('error', reject)
+    req.end()
+  })
+  assert.equal(response.statusCode, 301)
+  assert.equal(response.headers.location, 'https://limelink.live/services?source=seo')
 })
