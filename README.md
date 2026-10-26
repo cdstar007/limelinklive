@@ -108,7 +108,10 @@ publishable source material. Public pricing remains 20% off eligible list items
 not part of these files.
 
 `npm test` checks the nine content variants, editorial depth, FAQ/schema parity
-and script-safe JSON serialization. After content changes, update the relevant
+and script-safe JSON serialization. The merged SEO integration tests also require
+a running Node production build at `http://127.0.0.1:3107` (override with
+`SEO_BASE_URL`); start it with `PORT=3107 HOST=127.0.0.1 node .output/server/index.mjs`
+after `npm run build:server`. After content changes, update the relevant
 service route's language-specific `lastmod` in `server/utils/sitemap.mjs`.
 
 ## Node server deployment

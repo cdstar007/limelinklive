@@ -138,3 +138,14 @@ cat /tmp/limelink-live-headers.txt
 ## 本次變更範圍
 
 2026-10-26 的初次紀錄僅整理文件。2026-10-27 使用者另行授權推送 Git 並更新測試／正式環境；實際完成狀態以後續發布紀錄為準。
+
+## 2026-10-27 發布紀錄
+
+- 應用程式 commit：`3fdb5a820c224c15722c75c86f97d2bfcb1a1686`，已推送 `origin/main`；整合遠端 `42dbac1` 的 Workers 與 staging 設定。
+- 驗證：完整測試 29/29 通過；`npm run build:server` 與 `npm run build` 成功，`git diff --check` 通過。
+- staging：`wrangler preview --name staging --tag 3fdb5a8` 成功。固定測試網址 <https://staging.staging.limelink.live>，本次不可變網址 <https://6d74ec14.staging.limelink.live>；對應 workers.dev URL 為 <https://staging-limelinklive.ljq98.workers.dev>。
+- 正式：手動部署版本 `594375b1-cacf-4520-ab00-287e94d2ea22`，tag `3fdb5a8`；Cloudflare Git 整合隨後發布版本 `8e0c4057-7e89-4d41-9a86-c7871d30313f`。正式網址 <https://limelink.live>。
+- VPS 自動部署亦成功：[GitHub Actions 40365515544](https://github.com/cdstar007/limelinklive/actions/runs/40365515544)，對應同一個應用程式 commit。
+- staging 與正式均實際確認：三語首頁 WebP、三語 `/about` 回傳 200、九個服務頁各 1 個 H1／9 個 H2／6 個 FAQ 與正確 canonical、sitemap 共 42 個 URL、robots 僅宣告一份 sitemap。staging 回傳 `X-Robots-Tag: noindex`。
+- **聯絡表單仍待設定**：兩環境的空白探測均回傳 `500 / Feishu webhook is not configured`。本次未取得 webhook，因此沒有恢復實際收件，也未發送任何測試詢價；處理步驟見前述故障章節。
+- 本紀錄為應用程式發布後追加的文件，文件 commit 不改變網站建置內容。
