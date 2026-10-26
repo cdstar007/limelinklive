@@ -55,8 +55,8 @@
         </div>
       </div>
       <nav class="mb-6 flex justify-center gap-6 text-sm text-gray-400" aria-label="Language">
-        <NuxtLink :to="localizePath(route.path, 'en')" hreflang="en" lang="en">English</NuxtLink>
-        <NuxtLink :to="localizePath(route.path, 'zh')" hreflang="zh-Hant" lang="zh-Hant">繁體中文</NuxtLink>
+        <a :href="localizePath(route.path, 'en')" hreflang="en" lang="en">English</a>
+        <a :href="localizePath(route.path, 'zh')" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a>
       </nav>
       <div class="pt-10 border-t border-white/5 text-center text-gray-500 text-xs">
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">

@@ -8,7 +8,6 @@ function inferLangFromPath(path: string): Lang {
 
 export function useDomI18n() {
   const route = useRoute()
-  const router = useRouter()
   const currentLang = useState<Lang>('limelink-lang', () => inferLangFromPath(route.path))
 
   function normalizeZhPath(path: string) {
@@ -81,13 +80,15 @@ export function useDomI18n() {
     }
 
     const targetPath = localizePath(route.path, lang)
-    currentLang.value = lang
-    applyTranslations(lang)
-
-    if (route.path !== targetPath) {
-      await router.push(targetPath)
+    if (import.meta.client && route.path !== targetPath) {
+      // Vue Router treats language aliases as the same route. Load the localized
+      // URL so the server, document language and canonical all agree.
+      window.location.assign(targetPath)
       return
     }
+
+    currentLang.value = lang
+    applyTranslations(lang)
   }
 
   function initLanguage() {
