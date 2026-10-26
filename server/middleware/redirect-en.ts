@@ -7,6 +7,10 @@ function normalizePrimaryPath(path: string) {
 
 export default defineEventHandler((event) => {
   const url = getRequestURL(event)
+  if (url.hostname === 'staging.limelink.live' || url.hostname.endsWith('.staging.limelink.live')) {
+    setHeader(event, 'X-Robots-Tag', 'noindex')
+  }
+
   const isLegacyEnglishPath = url.pathname === '/en' || url.pathname.startsWith('/en/')
   const targetPath = isLegacyEnglishPath ? normalizePrimaryPath(url.pathname) : url.pathname
 

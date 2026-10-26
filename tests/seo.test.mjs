@@ -63,3 +63,15 @@ test('HTTP requests for the production host redirect permanently to HTTPS in one
   assert.equal(response.statusCode, 301)
   assert.equal(response.headers.location, 'https://limelink.live/services?source=seo')
 })
+
+test('custom staging host is excluded from search indexing', async () => {
+  const response = await new Promise((resolve, reject) => {
+    const req = request(base + '/', {
+      headers: { host: 'staging.staging.limelink.live', 'x-forwarded-proto': 'https' }
+    }, res => { res.resume(); resolve(res) })
+    req.on('error', reject)
+    req.end()
+  })
+  assert.equal(response.statusCode, 200)
+  assert.equal(response.headers['x-robots-tag'], 'noindex')
+})
