@@ -28,29 +28,26 @@
 
 `server: cloudflare` 只能證明流量經過 Cloudflare，無法單憑此標頭判定來源是 Cloudflare Pages、Workers 或由 Cloudflare 代理的 VPS。本次未取得 Cloudflare 後台的 deployment ID、發布時間、對應 commit 或自訂網域綁定紀錄，因此尚未核實剛才發布的版本與實際託管位置。
 
-## 倉庫中的 Cloudflare Pages 設定
+## Cloudflare Workers 部署設定
 
-**2026-10-27 後台補查：** 正式網域實際綁定 Cloudflare Workers 的 `limelinklive`，並連接 GitHub `cdstar007/limelinklive`、production 分支 `main`。後台顯示建置命令為 `npm run build`、部署命令為 `npx wrangler deploy`、根目錄 `/`。因此以下本機 Pages 設定不能直接當成正式站的發布設定；本次沒有修改它或觸發部署。尚未核對 production deployment 的 commit。
+2026-10-27 在 Cloudflare 後台確認正式網域綁定 Workers 的 `limelinklive`，並連接 GitHub `cdstar007/limelinklive`、production 分支 `main`。建置命令為 `npm run build`、部署命令為 `npx wrangler deploy`、根目錄 `/`。
 
-設定檔：`wrangler.toml`。
-
-```toml
-name = "limelinkstreaming"
-pages_build_output_dir = "dist"
-compatibility_date = "2026-05-15"
-compatibility_flags = ["nodejs_compat"]
-```
-
-`nuxt.config.ts` 預設使用 `cloudflare_pages` Nitro preset；可透過 `NITRO_PRESET` 覆寫。Cloudflare 版本的建置命令如下：
+本次整合遠端 `42dbac1` 已有的 Workers 設定：`nuxt.config.ts` 預設使用 `cloudflare_module`，並啟用 `cloudflare.deployConfig`；`wrangler.toml` 的 Worker 名稱為 `limelinklive`，啟用 named Preview。Nitro 建置產生 `.output/server/wrangler.json`、Worker 入口與 ASSETS 綁定。舊的 Pages 專案名稱 `limelinkstreaming` 不適用於此正式站。
 
 ```bash
 npm ci
 npm run build
+# 更新 named staging Preview，不改變正式流量
+npx wrangler preview --name staging
+# 更新正式 Worker；推送 main 也會觸發後台 Git 整合
+npx wrangler deploy
 ```
 
-預期發布目錄為 `dist`，與 `wrangler.toml` 一致。此設定代表專案具備 Cloudflare Pages 建置設定，不代表本次已執行發布。
-
-倉庫沒有 Cloudflare 自動發布 workflow 或 npm 發布指令；後台另有上述 Workers Git 整合。再次發布前，須先核對本機 Pages 設定與正式 Workers 建置產物的差異，避免發布到錯誤專案。
+- 正式站：<https://limelink.live>
+- 測試 Preview：<https://staging-limelinklive.ljq98.workers.dev>
+- 後台也列有 `staging.limelink.live` 路由；應以實際 HTTP 回應核對它的 Preview 對應。
+- staging 預覽必須維持 `X-Robots-Tag: noindex`。
+- 每次發布後記錄 commit、Preview URL、部署 ID 與線上驗證結果。不得只根據建置成功宣稱發布成功。
 
 ## 倉庫中的 VPS 自動部署流程
 
@@ -140,4 +137,4 @@ cat /tmp/limelink-live-headers.txt
 
 ## 本次變更範圍
 
-本次僅整理部署文件，沒有重新發布網站、修改 DNS、觸發 GitHub Actions 或變更伺服器設定。
+2026-10-26 的初次紀錄僅整理文件。2026-10-27 使用者另行授權推送 Git 並更新測試／正式環境；實際完成狀態以後續發布紀錄為準。

@@ -54,6 +54,11 @@
           </ul>
         </div>
       </div>
+      <nav class="mb-6 flex flex-wrap justify-center gap-6 text-sm text-gray-400" aria-label="Language">
+        <a :href="localizePath(route.path, 'en')" hreflang="en" lang="en">English</a>
+        <a :href="localizePath(route.path, 'zh')" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a>
+        <a :href="localizePath(route.path, 'zh-cn')" hreflang="zh-Hans" lang="zh-Hans">简体中文</a>
+      </nav>
       <div class="pt-10 border-t border-white/5 text-center text-gray-500 text-xs">
         <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
           <span data-i18n="footer_copyright">{{ pageMessages.footer_copyright }}</span>
@@ -72,5 +77,6 @@ import logoWide from '~/assets/images/logowide.png'
 import { messages } from '~/data/i18n'
 
 const { currentLang, localizePath } = useDomI18n()
+const route = useRoute()
 const pageMessages = computed(() => messages[currentLang.value])
 </script>

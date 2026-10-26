@@ -1,6 +1,6 @@
 # LIMELINK Live
 
-Nuxt 3 site for LIMELINK cloud video service pages, built for Cloudflare Pages.
+Nuxt 3 site for LIMELINK cloud video service pages, deployed to Cloudflare Workers.
 
 Deployment configuration, verification results, and VPS deployment details are recorded in [DEPLOY.md](./DEPLOY.md).
 
@@ -17,7 +17,32 @@ npm run dev
 npm run build
 ```
 
-The production build outputs to `dist`, matching `wrangler.toml`.
+The Workers build outputs to `.output`. Nitro generates the Worker entry point,
+the `ASSETS` binding and `.output/server/wrangler.json` from `wrangler.toml`.
+
+## Cloudflare deployments
+
+Deploy the current build to the named staging Preview:
+
+```bash
+npm run build
+npx wrangler preview --name staging
+```
+
+Staging uses `https://staging-limelinklive.ljq98.workers.dev`. Cloudflare marks
+workers.dev Preview responses with `X-Robots-Tag: noindex`.
+The server also adds `noindex` for `staging.limelink.live` and its Preview subdomains.
+
+Deploy to production:
+
+```bash
+npm run build
+npx wrangler deploy
+```
+
+Production uses `https://limelink.live`. The Cloudflare Git integration builds
+and deploys pushes to `main`. Deploying a named Preview does not switch
+production traffic.
 
 ## Sitemap maintenance
 
@@ -85,6 +110,8 @@ not part of these files.
 `npm test` checks the nine content variants, editorial depth, FAQ/schema parity
 and script-safe JSON serialization. After content changes, update the relevant
 service route's language-specific `lastmod` in `server/utils/sitemap.mjs`.
+
+## Node server deployment
 
 For a Node server deployment, build with:
 

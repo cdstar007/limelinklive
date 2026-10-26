@@ -10,19 +10,9 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
-    preset: process.env.NITRO_PRESET || 'cloudflare_pages',
+    preset: process.env.NITRO_PRESET || 'cloudflare_module',
     cloudflare: {
-      pages: {
-        routes: {
-          exclude: [
-            '/sitemap.xml',
-            '/sitemap-index.xml',
-            '/sitemap-en.xml',
-            '/sitemap-zh.xml',
-            '/sitemap-zh-cn.xml'
-          ]
-        }
-      }
+      deployConfig: true
     },
     prerender: {
       routes: []
