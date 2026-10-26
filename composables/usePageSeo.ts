@@ -17,13 +17,15 @@ type PageSeoKey =
   | 'serviceCss'
   | 'serviceByteplus'
   | 'serviceAgora'
+  | 'aiVideoCall'
+  | 'webrtcProviders'
 
 type PageSeo = {
   path: string
   title: LocalizedText
   description: LocalizedText
   keywords: Record<Lang, string[]>
-  schemaType?: 'WebPage' | 'Service'
+  schemaType?: 'WebPage' | 'Service' | 'Article'
   serviceName?: LocalizedText
 }
 
@@ -50,6 +52,38 @@ const organizationSchema = {
 }
 
 const seoPages: Record<PageSeoKey, PageSeo> = {
+  aiVideoCall: {
+    path: '/docs/ai-video-call-app',
+    title: {
+      zh: '如何建構 AI 視訊通話應用程式 | LIMELINK',
+      en: 'How to Build an AI Video Call App | LIMELINK'
+    },
+    description: {
+      zh: '從 WebRTC 媒體管線、AI 後端協調、虛擬人物生成到延遲最佳化，整理一套可落地的 AI 視訊通話應用架構。',
+      en: 'A practical architecture guide covering WebRTC media transport, AI orchestration, avatar generation and latency optimization for production AI video calls.'
+    },
+    keywords: {
+      zh: ['AI 視訊通話', 'WebRTC', 'AI 應用架構'],
+      en: ['AI video call app', 'WebRTC', 'AI video architecture']
+    },
+    schemaType: 'Article'
+  },
+  webrtcProviders: {
+    path: '/docs/best-webrtc-providers-2026',
+    title: {
+      zh: '2026 年最佳 WebRTC 供應商比較 | LIMELINK',
+      en: 'Best WebRTC Providers in 2026 | LIMELINK'
+    },
+    description: {
+      zh: '比較全球與亞洲 WebRTC 供應商在延遲、弱網能力、SDK、價格、合規與適用場景上的差異。',
+      en: 'A practical comparison of global and Asian WebRTC providers across latency, reliability, SDKs, pricing, compliance and best-fit use cases.'
+    },
+    keywords: {
+      zh: ['WebRTC 供應商比較', '即時音視頻', 'WebRTC 2026'],
+      en: ['best WebRTC providers', 'WebRTC comparison', 'WebRTC 2026']
+    },
+    schemaType: 'Article'
+  },
   home: {
     path: '/',
     title: {
@@ -282,15 +316,24 @@ function makeBreadcrumbSchema(page: PageSeo, lang: Lang, currentPath: string) {
       '@type': 'ListItem',
       position: 1,
       name: lang === 'zh' ? '首頁' : 'Home',
-      item: pageUrl('/')
+      item: pageUrl(lang === 'zh' ? '/zh' : '/')
     }
   ]
 
-  if (currentPath !== '/') {
-    const pageTitle = resolveText(page.title, lang)
+  if (page.schemaType === 'Article') {
     items.push({
       '@type': 'ListItem',
       position: 2,
+      name: lang === 'zh' ? '文檔中心' : 'Documentation',
+      item: pageUrl(lang === 'zh' ? '/zh/docs' : '/docs')
+    })
+  }
+
+  if (currentPath !== '/' && currentPath !== '/zh') {
+    const pageTitle = resolveText(page.title, lang)
+    items.push({
+      '@type': 'ListItem',
+      position: items.length + 1,
       name: pageTitle.split('|')[0].trim(),
       item: pageUrl(currentPath)
     })
@@ -322,6 +365,15 @@ function makePageSchema(page: PageSeo, lang: Lang, currentPath: string) {
       '@type': 'Organization',
       name: siteName,
       url: siteUrl
+    }
+  }
+
+  if (page.schemaType === 'Article') {
+    return {
+      ...baseSchema,
+      headline: title,
+      mainEntityOfPage: pageUrl(currentPath),
+      publisher: organizationSchema
     }
   }
 
@@ -385,7 +437,7 @@ export function usePageSeo(key: PageSeoKey) {
         { name: 'robots', content: 'index, follow, max-image-preview:large' },
         { property: 'og:title', content: title },
         { property: 'og:description', content: description },
-        { property: 'og:type', content: 'website' },
+        { property: 'og:type', content: page.schemaType === 'Article' ? 'article' : 'website' },
         { property: 'og:url', content: url },
         { property: 'og:site_name', content: siteName },
         { property: 'og:image', content: defaultOgImage },

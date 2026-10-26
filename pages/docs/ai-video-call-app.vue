@@ -28,7 +28,7 @@ definePageMeta({
   alias: ['/zh/docs/ai-video-call-app']
 })
 
-usePageSeo('docs')
+usePageSeo('aiVideoCall')
 
 const { currentLang, localizePath } = useDomI18n()
 

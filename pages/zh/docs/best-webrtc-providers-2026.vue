@@ -23,5 +23,5 @@
 <script setup lang="ts">
 import articleZh from '~/assets/articles/article_2652002_zh.md?raw'
 
-usePageSeo('docs')
+usePageSeo('webrtcProviders')
 </script>

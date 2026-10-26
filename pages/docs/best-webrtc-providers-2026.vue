@@ -28,7 +28,7 @@ definePageMeta({
   alias: ['/zh/docs/best-webrtc-providers-2026']
 })
 
-usePageSeo('docs')
+usePageSeo('webrtcProviders')
 
 const { currentLang, localizePath } = useDomI18n()
 

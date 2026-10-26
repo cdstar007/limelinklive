@@ -37,6 +37,11 @@ export function useDomI18n() {
     return primaryPath
   }
 
+  function translate(key: string) {
+    const dictionary = messages[currentLang.value] as Record<string, string>
+    return dictionary[key] ?? key
+  }
+
   function applyTranslations(lang: Lang = currentLang.value) {
     if (!import.meta.client) return
 
@@ -91,6 +96,7 @@ export function useDomI18n() {
 
   return {
     currentLang,
+    translate,
     applyTranslations,
     localizePath,
     setLanguage,

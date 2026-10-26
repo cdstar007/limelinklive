@@ -23,5 +23,5 @@
 <script setup lang="ts">
 import articleZh from '~/assets/articles/article_26520_zh.md?raw'
 
-usePageSeo('docs')
+usePageSeo('aiVideoCall')
 </script>
