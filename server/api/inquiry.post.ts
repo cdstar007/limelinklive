@@ -188,23 +188,33 @@ export default defineEventHandler(async (event) => {
   }
   const cooldownIp = reserveInquiryCooldown(event)
 
-  if (webhookSecret) {
-    const timestamp = Math.floor(Date.now() / 1000).toString()
-    feishuPayload.timestamp = timestamp
-    feishuPayload.sign = await createFeishuSign(timestamp, webhookSecret)
-  }
-
+  let providerCode: number | null = null
   try {
-    await $fetch(webhookUrl, {
+    if (webhookSecret) {
+      const timestamp = Math.floor(Date.now() / 1000).toString()
+      feishuPayload.timestamp = timestamp
+      feishuPayload.sign = await createFeishuSign(timestamp, webhookSecret)
+    }
+
+    const response = await $fetch<{ code?: number; StatusCode?: number }>(webhookUrl, {
       method: 'POST',
-      body: feishuPayload
+      body: feishuPayload,
+      retry: 0,
+      timeout: 15000
     })
-  } catch (error) {
+    // Feishu can return HTTP 200 for a rejected message. Only an explicit
+    // success code confirms acceptance; prefer the modern field over legacy.
+    const code = response?.code ?? response?.StatusCode
+    providerCode = typeof code === 'number' && Number.isInteger(code) ? code : null
+    if (providerCode !== 0) throw new Error('Feishu rejected the message')
+  } catch {
     clearInquiryCooldown(cooldownIp)
-    console.error('Failed to send Feishu webhook', error)
+    // Do not log fetch errors: they may contain the secret webhook URL or PII.
+    console.error('Inquiry delivery failed', { providerCode })
     throw createError({
       statusCode: 502,
-      statusMessage: 'Failed to send Feishu webhook'
+      statusMessage: 'Failed to send Feishu webhook',
+      data: { code: 'INQUIRY_DELIVERY_FAILED', providerCode }
     })
   }
 

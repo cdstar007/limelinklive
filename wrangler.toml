@@ -4,6 +4,8 @@ compatibility_date = "2026-05-15"
 compatibility_flags = ["nodejs_compat"]
 workers_dev = false
 preview_urls = true
+# Preserve dashboard-managed runtime variables when Git/CLI redeploys the app.
+keep_vars = true
 
 # Enable a named staging Preview without changing production traffic.
 [previews]

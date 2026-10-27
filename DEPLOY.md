@@ -149,3 +149,11 @@ cat /tmp/limelink-live-headers.txt
 - staging 與正式均實際確認：三語首頁 WebP、三語 `/about` 回傳 200、九個服務頁各 1 個 H1／9 個 H2／6 個 FAQ 與正確 canonical、sitemap 共 42 個 URL、robots 僅宣告一份 sitemap。staging 回傳 `X-Robots-Tag: noindex`。
 - **聯絡表單仍待設定**：兩環境的空白探測均回傳 `500 / Feishu webhook is not configured`。本次未取得 webhook，因此沒有恢復實際收件，也未發送任何測試詢價；處理步驟見前述故障章節。
 - 本紀錄為應用程式發布後追加的文件，文件 commit 不改變網站建置內容。
+
+## 2026-10-27 飛書拒收判斷修正
+
+補上 Secret 後，正式 API 曾回傳 `200 / ok: true`，但使用者確認群組未收到。調查發現舊程式未檢查飛書回應本文的業務錯誤碼；HTTP 200 不能視為訊息接受成功。
+
+修正 `server/api/inquiry.post.ts`：只接受數值 `code: 0`（或舊版 `StatusCode: 0`）；拒收、非預期回應、連線或簽章錯誤均回傳 502 並解除本次冷卻，允許重試。回應僅提供數字 `data.providerCode` 供排查，不輸出 webhook、密鑰、原始錯誤本文或表單內容。關閉自動重試，設定 15 秒通知請求逾時。
+
+六項新增 handler 回歸測試涵蓋新舊成功碼、HTTP 200 拒收、異常回應、網路失敗與簽章失敗；完整測試 35/35 通過，Node 建置成功。實際飛書拒收原因須以修正後線上回應確認，不能預先推定是簽章、關鍵字或 IP 設定。
