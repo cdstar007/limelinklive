@@ -157,3 +157,7 @@ cat /tmp/limelink-live-headers.txt
 修正 `server/api/inquiry.post.ts`：只接受數值 `code: 0`（或舊版 `StatusCode: 0`）；拒收、非預期回應、連線或簽章錯誤均回傳 502 並解除本次冷卻，允許重試。回應僅提供數字 `data.providerCode` 供排查，不輸出 webhook、密鑰、原始錯誤本文或表單內容。關閉自動重試，設定 15 秒通知請求逾時。
 
 六項新增 handler 回歸測試涵蓋新舊成功碼、HTTP 200 拒收、異常回應、網路失敗與簽章失敗；完整測試 35/35 通過，Node 建置成功。實際飛書拒收原因須以修正後線上回應確認，不能預先推定是簽章、關鍵字或 IP 設定。
+
+線上診斷結果：修正已推送 `09d06c0` 並部署正式版本 `a70243f1-2043-4031-83f0-8f759d69c7fd`，staging 亦已更新。測試詢價回傳 `502`，`data.providerCode: 19021`；依飛書官方機器人文件，此碼為簽章驗證失敗。檢查當時正式環境僅有 webhook URL，沒有簽章密鑰，因此需由使用者將同一機器人「安全設定 → 簽章校驗」的密鑰存入生產環境 Secret `FEISHU_WEBHOOK_SECRET` 並部署，再測試。不得以關閉驗證作為修復。
+
+官方依據：<https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot>。`wrangler.toml` 已設定 `keep_vars = true`，避免後台管理的執行期變數被 Git/CLI 發布覆蓋；Secret 值不記錄於版本庫。
